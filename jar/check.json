@@ -1,0 +1,75 @@
+{
+    "past": [
+        {
+            "version":"0.6.0.1",
+            "forceUpdate":"false",
+            "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-1.jar",
+            "info":"Adds favorite implementation feature and (unstable) pack merge feature"
+        },
+        {
+            "version":"0.6.0.2",
+            "forceUpdate":"false",
+            "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-2.jar",
+            "info":"Adds enemy total damage table, other QoL stuff"
+        },
+        {
+            "ver":"0.6.0.3",
+            "forkver":5,
+            "info":"Fix auto-update, config saving, use seconds for dojo timer data storing"
+        },
+        {
+            "ver":"0.6.0.4",
+            "CORE_VER":"0.7.1.1",
+            "forkver":5,
+            "info":"Fix export problems for soul and custom bg FX anims, can't deploy text display, errors on custombgeffect reading & sorting, atk ability settings not being updated, crashes on replay getter, level setting & copying effect/soul anims"
+        },
+        {
+            "ver":"0.6.0.5",
+        "CORE_VER":"0.7.3.0",
+        "forkver":5,
+        "info":"Syncs upstream BCU branch updates (12.3 content & such), makes Background Preview accurate and Pack soul animations viewable, fix some big bad bugs, and more QoL"
+        },
+        {
+            "ver":"0.6.0.6",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"Implement way to allow multiple attacks in one frame, Custom BGEffect Spacer, Bugfixes and QoL stuff"
+        },
+        {
+            "ver":"0.6.0.7",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"Reduce lag on collab/recurring/favorite filters, replace custom filter with pack filter on enemy search page, fix visual bugs for poison and def aura, fix atk share bug, use talented HP/ATK on unit search page"
+        },
+        {
+            "ver":"0.6.0.8",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"Fix Pack Enemy Filter Bug"
+        },
+        {
+            "ver":"0.6.0.9",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"https://discord.gg/Xya9gg5KR"
+        },
+        {
+            "ver":"0.6.1.0",
+            "CORE_VER":"0.7.4.0",
+            "forkver":7,
+            "info":"12.4 contents (requires downloading new asset.bcuzip file), (some) Custom Procs for talents, bugfixes"
+        },
+        {
+            "ver":"0.6.1.1",
+            "CORE_VER":"0.7.4.0",
+            "forkver":8,
+            "info":"Make more fields compatible to language localization, add pack progression, (requires re-downloading asset.bcuzip file), bugfixes & tweaks"
+        }
+    ],
+    "latest": {
+        "ver":"0.6.1.2",
+        "CORE_VER":"0.7.4.0",
+        "forkver":8,
+        "info":"Allow syncing packs' save data, support a new extension for packs (.userpack), fix bugs"
+    }
+}
