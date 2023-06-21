@@ -1304,30 +1304,30 @@
         }
     },
     "CDSETTER": {
-        "abbr_name": "CD Modifier",
-        "full_name": "Research Stopper",
-        "tooltip": "Increases a certain unit's cooldown by a given amount",
+        "abbr_name": "Decarga",
+        "full_name": "Decargate",
+        "tooltip": "Aumenta el enfriamiento de los aliados por una cantidad especifica",
         "format": [
-            "(prob)% chance to [(type==2){set}(type!=2){[(amount>0){increase}(amount<0){decrease}]}] ",
-            "[(slot<0){a random unit}(slot>=0){the unit in the lineup's (slot)th slot}]'s cooldown ",
-            "[(type==2){to}(type!=2){by}] (amount)[(type!=1){f}(type==1){%}]"
+            "(prob)% de probabilidad de [(type==2){ajustar}(type!=2){[(amount>0){aumenta}(amount<0){reducir}]}] ",
+            "el enfriamiento de [(slot<0){un aliado aleatorio}(slot>=0&slot<10){el aliado en la ranura No.(slot) del equipo}(slot==10){los aliados atacados}] ",
+            "[(type==2){a}(type!=2){por}] (amount)[(type!=1){f}(type==1){%}]"
         ],
         "class": {
             "prob": {
-                "name": "Chance",
+                "name": "Probabilidad",
                 "tooltip": null
             },
             "amount": {
-                "name": "increase",
-                "tooltip": "The amount to add. Use negative numbers to decrease cooldown instead"
+                "name": "Aumento",
+                "tooltip": "Usa cantidad negativa para reducir enfriamiento"
             },
             "slot": {
-                "name": "slot",
-                "tooltip": "The slot of the unit to affect. Use -1 for random"
+                "name": "Ranura",
+                "tooltip": "La ranura del equip a afectar. -1 afectara una ranura aleatoria, y 10 determina la ranura por las entidades atacadas"
             },
             "type": {
-                "name": "type",
-                "tooltip": "0 = unit increase, 1 = percentage increase, 2 = set to value"
+                "name": "categoria",
+                "tooltip": "0 = f, 1 = %, 2 = cambiar exactamente por el valor puesto"
             }
         }
     },
