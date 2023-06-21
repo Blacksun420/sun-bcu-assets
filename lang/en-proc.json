@@ -1349,10 +1349,10 @@
     },
     "CDSETTER": {
         "abbr_name": "CD Modifier",
-        "full_name": "Research Stopper",
+        "full_name": "Research Breaker",
         "tooltip": "Increases a certain unit's cooldown by a given amount",
         "format": ["(prob)% chance to [(type==2){set}(type!=2){[(amount>0){increase}(amount<0){decrease}]}] ",
-                    "[(slot<0){a random unit}(slot>=0){the unit in the lineup's (slot)th slot}]'s cooldown ",
+                    "[(slot<0){a random unit}(slot>0){the unit in the lineup's (slot+1)[(slot==0){st}(slot==1){nd}(slot==2){rd}(slot>2){th}] slot}(slot==10){attacked unit}]'s cooldown ",
                     "[(type==2){to}(type!=2){by}] (amount)[(type!=1){f}(type==1){%}]"],
         "class": {
             "prob": {
@@ -1365,7 +1365,7 @@
             },
             "slot": {
                 "name": "slot",
-                "tooltip": "The slot of the unit to affect. Use -1 for random"
+                "tooltip": "The slot of the unit to affect. Use -1 for random, and 10 to make the slot depend on the hit unit"
             },
             "type": {
                 "name": "type",

@@ -1322,8 +1322,8 @@
     }
   },
   "CDSETTER": {
-    "abbr_name": "CD Modifier",
-    "full_name": "Research Stopper",
+    "abbr_name": "再生産停止",
+    "full_name": "再生産停止する",
     "tooltip": "Increases a certain unit's cooldown by a given amount",
     "format": [
       "(prob)% chance to [(type==2){set}(type!=2){[(amount>0){increase}(amount<0){decrease}]}] ",
