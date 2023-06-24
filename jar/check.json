@@ -64,12 +64,18 @@
             "CORE_VER":"0.7.4.0",
             "forkver":8,
             "info":"Make more fields compatible to language localization, add pack progression, (requires re-downloading asset.bcuzip file), bugfixes & tweaks"
+        },
+        {
+            "ver":"0.6.1.2",
+            "CORE_VER":"0.7.4.0",
+            "forkver":8,
+            "info":"Allow syncing packs' save data, support a new extension for packs (.userpack), fix bugs"
         }
     ],
     "latest": {
-        "ver":"0.6.1.2",
+        "ver":"0.6.1.3",
         "CORE_VER":"0.7.4.0",
-        "forkver":8,
-        "info":"Allow syncing packs' save data, support a new extension for packs (.userpack), fix bugs"
+        "forkver":9,
+        "info":"Merge DMG Dealt+ abilities and DMG taken- abilities, advanced proc filters, allow multiple unit rewards for a stage, improve localization, a lot of bugfixes"
     }
 }
