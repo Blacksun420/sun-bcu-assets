@@ -1654,7 +1654,7 @@
         "class": {
             "mult": {
                 "name": "multiplier",
-                "tooltip": null
+                "tooltip": "Actual value is affected by ITF fruits for some traits"
             }
         }
     },
@@ -1666,7 +1666,7 @@
         "class": {
             "mult": {
                 "name": "multiplier",
-                "tooltip": null
+                "tooltip": "Actual value is affected by ITF fruits for some traits"
             }
         }
     }
