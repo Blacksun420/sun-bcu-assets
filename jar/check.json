@@ -76,12 +76,18 @@
         "CORE_VER":"0.7.4.0",
         "forkver":9,
         "info":"Merge DMG Dealt+ abilities and DMG taken- abilities, advanced proc filters, allow multiple unit rewards for a stage, improve localization, a lot of bugfixes"
+        },
+        {
+            "ver":"0.6.1.4",
+            "CORE_VER":"0.7.4.0",
+            "forkver":9,
+            "info":"Fixes bugs, allow music naming and other music-related QoL"
         }
     ],
     "latest": {
-        "ver":"0.6.1.4",
-        "CORE_VER":"0.7.4.0",
+        "ver":"0.6.1.5",
+        "CORE_VER":"0.7.4.1",
         "forkver":9,
-        "info":"Fixes bugs, allow music naming and other music-related QoL"
+        "info":"Allow 0 share for multi-atks and 12.5 content"
     }
 }
