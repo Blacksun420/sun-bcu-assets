@@ -91,5 +91,9 @@
     "ENEUP": "敵の攻撃力増加",
     "UNIDOWN": "味方の攻撃力低減",
     "UNIUP": "味方の攻撃力増加"
+  },
+  "RangeShieldEff": {
+    "SINGLE": "単体",
+    "AREA": "範囲"
   }
 }

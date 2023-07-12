@@ -1052,7 +1052,7 @@
         "abbr_name" : "mini-wave",
         "full_name" : "Mini-Wave",
         "tooltip" : "Creates small wave which moves twice faster than normal wave with dynamic damage multiplication parameter",
-        "format" : "(prob)% chance to create a lv.(lv) mini-wave[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
+        "format" : "(prob)% chance to create a lv.(lv) [(multi>100){mega}(multi<=100){mini}]-wave[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
         "class" : {
             "prob" : {
                 "name" : "chance",
@@ -1667,6 +1667,26 @@
             "mult": {
                 "name": "multiplier",
                 "tooltip": "Actual value is affected by ITF fruits for some traits"
+            }
+        }
+    },
+    "RANGESHIELD" : {
+        "abbr_name": "TypeShield",
+        "full_name": "Target Shield",
+        "tooltip": "Decreases damage taken from either single target or area attacks",
+        "format": "(prob)% chance to [(mult>0){decrease}(mult<0){increase}] damage taken from [(type.range){Area}(!type.range){Single Target}] Attacks by (_abs(mult))%",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            },
+            "type.range": {
+                "name": "Area Attacks",
+                "tooltip": "Activate this to make the shield affect Area Attacks instead of Single Target Attacks"
             }
         }
     }

@@ -91,5 +91,9 @@
         "ENEUP": "Strengthen Enemy",
         "UNIDOWN": "Weaken Ally",
         "UNIUP": "Strengthen Ally"
+    },
+    "RangeShieldEff": {
+        "SINGLE": "Single Target",
+        "AREA": "Area Attack"
     }
 }
