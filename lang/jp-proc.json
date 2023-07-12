@@ -974,7 +974,7 @@
     "abbr_name": "小波動",
     "full_name": "小波動",
     "tooltip": "通常の波動の2倍の速さで動く小型の波動を作成し、ダメージの増量パラメータを調整できる。",
-    "format": "(prob)%の確率でLv(lv)の[(mult<=100){小}(mult>100){大}]波動を発生させる (_left)与えるダメージは攻撃力の(multi)%に等しい(_right)[(type.hitless){, even if this attack misses}]",
+    "format": "(prob)%の確率でLv(lv)の[(multi<=100){小}(multi>100){大}]波動を発生させる (_left)与えるダメージは攻撃力の(multi)%に等しい(_right)[(type.hitless){, even if this attack misses}]",
     "class": {
       "prob": {
         "name": "確率",
