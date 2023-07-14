@@ -1630,7 +1630,7 @@
     "abbr_name": "ダメージ+",
     "full_name": "ダメージ+",
     "tooltip": "ユニットが対象とする属性の敵に与えるダメージが増加する",
-    "format": "[(mult<100){小さい}(mult>100&mult<300){めっぽう強い}(mult>=300&mult<500){超}(mult>=500){極}]ダメージ (_left)(mult)%(_right)",
+    "format": "[(mult<100){小さい}(mult>100&mult<300){めっぽう強い}(mult>=300&mult<500){超}(mult>=500){極}]ダメージ (_left)(_resDiv(mult))x(_right)",
     "class": {
       "mult": {
         "name": "割合",
