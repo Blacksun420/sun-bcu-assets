@@ -1650,7 +1650,7 @@
         "abbr_name": "Extra DMG",
         "full_name": "Extra Damage",
         "tooltip": "Increases damage dealt to enemies on the traits this unit targets. Pretty much Massive Damage, but adjustable",
-        "format": "[(mult<100){Pitiful}(mult>100&mult<300){Strong}(mult>=300&mult<500){Massive}(mult>=500){Insane}] Damage (_left)Deals (mult)% damage to target traits(_right)",
+        "format": "[(mult<100){Pitiful}(mult>100&mult<300){Strong}(mult>=300&mult<500){Massive}(mult>=500){Insane}] Damage (_left)Deals (_resDiv(mult))x damage to target traits(_right)",
         "class": {
             "mult": {
                 "name": "multiplier",
@@ -1662,7 +1662,7 @@
         "abbr_name": "Resistance",
         "full_name": "Resistance",
         "tooltip": "Decreases damage taken from enemies on the traits this unit targets. Pretty much Resistant, but adjustable",
-        "format": "[(mult<100){Fragile}(mult>100&mult<400){Sturdy}(mult>=400){[(mult>=600){Insanely }]Resistant}] (_left)Reduces damage taken to 100/(mult)(_right)",
+        "format": "[(mult<100){Fragile}(mult>100&mult<400){Sturdy}(mult>=400){[(mult>=600){Insanely }]Resistant}] (_left)Takes 1/(_resDiv(mult))x Damage(_right)",
         "class": {
             "mult": {
                 "name": "multiplier",
