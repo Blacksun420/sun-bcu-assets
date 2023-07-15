@@ -117,7 +117,7 @@
     "abbr_name": "無気力",
     "full_name": "無気力",
     "tooltip": null,
-    "format": "(prob)%の確率で(_dispTimeF(time))の間TBAを[(type.percentage){(_abs(mult)%)}(!type.percentage){(_dispTime(time))}]でに増加る",
+    "format": "(prob)%の確率で(_dispTimeF(time))の間TBAを[(type.percentage){(_abs(mult)%)}(!type.percentage){(_dispTime(mult))}]でに増加る",
     "class": {
       "prob": {
         "name": "確率",
@@ -1486,7 +1486,7 @@
     "tooltip": "Allows the unit to keep away from enemy attacks and fight smarter",
     "format": [
       "Strategist [(type.calcstrongest){ (_left)Unit will seek the most effective attack to use(_right)}]",
-      "[(retreatDist>0){ (_left)When in danger or enemies are (retreatDist) units away from this entity, unit will retreat at (retreatSpeed)% of it's walking speed(_right)}]",
+      "[(retreatDist>0){ (_left)When in danger or enemies are (retreatDist) units away from this entity, unit will retreat at (retreatSpeed) speed(_right)}]",
       "[(type.calcblindspot){ (_left)Unit will not count entities on it's blindspot for attack detection or other effectiveness calculations(_right)}]"
     ],
     "class": {
