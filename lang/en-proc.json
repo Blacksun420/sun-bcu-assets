@@ -908,7 +908,7 @@
             },
             "type.hitless": {
                 "name": "Miss Trigger",
-                "tooltip": "Wave will spawn even if this attack misses"
+                "tooltip": "Surge will spawn even if this attack misses"
             }
         }
     },
@@ -1626,7 +1626,7 @@
             },
             "type.hitless": {
                 "name": "Miss Trigger",
-                "tooltip": "Wave will spawn even if this attack misses"
+                "tooltip": "Surge will spawn even if this attack misses"
             }
         }
     },
