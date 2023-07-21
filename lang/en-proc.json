@@ -157,8 +157,8 @@
         "tooltip": null,
         "format": [
             "(prob)% chance to warp target ",
-            "[(dis_0==dis_1){(_abs(dis_0)) [(dis_0<0){forward}(dis_0>0){backward}]}]",
-            "[(dis_0!=dis_1){anywhere between (_abs(dis_0)) [(dis_0<0){forward}(dis_0>0){backward}] ",
+            "[(dis==dis_1){(_abs(dis)) [(dis<0){forward}(dis>0){backward}]}]",
+            "[(dis!=dis_1){anywhere between (_abs(dis)) [(dis<0){forward}(dis>0){backward}] ",
             "and (_abs(dis_1)) [(dis_1<0){forward}(dis_1>0){backward}]}]",
             " for (_dispTime(time))"
         ],
