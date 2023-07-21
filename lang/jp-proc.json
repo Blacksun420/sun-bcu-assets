@@ -153,7 +153,7 @@
     "abbr_name": "ワープ",
     "full_name": "ワープ",
     "tooltip": null,
-    "format": "(prob)%の確率で(_dispTime(time))経過後に(_abs(dis))[(dis<0){前方}(dis>=0){後方}]へワープさせる",
+    "format": "(prob)%の確率で(_dispTime(time))経過後に(_abs(dis))[(dis<0){前方}(dis>=0){後方}][(dis_1!=dis){~(_abs(dis_1))[(dis_1<0){前方}(dis_1>=0){後方}]}]へワープさせる",
     "class": {
       "prob": {
         "name": "確率",
@@ -164,7 +164,11 @@
         "tooltip": "ワープアニメーションの時間は除外されます。"
       },
       "dis": {
-        "name": "距離",
+        "name": "最小距離",
+        "tooltip": null
+      },
+      "dis_1": {
+        "name": "最大距離",
         "tooltip": null
       }
     }
