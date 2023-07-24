@@ -88,12 +88,18 @@
             "CORE_VER":"0.7.4.1",
             "forkver":9,
             "info":"Allow 0 share for multi-atks and 12.5 content"
+        },
+        {
+            "ver":"0.6.1.6",
+            "CORE_VER":"0.7.4.1",
+            "forkver":10,
+            "info":"A lot of QoL and Bugfixes, and TypeShield proc (Increases Core Version)"
         }
     ],
     "latest": {
-        "ver":"0.6.1.6",
-        "CORE_VER":"0.7.4.1",
+        "ver":"0.6.1.7",
+        "CORE_VER":"0.7.4.2",
         "forkver":10,
-        "info":"A lot of QoL and Bugfixes, and TypeShield proc (Increases Core Version)"
+        "info":"Bug Fixes"
     }
 }
