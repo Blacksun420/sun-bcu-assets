@@ -1644,7 +1644,7 @@
         "abbr_name": "C.Surge",
         "full_name": "CounterSurge",
         "tooltip": "Creates a surge when hit by a surge with the hitting surge's level and duration",
-        "format": "(prob)% chance to make a surge when hit by a surge, with (mult)% of the surge's damage",
+        "format": "(prob)% chance to make a surge when hit by a surge, with (mult)% of the attacker's damage",
         "class": {
             "prob": {
                 "name": "chance",
