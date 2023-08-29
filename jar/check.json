@@ -94,12 +94,18 @@
             "CORE_VER":"0.7.4.1",
             "forkver":10,
             "info":"A lot of QoL and Bugfixes, and TypeShield proc (Increases Core Version)"
+        },
+        {
+            "ver":"0.6.1.7",
+            "CORE_VER":"0.7.4.2",
+            "forkver":10,
+            "info":"Bug Fixes"
         }
     ],
     "latest": {
-        "ver":"0.6.1.7",
-        "CORE_VER":"0.7.4.2",
+        "ver":"0.6.1.8",
+        "CORE_VER":"0.7.4.3",
         "forkver":10,
-        "info":"Bug Fixes"
+        "info":"Bug Fixes, 60fps, other stuff"
     }
 }
