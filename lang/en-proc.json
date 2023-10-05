@@ -866,7 +866,7 @@
         "abbr_name": "Invi.",
         "full_name": "Invincibility",
         "tooltip": null,
-        "format": "(prob)% chance to gain invincibility for (_dispTimeF(time))",
+        "format": "(prob)% chance to dodge attacks for (_dispTimeF(time))[(cd>0){, with a cooldown of (_dispTimeF(cd)) per dodge}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -875,6 +875,10 @@
             "time": {
                 "name": "duration",
                 "tooltip": null
+            },
+            "cd": {
+                "name": "cooldown",
+                "tooltip": "Unit will not be able to dodge after the given amount of frames after proc ends"
             }
         }
     },
