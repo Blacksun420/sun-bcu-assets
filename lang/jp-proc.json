@@ -1673,5 +1673,49 @@
         "tooltip": "Activate this to make the shield affect Area Attacks instead of Single Target Attacks"
       }
     }
+  },
+  "SPIRIT" : {
+    "abbr_name" : "召喚",
+    "full_name" : "召喚",
+    "tooltip": "Summons unit with invincibility and self-destruct automatically given, 150 range behind the summoner",
+    "format": [
+        "召喚 (_left)精霊：(_entity(id))(_right), up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
+        "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
+        "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]"
+    ],
+    "class": {
+        "id": {
+            "name": "ID",
+            "tooltip": null
+        },
+        "cd0": {
+            "name": "Initial CD",
+            "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+        },
+        "cd1": {
+            "name": "Respawn CD",
+            "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+        },
+        "amount": {
+            "name": "Amount",
+            "tooltip": "Max Amount of spirits"
+        },
+        "summonerCd": {
+            "name": "CD Penalty",
+            "tooltip": "Amount of Recharge time to be added (or removed if negative) to the main unit if a spirit is spawned"
+        },
+        "animType": {
+            "name": "Animation Type",
+            "tooltip": [
+                "summon animation, 0 for no animation, 1 for warp animation,",
+                " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation.",
+                " The summoned entity must have burrow animation in order to use 2 or 3."
+            ]
+        },
+        "form": {
+            "name": "Form",
+            "tooltip": "Form of the summoned spirit."
+        }
+    }
   }
 }
