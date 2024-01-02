@@ -566,8 +566,8 @@
             "(!type.on_kill&!type.on_hit){on this attack}], ",
             "[(type.same_health){each entity will have the same hp as the summoner, }]",
             "[(type.bond_hp){the summoner's hp will be bound with each summoned entity's hp, }]",
-            "[(type.pass_proc==0){and }]are[(type.ignore_limit){n't}] restricted by the stage entity limit",
-            "[(type.pass_proc!=0){, and carry all procs from [(type.pass_proc!=2){the summoner}][(type.pass_proc==3){ and }][(type.pass_proc!=1){ each entity hit}]}]. ",
+            "[(type.pass_proc!=0){and }]are[(type.ignore_limit){n't}] restricted by the stage entity limit",
+            "[(type.pass_proc!=0){, and carry all procs from [(type.pass_proc!=2){the summoner}][(type.pass_proc==3){ and }]}][(type.pass_proc!=1){ each entity hit}]. ",
             "Summoned entities will be in [(min_layer==max_layer){[(min_layer==-1){the same layer as this entity}(min_layer!=-1){layer (min_layer)}]}",
             "(min_layer!=max_layer){a random layer between (min_layer) and (max_layer)}]. ",
             "Summon will display [(type.anim_type==0){no}(type.anim_type==1){warp}(type.anim_type>=2){burrow}]",
@@ -922,7 +922,7 @@
             },
             "type.hitless": {
                 "name": "Miss Trigger",
-                "tooltip": "Surge will spawn even if this attack misses"
+                "tooltip": "Wave will spawn even if this attack misses"
             }
         }
     },
@@ -1349,7 +1349,7 @@
         "abbr_name": "Worker Lv",
         "full_name": "Efficiency Bonus",
         "tooltip": "Increases worker level by a given amount",
-        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] Worker Cat's level by (mult)",
+        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] Worker Cat's level by (_abs(mult))",
         "class": {
             "prob": {
                 "name": "Chance",
@@ -1366,8 +1366,8 @@
         "full_name": "Research Breaker",
         "tooltip": "Increases a certain unit's cooldown by a given amount",
         "format": ["(prob)% chance to [(type==2){set}(type!=2){[(amount>0){increase}(amount<0){decrease}]}] ",
-                    "[(slot<0){a random unit}(slot>=0&slot<10){the unit in the lineup's (slot+1)[(slot==0){st}(slot==1){nd}(slot==2){rd}(slot>2){th}] slot}(slot==10){attacked unit}]'s cooldown ",
-                    "[(type==2){to}(type!=2){by}] (amount)[(type!=1){f}(type==1){%}]"],
+            "[(slot<0){a random unit}(slot>=0&slot<10){the unit in the lineup's (slot+1)[(slot==0){st}(slot==1){nd}(slot==2){rd}(slot>2){th}] slot}(slot==10){attacked unit}]'s cooldown ",
+            "[(type==2){to}(type!=2){by}] (amount)[(type!=1){f}(type==1){%}]"],
         "class": {
             "prob": {
                 "name": "Chance",
@@ -1392,10 +1392,10 @@
         "full_name": "Weakening Aura",
         "tooltip": "Decreases morale for all enemies in the given range",
         "format": ["[(type.trait){All }]Enemies within (min_dis) ~ (max_dis) from this entity will",
-        "[(amult!=0){ deal (amult)% damage}]",
-        "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (_abs(dmult))% [(dmult>0){more}(dmult<0){less}] damage}]",
-        "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move at (smult)% speed}]",
-        "[(tmult!=0){[(amult!=0|dmult!=0|smult!=0){, and}] have (_abs(tmult))% [(tmult>0){more}(tmult<0){less}] TBA}]."],
+            "[(amult!=0){ deal (amult)% damage}]",
+            "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (_abs(dmult))% [(dmult>0){more}(dmult<0){less}] damage}]",
+            "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move at (smult)% speed}]",
+            "[(tmult!=0){[(amult!=0|dmult!=0|smult!=0){, and}] have (_abs(tmult))% [(tmult>0){more}(tmult<0){less}] TBA}]."],
         "class": {
             "amult": {
                 "name": "ATK Mult.",
@@ -1432,10 +1432,10 @@
         "full_name": "Empowering Aura",
         "tooltip": "Increases morale for all units in the given range",
         "format": ["[(type.trait){All }]Units within (min_dis) ~ (max_dis) from this entity will",
-        "[(amult!=0){ deal (_abs(amult))% [(amult>0){more}(amult<0){less}] damage}]",
-        "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (dmult)% damage}]",
-        "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move (_abs(smult))% [(smult>0){faster}(smult<0){slower}]}]",
-        "[(tmult!=0){[(amult!=0|dmult!=0|smult!=0){, and}] have (tmult)% of their TBA}]."],
+            "[(amult!=0){ deal (_abs(amult))% [(amult>0){more}(amult<0){less}] damage}]",
+            "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (dmult)% damage}]",
+            "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move (_abs(smult))% [(smult>0){faster}(smult<0){slower}]}]",
+            "[(tmult!=0){[(amult!=0|dmult!=0|smult!=0){, and}] have (tmult)% of their TBA}]."],
         "class": {
             "amult": {
                 "name": "ATK Mult.",
@@ -1616,7 +1616,7 @@
         "abbr_name": "M.Surge",
         "full_name": "Mini Surge",
         "tooltip": "Creates small surge that does exactly same behavior of normal surge, but with less damage",
-        "format": "(prob)% chance to make a Lv(time/20) Mini Surge within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of the attacker's damage(_right)}]",
+        "format": "(prob)% chance to make a Lv(time/20) Mini Surge within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of attacker's damage(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1640,7 +1640,7 @@
             },
             "type.hitless": {
                 "name": "Miss Trigger",
-                "tooltip": "Surge will spawn even if this attack misses"
+                "tooltip": "Wave will spawn even if this attack misses"
             }
         }
     },
@@ -1648,7 +1648,7 @@
         "abbr_name": "C.Surge",
         "full_name": "CounterSurge",
         "tooltip": "Creates a surge when hit by a surge with the hitting surge's level and duration",
-        "format": "(prob)% chance to make a surge when hit by a surge, with (mult)% of the attacker's damage",
+        "format": "(prob)% chance to make a surge when hit by a surge, with (mult)% of the surge's damage",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1701,6 +1701,50 @@
             "type.range": {
                 "name": "Area Attacks",
                 "tooltip": "Activate this to make the shield affect Area Attacks instead of Single Target Attacks"
+            }
+        }
+    },
+    "SPIRIT" : {
+        "abbr_name" : "spirit",
+        "full_name" : "Spirit Summon",
+        "tooltip": "Summons unit with invincibility and self-destruct automatically given, 150 range behind the summoner",
+        "format": [
+            "Summon (_entity(id)) as spirit up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
+            "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
+            "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]"
+        ],
+        "class": {
+            "id": {
+                "name": "entity ID",
+                "tooltip": null
+            },
+            "cd0": {
+                "name": "Initial CD",
+                "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+            },
+            "cd1": {
+                "name": "Respawn CD",
+                "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+            },
+            "amount": {
+                "name": "Amount",
+                "tooltip": "Max Amount of spirits"
+            },
+            "summonerCd": {
+                "name": "CD Penalty",
+                "tooltip": "Amount of Recharge time to be added (or removed if negative) to the main unit if a spirit is spawned"
+            },
+            "animType": {
+                "name": "Animation Type",
+                "tooltip": [
+                    "summon animation, 0 for no animation, 1 for warp animation,",
+                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation.",
+                    " The summoned entity must have burrow animation in order to use 2 or 3."
+                ]
+            },
+            "form": {
+                "name": "Form",
+                "tooltip": "Form of the summoned spirit."
             }
         }
     }
