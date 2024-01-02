@@ -557,7 +557,7 @@
         "full_name": "Summon",
         "tooltip": null,
         "format": [
-            "(prob)% chance to summon (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id)) after (_dispTime(time)), ",
+            "(prob)% chance to summon (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
             "each summoned (dis)[(max_dis!=dis){ ~ (max_dis)}] range away from ",
             "[(type.on_kill|type.on_hit){each target}",
             "(!type.on_hit&!type.on_kill){the summoner}] ",
@@ -1709,7 +1709,7 @@
         "full_name" : "Spirit Summon",
         "tooltip": "Summons unit with invincibility and self-destruct automatically given, 150 range behind the summoner",
         "format": [
-            "Summon (_entity(id)) as spirit up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
+            "Summon (_entity(id,form)) as spirit up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
             "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
             "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]"
         ],
