@@ -499,7 +499,7 @@
         "full_name": "Invocación",
         "tooltip": null,
         "format": [
-            "(prob)% de probabilidad de invocar (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id)) tras (_dispTime(time)), ",
+            "(prob)% de probabilidad de invocar (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id,form)) tras (_dispTime(time)), ",
             "invocadas a un alcance de (dis) alejado de",
             "[(type.on_kill|type.on_hit){ cada objetivo}",
             "(!type.on_hit&!type.on_kill){l invocador}] ",

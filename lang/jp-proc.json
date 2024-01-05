@@ -534,7 +534,7 @@
     "full_name": "召喚",
     "tooltip": null,
     "format": [
-      "(prob)%の確率で(_dispTime(time))後に(amount)匹の(_summonMagnification(type.fix_buff,mult,id))(_entity(id))を召喚、",
+      "(prob)%の確率で(_dispTime(time))後に(amount)匹の(_summonMagnification(type.fix_buff,mult,id))(_entity(id,form))を召喚、",
       "[(!type.on_hit&!type.on_kill){召喚者から1つの召喚(dis)範囲離れている}",
       "(type.on_hit){各ターゲットの命中時に召喚された(dis)の範囲が1つ離れる}",
       "(type.on_kill){対象が倒れるたびに1回召喚(dis)の範囲が離れる}]",
@@ -579,10 +579,11 @@
         "name": "召喚アニメ",
         "tooltip": [
           "召喚時アニメーション: ",
-          "0: はアニメーションなし。",
-          "1: はワープアニメーション。",
-          "2: は掘り上げのアニメーション。",
-          "3: で掘り上げアニメーションで地中移動を無効にする。",
+          "0: アニメーションなし。",
+          "1: ワープのアニメーション。",
+          "2: 掘り上げのアニメーション。",
+          "3: 掘り上げのアニメーションで地中移動を無効にする。",
+          "4: 到着のアニメーション。",
           "召喚されるエンティティが2か3を使う為には掘り上げのアニメーションを作る必要があります。"
         ]
       },
@@ -631,7 +632,7 @@
       },
       "form": {
         "name": "フォーム",
-        "tooltip": "召喚したいユニットの形態を設定します。ネコのユニットにのみ適用されます。"
+        "tooltip": "召喚したいユニットの形態を設定します。ネコにのみ適用されます。"
       }
     }
   },
@@ -1675,11 +1676,11 @@
     }
   },
   "SPIRIT" : {
-    "abbr_name" : "召喚",
-    "full_name" : "召喚",
-    "tooltip": "Summons unit with invincibility and self-destruct automatically given, 150 range behind the summoner",
+    "abbr_name" : "精神召喚",
+    "full_name" : "精神召喚",
+    "tooltip": "召喚者の後方150射程にネコの精神を召喚し、攻撃無効と衝撃波無効が自動的に付与される。",
     "format": [
-        "召喚 (_left)精霊：(_entity(id))(_right), up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
+        "精神召喚 (_left)精霊：(_entity(id,form))(_right), up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
         "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
         "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]"
     ],
@@ -1689,32 +1690,36 @@
             "tooltip": null
         },
         "cd0": {
-            "name": "Initial CD",
-            "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+            "name": "初回の再生産f",
+            "tooltip": "最低額は15です。"
         },
         "cd1": {
-            "name": "Respawn CD",
-            "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+            "name": "再登場の再生産f",
+            "tooltip": "最低額は15です。"
         },
         "amount": {
             "name": "Amount",
-            "tooltip": "Max Amount of spirits"
+            "tooltip": "精神召喚の最高額、召喚者が死亡するとリセットされる。"
         },
         "summonerCd": {
-            "name": "CD Penalty",
-            "tooltip": "Amount of Recharge time to be added (or removed if negative) to the main unit if a spirit is spawned"
+            "name": "召喚者の罰の再生産f",
+            "tooltip": "精神が召喚されたときに召喚者に追加される再生産fの量"
         },
         "animType": {
-            "name": "Animation Type",
+            "name": "召喚アニメ",
             "tooltip": [
-                "summon animation, 0 for no animation, 1 for warp animation,",
-                " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation.",
-                " The summoned entity must have burrow animation in order to use 2 or 3."
+              "召喚時アニメーション: ",
+              "0: アニメーションなし。",
+              "1: ワープのアニメーション。",
+              "2: 掘り上げのアニメーション。",
+              "3: 掘り上げのアニメーションで地中移動を無効にする。",
+              "4: 到着のアニメーション。",
+              "召喚されるエンティティが2か3を使う為には掘り上げのアニメーションを作る必要があります。"
             ]
         },
         "form": {
-            "name": "Form",
-            "tooltip": "Form of the summoned spirit."
+            "name": "フォーム",
+            "tooltip": "召喚したいユニットの形態を設定します。"
         }
     }
   }

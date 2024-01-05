@@ -1724,7 +1724,7 @@
             },
             "cd1": {
                 "name": "Respawn CD",
-                "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+                "tooltip": "Minimum and default is 15. Cooldown for the subsequent spirit spawns"
             },
             "amount": {
                 "name": "Amount",
