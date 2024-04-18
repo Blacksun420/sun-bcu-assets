@@ -95,5 +95,9 @@
     "RangeShieldEff": {
         "SINGLE": "Single Target",
         "AREA": "Area Attack"
+    },
+    "GuardEff": {
+        "NONE": "default",
+        "BREAK": "break"
     }
 }

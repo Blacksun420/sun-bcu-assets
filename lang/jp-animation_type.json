@@ -95,5 +95,9 @@
   "RangeShieldEff": {
     "SINGLE": "単体",
     "AREA": "範囲"
-  }
+  },
+    "GuardEff": {
+        "NONE": "default",
+        "BREAK": "break"
+    }
 }

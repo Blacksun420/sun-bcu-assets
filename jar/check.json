@@ -118,12 +118,18 @@
             "CORE_VER":"0.7.4.3",
             "forkver":10,
             "info":"The usual"
+        },
+        {
+            "ver":"0.6.1.12",
+            "CORE_VER":"0.7.6.0",
+            "forkver":10,
+            "info":"13.1 Data, Allow CDSetter ability to affect all slots by setting slot to 11, allow Wave/Surgeblockers to take damage from what they block by setting mult to negative, QoL and BugFixes
         }
     ],
     "latest": {
-        "ver":"0.6.1.12",
-        "CORE_VER":"0.7.6.0",
-        "forkver":10,
-        "info":"13.1 Data, Allow CDSetter ability to affect all slots by setting slot to 11, allow Wave/Surgeblockers to take damage from what they block by setting mult to negative, QoL and BugFixes"
+        "ver":"0.6.1.13",
+            "CORE_VER":"0.7.7.0",
+            "forkver":10,
+            "info":"13.2 and 13.3 Data
     }
 }
