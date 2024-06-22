@@ -119,7 +119,7 @@
         "abbr_name": "Lethargy",
         "full_name": "Lethargy",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] target's TBA by [(type.percentage){(_abs(mult))%}(!type.percentage){(_abs(mult))}] for (_dispTimeF(time))",
+        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] target's TBA by [(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}] for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",

@@ -117,7 +117,7 @@
     "abbr_name": "無気力",
     "full_name": "無気力",
     "tooltip": null,
-    "format": "(prob)%の確率で(_dispTimeF(time))の間TBAを[(type.percentage){(_abs(mult)%)}(!type.percentage){(_dispTime(mult))}]でに増加る",
+    "format": "(prob)%の確率で(_dispTimeF(time))の間TBAを[(type.percentage){(_abs(mult)%)}(!type.percentage){(_dispTimeD(mult))}]でに増加る",
     "class": {
       "prob": {
         "name": "確率",
