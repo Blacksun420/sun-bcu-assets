@@ -130,12 +130,18 @@
             "CORE_VER":"0.7.7.0",
             "forkver":10,
             "info":"13.2 and 13.3 Data"
+        },
+        {
+            "ver":"0.6.1.14",
+            "CORE_VER":"0.7.8.0",
+            "forkver":10,
+            "info":"Adds 13.5 data, decimal procs and boss baseBarrier (for custom stages only)"
         }
     ],
     "latest": {
-        "ver":"0.6.1.14",
+        "ver":"0.6.2.0",
         "CORE_VER":"0.7.8.0",
-        "forkver":10,
-        "info":"Adds 13.5 data, decimal procs and boss baseBarrier (for custom stages only)"
+        "forkver":11,
+        "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression (Refer to latest announcement on <html><a href=\"url\">https://discord.gg/vyrsu4YbRq</a></html> for full list)"
     }
 }

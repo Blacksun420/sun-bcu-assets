@@ -1209,8 +1209,9 @@
         "abbr_name": "Counter",
         "full_name": "Counter Attack",
         "tooltip": "Deal damage back when attacked.",
-        "format": ["(prob)% chance to counterattack, dealing (damage)% [(!type.useOwnDamage){of the damage received from an attack}(type.useOwnDamage){of this unit's damage}] back. ",
-            "[(type.counterWave!=0){ This unit will also [(type.counterWave==1){counter}(type.counterWave==2){reflect}] wave/surge attacks. }][(type.procType!=0){This counterattack will ",
+        "format": ["(prob)% chance to counterattack, dealing (damage)% [(!type.useOwnDamage){of the damage received from an attack [(maxDamage!=0){(_left)Up to (_abs(maxDamage))(_right)}]}",
+            "(type.useOwnDamage){of this unit's damage}] back. [(maxDamage<0){Counter damage will not exceed this unit's remaining HP. }]",
+            "[(type.counterWave!=0){This unit will also [(type.counterWave==1){counter}(type.counterWave==2){reflect}] wave/surge attacks. }][(type.procType!=0){This counterattack will ",
             "[(type.procType==1|type.procType==3){have}(type.procType==2){replace}] the original attack's procs[(type.procType==2){ with this unit's procs}(type.procType==3){ and this entity's procs}]. }]",
             "The counter will hit [(type.areaAttack){ all enemies}(!type.areaAttack){ only the attacker}][(type.areaAttack|!type.outRange){[(!type.areaAttack){ if they're}] standing ",
             "[(minRange!=0|maxRange!=0){(minRange) ~ (maxRange) units away from this entity}(minRange==0&maxRange==0){on this entity's range}]}]."],
@@ -1250,6 +1251,10 @@
             "type.areaAttack": {
                 "name": "Area Attack",
                 "tooltip": "Toggle this on and the counter will target all units in the counter's range. If left off, only the attacker will receive damage."
+            },
+            "maxDamage": {
+                "name": "Damage Limit",
+                "tooltip": "Counter won't deal more than the specified amount of damage. Set to 0 for no limit. Set to negative number to also cap it to unit's remaining HP"
             }
         }
     },
@@ -1711,7 +1716,9 @@
         "format": [
             "Summon (_entity(id,form)) as spirit up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
             "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
-            "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]"
+            "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]",
+            "[(moneyCost!=0){. Summoning a spirit costs (moneyCost)$}]",
+            "[(!type.inv){ (_left)This spirit can be killed(_right)}]"
         ],
         "class": {
             "id": {
@@ -1734,6 +1741,10 @@
                 "name": "CD Penalty",
                 "tooltip": "Amount of Recharge time to be added (or removed if negative) to the main unit if a spirit is spawned"
             },
+            "moneyCost": {
+                "name": "Cost Penalty",
+                "tooltip": "Makes the spirit cost money to summon"
+            },
             "animType": {
                 "name": "Animation Type",
                 "tooltip": [
@@ -1745,6 +1756,10 @@
             "form": {
                 "name": "Form",
                 "tooltip": "Form of the summoned spirit."
+            },
+            "type.inv": {
+                "name": "Invincible",
+                "tooltip": "Makes unit spirits unkillable, much like the soul ones"
             }
         }
     },
