@@ -16,7 +16,7 @@
             "ver":"0.6.0.3",
             "forkver":5,
             "info":"Fix auto-update, config saving, use seconds for dojo timer data storing"
-        },
+        }
     ],
     "past": [
         {
@@ -143,13 +143,13 @@
             "ver":"0.6.2.0",
             "CORE_VER":"0.7.8.0",
             "forkver":11,
-            "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression (Refer to latest announcement on <html><a href=\"url\">https://discord.gg/vyrsu4YbRq</a></html> for full list)"
+            "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression (Refer to latest announcement on <html><a href=\"https://discord.gg/vyrsu4YbRq\">Discord</a></html> for full list)"
         }
     ],
     "latest": {
         "ver":"0.6.2.1",
         "CORE_VER":"0.7.8.2",
         "forkver":11,
-        "info":"<a href=\"https://battle-cats.fandom.com/wiki/Version_13.6_Update\">13.6 content</a>, new colosseum restrictions, set colosseum restrictions to stages, fix bugs"
+        "info":"<a href=\"https://battle-cats.fandom.com/wiki/Version_13.6_Update\">13.6 content</a>, new colosseum restrictions, set colosseum restrictions to stages, HTML support for descriptions, fix bugs"
     }
 }
