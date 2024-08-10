@@ -1,5 +1,5 @@
 {
-    "past": [
+    "unformatted": [
         {
             "version":"0.6.0.1",
             "forceUpdate":"false",
@@ -17,6 +17,8 @@
             "forkver":5,
             "info":"Fix auto-update, config saving, use seconds for dojo timer data storing"
         },
+    ],
+    "past": [
         {
             "ver":"0.6.0.4",
             "CORE_VER":"0.7.1.1",
@@ -136,12 +138,18 @@
             "CORE_VER":"0.7.8.0",
             "forkver":10,
             "info":"Adds 13.5 data, decimal procs and boss baseBarrier (for custom stages only)"
+        },
+        {
+            "ver":"0.6.2.0",
+            "CORE_VER":"0.7.8.0",
+            "forkver":11,
+            "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression (Refer to latest announcement on <html><a href=\"url\">https://discord.gg/vyrsu4YbRq</a></html> for full list)"
         }
     ],
     "latest": {
-        "ver":"0.6.2.0",
-        "CORE_VER":"0.7.8.0",
+        "ver":"0.6.2.1",
+        "CORE_VER":"0.7.8.2",
         "forkver":11,
-        "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression (Refer to latest announcement on <html><a href=\"url\">https://discord.gg/vyrsu4YbRq</a></html> for full list)"
+        "info":"13.6 content, new colosseum restrictions, set colosseum restrictions to stages, fix bugs"
     }
 }
