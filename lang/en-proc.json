@@ -27,7 +27,7 @@
         "abbr_name": "stop",
         "full_name": "Freeze",
         "tooltip": null,
-        "format": "(prob)% chance to freeze for (_dispTimeF(time))",
+        "format": "(prob)% chance to [(mult==0){freeze}(mult!=0){[(mult<0){hasten}(mult>0){slow}] time down for hit enemies by (_abs(mult))%}] for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -36,6 +36,10 @@
             "time": {
                 "name": "duration",
                 "tooltip": "actual duration is subjected to treasure values and traits. Set duration to negative to override only if proc duration is higher"
+            },
+            "mult": {
+                "name": "strength",
+                "tooltip": "Set to 0 for default BC freeze. Set to any number above 0 and below 100 to slow down enemy's timeFlow. Set to negative to speed it up instead"
             }
         }
     },
@@ -79,7 +83,7 @@
         "abbr_name": "wave",
         "full_name": "Wave",
         "tooltip": null,
-        "format": "(prob)% chance to create a Lv.(lv) [(inverted){inverted }]wave attack[(type.hitless){, even if this attack misses}]",
+        "format": "(prob)% chance to create a Lv.(lv) [(inverted){inverted}] wave attack[(type.hitless){, even if this attack misses}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1070,7 +1074,7 @@
         "abbr_name" : "mini-wave",
         "full_name" : "Mini-Wave",
         "tooltip" : "Creates small wave which moves twice faster than normal wave with dynamic damage multiplication parameter",
-        "format" : "(prob)% chance to create a lv.(lv) [(inverted){inverted }][(multi>100){mega}(multi<=100){mini}]-wave[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
+        "format" : "(prob)% chance to create a lv.(lv) [(inverted){inverted}] [(multi>100){mega}(multi<=100){mini}]-wave[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
         "class" : {
             "prob" : {
                 "name" : "chance",
