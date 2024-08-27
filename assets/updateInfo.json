@@ -1,5 +1,6 @@
 {
 	"assets": [
-		{"id":"fork_essentials","desc":"Essential Fork Assets","ver":"062000","type":"core"}
+		{"id":"fork_essentials","desc":"Essential Fork Assets","ver":"062000","type":"core"},
+        {"id":"fork_essentials_1","desc":"Zero Form Icons","ver":"062002","type":"core"}
     ]
 }
