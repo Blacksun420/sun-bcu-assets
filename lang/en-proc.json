@@ -27,7 +27,7 @@
         "abbr_name": "stop",
         "full_name": "Freeze",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult==0){freeze}(mult!=0){[(mult<0){hasten}(mult>0){slow}] time down for hit enemies by (_abs(mult))%}] for (_dispTimeF(time))",
+        "format": "(prob)% chance to [(mult==0){freeze}(mult!=0){[(mult<0){hasten}(mult>0){slow}] time for hit enemies by (_abs(mult))%}] for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -528,7 +528,7 @@
         "abbr_name": "time",
         "full_name": "Stop Time",
         "tooltip": "Unlike Stop, this ability freezes everything including waves, money gain, cat and enemy cool down, etc",
-        "format": "(prob)% chance to [(intensity>0){stop}(intensity<0){speed up}] time for (_dispTime(time)), with a intensity of (_abs(intensity))",
+        "format": "(prob)% chance to [(intensity==100){stop}(intensity>0&intensity<100){slow}(intensity<0){hasten}] time[(intensity!=100){ by (_abs(intensity))%}] for (_dispTime(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1448,7 +1448,7 @@
         "abbr_name": "Strong Aura",
         "full_name": "Empowering Aura",
         "tooltip": "Increases morale for all units in the given range",
-        "format": ["[(type.trait){All }]Units within (min_dis) ~ (max_dis) from this entity will",
+        "format": ["[(type.trait){All }]Units [(skip_self){(_left)except self(_right) }]within (min_dis) ~ (max_dis) from this entity will",
             "[(amult!=0){ deal (_abs(amult))% [(amult>0){more}(amult<0){less}] damage}]",
             "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (dmult)% damage}]",
             "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move (_abs(smult))% [(smult>0){faster}(smult<0){slower}]}]",
@@ -1481,6 +1481,10 @@
             "type.trait": {
                 "name": "Ignore Traits",
                 "tooltip": "Strenghtens all allies regardless of typing if true"
+            },
+            "skip_self": {
+                "name": "Self-Unaffected",
+                "tooltip": "If true, unit will not be affected by its own aura"
             }
         }
     },
@@ -1743,7 +1747,7 @@
             },
             "cd1": {
                 "name": "Respawn CD",
-                "tooltip": "Minimum and default is 15. Cooldown for the subsequent spirit spawns"
+                "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
             },
             "amount": {
                 "name": "Amount",
@@ -1784,6 +1788,45 @@
             "mult": {
                 "name": "multiplier",
                 "tooltip": null
+            }
+        }
+    },
+    "BLAST" : {
+        "abbr_name": "blast atk",
+        "full_name": "Blast Attack",
+        "tooltip": "Creates blast attack that spreads to each side with weaker damage over each blasts",
+        "format": "(prob)% chance to create a blast attack (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            }
+        }
+    },
+    "IMUBLAST" : {
+        "abbr_name": "imu. Blast",
+        "full_name": "Immune/Resistant to Blast",
+        "tooltip": null,
+        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Blast",
+            "[(mult<100&mult>0){ (_left)Decreases damage by (mult)%(_right)}(mult<0){ (_left)Increases damage by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Blast [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": "Set negative to make this unit weak to the effect"
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block slow. Set negative to increase the effect."
             }
         }
     }
