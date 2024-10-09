@@ -96,8 +96,13 @@
     "SINGLE": "単体",
     "AREA": "範囲"
   },
-    "GuardEff": {
-        "NONE": "default",
-        "BREAK": "break"
-    }
+  "GuardEff": {
+      "NONE": "デフォルト",
+      "BREAK": "壊す"
+  },
+  "BlastEff": {
+    "START": "スタート",
+    "EXPLODE": "爆発",
+    "DUMMY": "ダミー"
+  }
 }

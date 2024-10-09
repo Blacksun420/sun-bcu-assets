@@ -92,8 +92,13 @@
     "UNIDOWN": "Weaken Ally",
     "UNIUP": "Strengthen Ally"
   },
-    "GuardEff": {
-        "NONE": "default",
-        "BREAK": "break"
-    }
+  "GuardEff": {
+      "NONE": "default",
+      "BREAK": "break"
+  },
+  "BlastEff": {
+    "START": "시작",
+    "EXPLODE": "폭발",
+    "DUMMY": "더미"
+  }
 }
