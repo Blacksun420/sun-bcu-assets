@@ -1739,7 +1739,7 @@
         "abbr_name": "blast atk",
         "full_name": "Blast Attack",
         "tooltip": "Creates blast attack that spreads to each side with weaker damage over each blasts",
-        "format": "(prob)% chance to create a blast attack (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
+        "format": "(prob)% chance to create a blast attack a Lv.(lv) blast attack[(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1752,6 +1752,14 @@
             "dis_1": {
                 "name": "point far",
                 "tooltip": null
+            },
+            "lv": {
+                "name": "Level",
+                "tooltip": "BC Default is 3. The higher, the further it reaches"
+            },
+            "reduction": {
+                "name": "Reduction",
+                "tooltip": "BC Default is 30. Determines the amount of damage in % the explosions' damage will be reduced per level"
             }
         }
     },

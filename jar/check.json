@@ -150,12 +150,18 @@
             "CORE_VER":"0.7.8.2",
             "forkver":11,
             "info":"<a href=\"https://battle-cats.fandom.com/wiki/Version_13.6_Update\">13.6 content</a>, new colosseum restrictions, set colosseum restrictions to stages, HTML support for descriptions, fix bugs"
+        },
+        {
+            "ver":"0.6.2.2",
+            "CORE_VER":"0.7.8.2",
+            "forkver":11,
+            "info":"Fix bugs, adds Zero Form icons & timeSlow effect for freeze, auto-download forked assets"
         }
     ],
     "latest": {
-        "ver":"0.6.2.2",
-        "CORE_VER":"0.7.8.2",
+        "ver":"0.6.2.3",
+        "CORE_VER":"0.7.8.3",
         "forkver":11,
-        "info":"Fix bugs, adds Zero Form icons & timeSlow effect for freeze, auto-download forked assets"
+        "info":"Fix bugs, fix choppy border pixels, 13.7 data, anim QoL"
     }
 }

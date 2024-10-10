@@ -103,6 +103,7 @@
     "BlastEff": {
         "START": "Start",
         "EXPLODE": "Explode",
-        "DUMMY": "Dummy"
+        "DUMMY": "Dummy",
+        "SINGLE": "Singular"
     }
 }

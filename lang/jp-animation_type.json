@@ -103,6 +103,7 @@
   "BlastEff": {
     "START": "スタート",
     "EXPLODE": "爆発",
-    "DUMMY": "ダミー"
+    "DUMMY": "ダミー",
+    "SINGLE": "Singular"
   }
 }
