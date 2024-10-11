@@ -1,16 +1,16 @@
 {
 "apk_update":[
         {
-            "ver":"0.20.00",
-            "CORE_VER":"0.7.8.2",
-            "FORK_VER":11,
-            "desc":"The Beginning"
-        },
-        {
             "ver":"0.20.01",
             "CORE_VER":"0.7.8.3",
             "FORK_VER":11,
             "desc":"13.7 contents, bug fixes, deploy limit text, spritesheet exporting"
+        },
+        {
+            "ver":"0.20.00",
+            "CORE_VER":"0.7.8.2",
+            "FORK_VER":11,
+            "desc":"The Beginning"
         }
     ]
 }
