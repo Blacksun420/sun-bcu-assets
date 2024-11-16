@@ -1,6 +1,12 @@
 {
 "apk_update":[
         {
+            "ver":"0.20.02",
+            "CORE_VER":"0.7.8.3",
+            "FORK_VER":11,
+            "desc":"Fix up Blast Attack range"
+        },
+        {
             "ver":"0.20.01",
             "CORE_VER":"0.7.8.3",
             "FORK_VER":11,

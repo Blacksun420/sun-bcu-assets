@@ -156,12 +156,18 @@
             "CORE_VER":"0.7.8.2",
             "forkver":11,
             "info":"Fix bugs, adds Zero Form icons & timeSlow effect for freeze, auto-download forked assets"
+        },
+        {
+            "ver":"0.6.2.3",
+            "CORE_VER":"0.7.8.3",
+            "forkver":11,
+            "info":"Fix bugs, fix choppy border pixels, 13.7 data, anim QoL"
         }
     ],
     "latest": {
-        "ver":"0.6.2.3",
+        "ver":"0.6.2.4",
         "CORE_VER":"0.7.8.3",
         "forkver":11,
-        "info":"Fix bugs, fix choppy border pixels, 13.7 data, anim QoL"
+        "info":"Fix blast range, improve drawing, make modification 51 usable, add modification 54"
     }
 }
