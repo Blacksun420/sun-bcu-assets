@@ -168,12 +168,18 @@
             "CORE_VER":"0.7.8.3",
             "forkver":11,
             "info":"Fix blast range, improve drawing, make modification 51 usable, add modification 54"
+        },
+        {
+            "ver":"0.6.2.5",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"14.0 content, fix bugs"
         }
     ],
     "latest": {
-        "ver":"0.6.2.5",
+        "ver":"0.6.2.6",
         "CORE_VER":"0.7.9.0",
         "forkver":11,
-        "info":"14.0 content, fix bugs"
+        "info":"Adds new procs, fix visual bugs"
     }
 }

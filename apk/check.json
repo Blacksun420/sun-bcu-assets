@@ -1,6 +1,12 @@
 {
 "apk_update":[
         {
+            "ver":"0.20.04",
+            "CORE_VER":"0.7.9.0",
+            "FORK_VER":11,
+            "desc":"Adds Drain & Blessing procs"
+        },
+        {
             "ver":"0.20.03",
             "CORE_VER":"0.7.9.0",
             "FORK_VER":11,
