@@ -107,7 +107,7 @@
         "abbr_name": "weak",
         "full_name": "Weaken",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult>100){strengthen}(mult<=100){weaken}] target's attack to (mult)% for (_dispTimeF(time))",
+        "format": "(prob)% chance to [(mult>100){strengthen}(mult<=100){weaken}] target's attack to (mult)% for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -120,6 +120,10 @@
             "mult": {
                 "name": "multiplier",
                 "tooltip": "What percent of original attack the target will be weaken to"
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
             }
         }
     },
@@ -127,7 +131,7 @@
         "abbr_name": "Lethargy",
         "full_name": "Lethargy",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] target's TBA by [(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}] for (_dispTimeF(time))",
+        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] target's TBA by [(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}] for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -140,6 +144,10 @@
             "mult": {
                 "name": "multiplier",
                 "tooltip": "What amount will the original TBA of the target will be increased to"
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
             },
             "type.percentage": {
                 "name": "Percentage",
@@ -676,7 +684,7 @@
         "full_name": "Moving Attack",
         "tooltip": null,
         "format": [
-            "(prob)% chance to have moving hit box, ",
+            "(prob)% chance to have moving hit box[(id!=0){ with an ID of (id)}], ",
             "originated at a distance of (dis) from this entity ",
             "with (width) widths, ",
             " (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))"
@@ -705,6 +713,10 @@
             "itv": {
                 "name": "interval",
                 "tooltip": null
+            },
+            "id": {
+                "name": "id",
+                "tooltip": "sets the ID of moving attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -712,11 +724,19 @@
         "abbr_name": "imu. Move",
         "full_name": "Immune/Resistant to Moving Atk",
         "tooltip": null,
-        "format": "[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Moving Attacks[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
+        "format": "[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Moving Attacks[(useIds){ with an ID of (id)}][(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
         "class": {
             "mult": {
                 "name": "percent",
                 "tooltip": null
+            },
+            "id": {
+                "name": "id",
+                "tooltip": "Non-zero values will only make resistance apply to moving attacks with this id, if id checks are enabled"
+            },
+            "useIds": {
+                "name": "use ids",
+                "tooltip": "Enable ID checks"
             }
         }
     },
@@ -976,7 +996,7 @@
         "abbr_name": "armor break",
         "full_name": "Armor Break",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult<0){enchance}(mult>=0){break}] target's armor for (_dispTimeF(time)) (_left)Makes target take (_abs(mult))% [(mult<0){less}(mult>=0){more}] damage(_right)",
+        "format": "(prob)% chance to [(mult<0){enchance}(mult>=0){break}] target's armor for (_dispTimeF(time)) (_left)Makes target take (_abs(mult))% [(mult<0){less}(mult>=0){more}] damage(_right)[(stackable){ (_left)Stackable(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -989,6 +1009,10 @@
             "mult": {
                 "name": "percent",
                 "tooltip": null
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
             }
         }
     },
@@ -1001,7 +1025,7 @@
             "[(type==2){set}(type!=2){[(speed>=0){increase}(speed<0){decrease}]}]",
             " target's speed ",
             "[(type!=2){by}(type==2){to}] [(type==2){(speed)}(type!=2){(_abs(speed))}][(type==1){%}]",
-            " for (_dispTimeF(time))"
+            " for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]"
         ],
         "class": {
             "prob": {
@@ -1015,6 +1039,10 @@
             "speed": {
                 "name": "speed",
                 "tooltip": null
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
             },
             "type": {
                 "name": "type",
@@ -1795,7 +1823,7 @@
         "abbr_name": "blast atk",
         "full_name": "Blast Attack",
         "tooltip": "Creates blast attack that spreads to each side with weaker damage over each blasts",
-        "format": "(prob)% chance to create a Lv.(lv) blast attack[(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
+        "format": "(prob)% chance to create a Level (lv) blast attack[(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1835,6 +1863,56 @@
             "block": {
                 "name": "Blocker",
                 "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block slow. Set negative to increase the effect."
+            }
+        }
+    },
+    "DRAIN": {
+        "abbr_name": "absorb",
+        "full_name": "Absorber",
+        "tooltip": "Drains HP per enemy damaged",
+        "format": "(prob)% chance to absorb (mult)% of the damage dealt as HP",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": "What percent of original attack the target will be weaken to"
+            }
+        }
+    },
+    "BLESSING": {
+        "abbr_name": "bless",
+        "full_name": "Blessing",
+        "tooltip": "Gives procs and abilities to affected entities. The opposite of curse, essentially",
+        "format": ["(prob)% chance to bless units for (_dispTime(time)), granting the blessed entities ",
+            "[(abis!=0){Abilities: (_bitMask(abis))[((procs)|(traits)){, }]}][(procs){Procs: (_proc(procs))[(traits){, }]}]",
+            "[(traits){Traits: (_toString(traits))}].[(stackable){This blessing is stackable.}]"],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "abis": {
+                "name": "abilities",
+                "tooltip": "Like attacks' alt abi, it grants abilities. It can't remove them though"
+            },
+            "procs": {
+                "name": "Procs",
+                "tooltip": "Adds the procs on top of the unit's procs"
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "Allows multiple blessings to be stacked"
+            },
+            "traits": {
+                "name": "Added Traits",
+                "tooltip": "Temporarily adds traits to the blessed entities"
             }
         }
     }
