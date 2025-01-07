@@ -174,12 +174,18 @@
             "CORE_VER":"0.7.9.0",
             "forkver":11,
             "info":"14.0 content, fix bugs"
+        },
+        {
+            "ver":"0.6.2.6",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"Adds new procs, fix visual bugs"
         }
     ],
     "latest": {
-        "ver":"0.6.2.6",
+        "ver":"0.6.2.7",
         "CORE_VER":"0.7.9.0",
         "forkver":11,
-        "info":"Adds new procs, fix visual bugs"
+        "info":"Fix breakerblast crash, make dire/easing editing more straightforward"
     }
 }

@@ -1,6 +1,12 @@
 {
     "apk_update":[
         {
+            "ver":"0.20.05",
+            "CORE_VER":"0.7.9.0",
+            "FORK_VER":11,
+            "desc":"Fix breakerblast crash"
+        },
+        {
             "ver":"0.20.04",
             "CORE_VER":"0.7.9.0",
             "FORK_VER":11,
