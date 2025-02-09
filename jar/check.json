@@ -180,12 +180,18 @@
             "CORE_VER":"0.7.9.0",
             "forkver":11,
             "info":"Adds new procs, fix visual bugs"
+        },
+        {
+            "ver":"0.6.2.7",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"Fix breakerblast crash, make dire/easing editing more straightforward"
         }
     ],
     "latest": {
-        "ver":"0.6.2.7",
+        "ver":"0.6.2.8",
         "CORE_VER":"0.7.9.0",
         "forkver":11,
-        "info":"Fix breakerblast crash, make dire/easing editing more straightforward"
+        "info":"Fix bugs, improve Moving Atk ID system"
     }
 }
