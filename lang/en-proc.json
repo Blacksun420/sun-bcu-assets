@@ -83,7 +83,7 @@
         "abbr_name": "wave",
         "full_name": "Wave",
         "tooltip": null,
-        "format": "(prob)% chance to create a Lv.(lv) [(inverted){inverted}] wave attack[(type.hitless){, even if this attack misses}]",
+        "format": "(prob)% chance to create a Lv.(lv) [(inverted){inverted}] wave attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -100,6 +100,10 @@
             "inverted": {
                 "name": "Inverted",
                 "tooltip": "Start point, end point, and traversal direction are all inverted"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the wave attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -217,7 +221,7 @@
         "abbr_name": "inc. atk",
         "full_name": "Berserker",
         "tooltip": null,
-        "format": "Attack increased by (mult)% after health drops below (health)%",
+        "format": "Attack increased by (mult)% [(!incremental){after health drops below}(incremental){gradually as health drops closer to}] (health)%",
         "class": {
             "health": {
                 "name": "health",
@@ -226,6 +230,10 @@
             "mult": {
                 "name": "increment",
                 "tooltip": null
+            },
+            "incremental": {
+                "name": "progressive",
+                "tooltip": "Rather than an immediate increase, the strengthen increases gradually the closer it gets to the health drops"
             }
         }
     },
@@ -381,7 +389,7 @@
         "abbr_name": "imu. Wave",
         "full_name": "Immune/Resistant to Wave",
         "tooltip": null,
-        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Wave",
+        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Wave[(pid){ with (_toString(pid)) IDs}]",
             "[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
             "[(block!=0&block<100){ & }]}][(block!=0){Wave [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
             "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"],
@@ -393,6 +401,10 @@
             "block": {
                 "name": "Blocker",
                 "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block surges"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Values will only make resistance apply to wave attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
             }
         }
     },
@@ -684,7 +696,7 @@
         "full_name": "Moving Attack",
         "tooltip": null,
         "format": [
-            "(prob)% chance to have moving hit box[(id!=0){ with an ID of (id)}], ",
+            "(prob)% chance to have moving hit box[(pid){ with (_toString(pid)) IDs}], ",
             "originated at a distance of (dis) from this entity ",
             "with (width) widths, ",
             " (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))"
@@ -714,9 +726,9 @@
                 "name": "interval",
                 "tooltip": null
             },
-            "id": {
-                "name": "id",
-                "tooltip": "sets the ID of moving attack, allowing for type-based resistance discrimination"
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of moving attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -724,19 +736,15 @@
         "abbr_name": "imu. Move",
         "full_name": "Immune/Resistant to Moving Atk",
         "tooltip": null,
-        "format": "[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Moving Attacks[(useIds){ with an ID of (id)}][(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
+        "format": "[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Moving Attacks[(pid){ with (_toString(pid)) IDs}][(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
         "class": {
             "mult": {
                 "name": "percent",
                 "tooltip": null
             },
-            "id": {
+            "pid": {
                 "name": "id",
-                "tooltip": "Non-zero values will only make resistance apply to moving attacks with this id, if id checks are enabled"
-            },
-            "useIds": {
-                "name": "use ids",
-                "tooltip": "Enable ID checks"
+                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
             }
         }
     },
@@ -930,7 +938,7 @@
         "abbr_name": "surge",
         "full_name": "Surge",
         "tooltip": null,
-        "format": "(prob)% chance to make a Lv (time/20) surge attack[(type.hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
+        "format": "(prob)% chance to make a Lv (time/20) surge attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -951,6 +959,10 @@
             "type.hitless": {
                 "name": "Miss Trigger",
                 "tooltip": "Wave will spawn even if this attack misses"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -977,7 +989,7 @@
         "abbr_name": "imu. Surge",
         "full_name": "Immune/Resistant to Surge",
         "tooltip": null,
-        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Surge Attack[(mult<100&mult>0)",
+        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Surge Attack[(pid){ with (_toString(pid)) IDs}][(mult<100&mult>0)",
             "{ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases taken damage by (_abs(mult))%(_right)}]",
             "[(block!=0&block<100){ & }]}][(block!=0){Surge Attack [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
             "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"],
@@ -989,6 +1001,10 @@
             "block": {
                 "name": "Blocker",
                 "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block surges"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
             }
         }
     },
@@ -1102,7 +1118,7 @@
         "abbr_name" : "mini-wave",
         "full_name" : "Mini-Wave",
         "tooltip" : "Creates small wave which moves twice faster than normal wave with dynamic damage multiplication parameter",
-        "format" : "(prob)% chance to create a lv.(lv) [(inverted){inverted}] [(multi>100){mega}(multi<=100){mini}]-wave[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
+        "format" : "(prob)% chance to create a lv.(lv) [(inverted){inverted}] [(multi>100){mega}(multi<=100){mini}]-wave[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
         "class" : {
             "prob" : {
                 "name" : "chance",
@@ -1123,6 +1139,10 @@
             "inverted": {
                 "name": "Inverted",
                 "tooltip": "Start point, end point, and traversal direction are all inverted"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of miniwave attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -1302,7 +1322,7 @@
         "abbr_name": "D.Surge",
         "full_name": "Death Surge",
         "tooltip": null,
-        "format": "(prob)% chance to make a surge attack for (_dispTime(time)) when killed (_left)Created within (dis_0) ~ (dis_1) range(_right)",
+        "format": "(prob)% chance to make a surge attack[(pid){ with (_toString(pid)) IDs}] for (_dispTime(time)) when killed (_left)Created within (dis_0) ~ (dis_1) range(_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1319,6 +1339,10 @@
             "time": {
                 "name": "duration",
                 "tooltip": null
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -1665,7 +1689,7 @@
         "abbr_name": "M.Surge",
         "full_name": "Mini Surge",
         "tooltip": "Creates small surge that does exactly same behavior of normal surge, but with less damage",
-        "format": "(prob)% chance to make a Lv(time/20) Mini Surge within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of attacker's damage(_right)}]",
+        "format": "(prob)% chance to make a Lv(time/20) Mini Surge[(pid){ with (_toString(pid)) IDs}] within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of attacker's damage(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1690,6 +1714,10 @@
             "type.hitless": {
                 "name": "Miss Trigger",
                 "tooltip": "Wave will spawn even if this attack misses"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -1823,7 +1851,7 @@
         "abbr_name": "blast atk",
         "full_name": "Blast Attack",
         "tooltip": "Creates blast attack that spreads to each side with weaker damage over each blasts",
-        "format": "(prob)% chance to create a Level (lv) blast attack[(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
+        "format": "(prob)% chance to create a Level (lv) blast attack[(pid){ with (_toString(pid)) IDs}][(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1844,6 +1872,10 @@
             "reduction": {
                 "name": "Reduction",
                 "tooltip": "BC Default is 30. Determines the amount of damage in % the explosions' damage will be reduced per level"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the blast attack, allowing for type-based resistance discrimination"
             }
         }
     },
@@ -1851,7 +1883,7 @@
         "abbr_name": "imu. Blast",
         "full_name": "Immune/Resistant to Blast",
         "tooltip": null,
-        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Blast",
+        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Blast[(pid){ with (_toString(pid)) IDs}]",
             "[(mult<100&mult>0){ (_left)Decreases damage by (mult)%(_right)}(mult<0){ (_left)Increases damage by (_abs(mult))%(_right)}]",
             "[(block!=0&block<100){ & }]}][(block!=0){Blast [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
             "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"],
@@ -1863,6 +1895,10 @@
             "block": {
                 "name": "Blocker",
                 "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block slow. Set negative to increase the effect."
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
             }
         }
     },
