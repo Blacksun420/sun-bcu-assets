@@ -1,6 +1,12 @@
 {
     "apk_update":[
         {
+            "ver":"0.20.08",
+            "CORE_VER":"0.7.9.0",
+            "FORK_VER":11,
+            "desc":"Improves animation editor, fix bugs"
+        },
+        {
             "ver":"0.20.07",
             "CORE_VER":"0.7.9.0",
             "FORK_VER":11,
