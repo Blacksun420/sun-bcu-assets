@@ -186,12 +186,18 @@
             "CORE_VER":"0.7.9.0",
             "forkver":11,
             "info":"Fix breakerblast crash, make dire/easing editing more straightforward"
+        },
+        {
+            "ver":"0.6.2.8",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"Fix bugs, improve Moving Atk ID system"
         }
     ],
     "latest": {
-        "ver":"0.6.2.8",
-        "CORE_VER":"0.7.9.0",
+        "ver":"0.6.2.9",
+        "CORE_VER":"0.7.10.0",
         "forkver":11,
-        "info":"Fix bugs, improve Moving Atk ID system"
+        "info":"14.2 data, fix 4th form Orbs not working"
     }
 }
