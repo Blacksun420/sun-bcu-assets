@@ -1,6 +1,12 @@
 {
     "apk_update":[
         {
+            "ver":"0.20.10",
+            "CORE_VER":"0.7.10.0",
+            "FORK_VER":11,
+            "desc":"Fixes missing levels and Explosion talent, adds support for Replays and equipping RandomUnits"
+        },
+        {
             "ver":"0.20.09",
             "CORE_VER":"0.7.10.0",
             "FORK_VER":11,
