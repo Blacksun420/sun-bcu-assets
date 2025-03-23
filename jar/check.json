@@ -192,12 +192,18 @@
             "CORE_VER":"0.7.9.0",
             "forkver":11,
             "info":"Fix bugs, improve Moving Atk ID system"
+        },
+        {
+            "ver":"0.6.2.9",
+            "CORE_VER":"0.7.10.0",
+            "forkver":11,
+            "info":"14.2 data, fix 4th form Orbs not working"
         }
     ],
     "latest": {
-        "ver":"0.6.2.9",
+        "ver":"0.6.2.10",
         "CORE_VER":"0.7.10.0",
         "forkver":11,
-        "info":"14.2 data, fix 4th form Orbs not working"
+        "info":"Bugfixes, QoL, Adrenaline"
     }
 }
