@@ -4,7 +4,7 @@
         "full_name": "Knockback",
         "tooltip": null,
         "format": [
-            "(prob)% chance to knock target back",
+            "[(prob<100){(prob)% chance to knock}(prob==100){Knocks}] target back",
             "[(dis>0&dis!=165){ (dis) distance away}(dis<0){ (_abs(dis)) distance closer}]",
             "[(time>0&time!=11){ for (_dispTime(time))}]"
         ],
@@ -47,7 +47,7 @@
         "abbr_name": "slow",
         "full_name": "Slow",
         "tooltip": null,
-        "format": "(prob)% chance to slow for (_dispTimeF(time))",
+        "format": "[(prob<100){(prob)% chance to slow}(prob==100){Slows}] for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -64,7 +64,7 @@
         "full_name": "Critical Hit",
         "tooltip": "deal more damage to enemies. See mult field for water cannon type attack.",
         "format": [
-            "(prob)% chance to deal a critical hit",
+            "[(prob<100){(prob)% chance to deal}(prob==100){Deals}] a critical hit",
             "[(mult>0&mult!=200){ that deals (mult)% damage to target}",
             "(mult<0){ that deals (_abs(mult))% of metal entity's HP as damage}]"
         ],
@@ -83,7 +83,7 @@
         "abbr_name": "wave",
         "full_name": "Wave",
         "tooltip": null,
-        "format": "(prob)% chance to create a Lv.(lv) [(inverted){inverted }]wave attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}]",
+        "format": "[(prob<100){(prob)% chance to create}(prob==100){Creates}] a Lv.(lv) [(inverted){inverted }]wave attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -163,7 +163,7 @@
         "abbr_name": "break",
         "full_name": "Barrier Breaker",
         "tooltip": null,
-        "format": "(prob)% chance to break barriers",
+        "format": "[(prob<100){(prob)% chance to }]break barriers",
         "class": {
             "prob": {
                 "name": "chance",
@@ -176,7 +176,7 @@
         "full_name": "Warp",
         "tooltip": null,
         "format": [
-            "(prob)% chance to warp target ",
+            "[(prob<100){(prob)% chance to warp}(prob==100){Warps}] target ",
             "[(dis==dis_1){(_abs(dis)) [(dis<0){forward}(dis>0){backward}]}]",
             "[(dis!=dis_1){anywhere between (_abs(dis)) [(dis<0){forward}(dis>0){backward}] ",
             "and (_abs(dis_1)) [(dis_1<0){forward}(dis_1>0){backward}]}]",
@@ -205,7 +205,7 @@
         "abbr_name": "curse",
         "full_name": "Curse",
         "tooltip": "Disable trait related abilities",
-        "format": "(prob)% chance to curse for (_dispTimeF(time))",
+        "format": "[(prob<100){(prob)% chance to curse}(prob==100){Curses}] for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -261,7 +261,7 @@
         "abbr_name": "lethal",
         "full_name": "Lethal Strike",
         "tooltip": null,
-        "format": "(prob)% chance to survive a lethal strike",
+        "format": "[(prob<100){(prob)% chance to survive}(prob==100){Survives}] a lethal strike",
         "class": {
             "prob": {
                 "name": "chance",
@@ -576,7 +576,7 @@
         "abbr_name": "sniper",
         "full_name": "Sniper Style Knock Back",
         "tooltip": "This ability penetrates Knock Back Immunity",
-        "format": "(prob)% chance to deal sniper-styled knock back to target",
+        "format": "[(prob<100){(prob)% chance to deal}(prob==100){Deals}] sniper-styled knock back to target",
         "class": {
             "prob": {
                 "name": "chance",
@@ -608,7 +608,7 @@
         "abbr_name": "seal",
         "full_name": "Seal",
         "tooltip": "Seal will disable all abilities except Burrow, Metal, Self-Destruct, Only-Attack, and basic Revive",
-        "format": "(prob)% chance to seal target for (_dispTimeF(time))",
+        "format": "[(prob<100){(prob)% chance to seal}(prob==100){Seals}] target for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -625,7 +625,7 @@
         "full_name": "Summon",
         "tooltip": null,
         "format": [
-            "(prob)% chance to summon (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
+            "[(prob<100){(prob)% chance to summon}(prob==100){Summons}] (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
             "each summoned (dis)[(max_dis!=dis){ ~ (max_dis)}] range away from ",
             "[(type.on_kill|type.on_hit){each target}",
             "(!type.on_hit&!type.on_kill){the summoner}] ",
@@ -736,7 +736,7 @@
         "full_name": "Moving Attack",
         "tooltip": null,
         "format": [
-            "(prob)% chance to have moving hit box[(pid){ with (_toString(pid)) IDs}], ",
+            "[(prob<100){(prob)% chance to have}(prob==100){Has}] moving hit box[(pid){ with (_toString(pid)) IDs}], ",
             "originated at a distance of (dis) from this entity ",
             "with (width) widths, ",
             " (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))"
@@ -897,7 +897,7 @@
         "abbr_name": "boss",
         "full_name": "Boss Shockwave",
         "tooltip": null,
-        "format": "(prob)% chance to boss wave",
+        "format": "[(prob<100){(prob)% chance to }]boss wave",
         "class": {
             "prob": {
                 "name": "chance",
@@ -946,7 +946,7 @@
         "abbr_name": "Invi.",
         "full_name": "Invincibility",
         "tooltip": null,
-        "format": "(prob)% chance to dodge attacks for (_dispTimeF(time))[(cd>0){, with a cooldown of (_dispTimeF(cd)) per dodge}]",
+        "format": "[(prob<100){(prob)% chance to dodge}(prob==100){Dodges}] attacks for (_dispTimeF(time))[(cd>0){, with a cooldown of (_dispTimeF(cd)) per dodge}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -966,7 +966,7 @@
         "abbr_name": "toxic",
         "full_name": "Toxic",
         "tooltip": null,
-        "format": "(prob)% chance to inflict toxic (_left)Deals (mult)% of target's max health(_right)",
+        "format": "[(prob<100){(prob)% chance to inflict}(prob==100){Inflicts}] toxic (_left)Deals (mult)% of target's max health(_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -982,7 +982,7 @@
         "abbr_name": "surge",
         "full_name": "Surge",
         "tooltip": null,
-        "format": "(prob)% chance to make a Lv (time/20) surge attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a Lv (time/20) surge attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1170,7 +1170,9 @@
         "abbr_name": "mini-wave",
         "full_name": "Mini-Wave",
         "tooltip": "Creates small wave which moves twice faster than normal wave with dynamic damage multiplication parameter",
-        "format": "(prob)% chance to create a lv.(lv) [(inverted){inverted }][(multi>100){mega}(multi<=100){mini}]-wave[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]",
+        "format": ["[(prob<100){(prob)% chance to create}(prob==100){Creates}] ",
+            "a lv.(lv) [(inverted){inverted }][(multi>100){mega}(multi<=100){mini}]-wave[(pid){ with (_toString(pid)) IDs}]",
+            "[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]"],
         "class": {
             "prob": {
                 "name": "chance",
@@ -1310,7 +1312,7 @@
         "abbr_name": "Shield Pierce",
         "full_name": "Shield Piercer",
         "tooltip": "Directly breaks Aku shield. Be aware that this doesn't prevent shield from regenerating when hitbacked.",
-        "format": "(prob)% chance to break Aku shield",
+        "format": "[(prob<100){(prob)% chance to break}(prob==100){Breaks}] Aku shield",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1323,10 +1325,12 @@
         "full_name": "Counter Attack",
         "tooltip": "Deal damage back when attacked.",
         "format": [
-            "(prob)% chance to counterattack, dealing (damage)% [(!type.useOwnDamage){of the damage received from an attack [(maxDamage!=0){(_left)Up to (_abs(maxDamage))(_right)}]}",
+            "[(prob<100){(prob)% chance to counterattack}(prob==100){Counterattacks}], ",
+            "dealing (damage)% [(!type.useOwnDamage){of the damage received from an attack [(maxDamage!=0){(_left)Up to (_abs(maxDamage))(_right)}]}",
             "(type.useOwnDamage){of this unit's damage}] back. [(maxDamage<0){Counter damage will not exceed this unit's remaining HP. }]",
             "[(type.counterWave!=0){This unit will also [(type.counterWave==1){counter}(type.counterWave==2){reflect}] wave/surge attacks. }][(type.procType!=0){This counterattack will ",
-            "[(type.procType==1|type.procType==3){have}(type.procType==2){replace}] the original attack's procs[(type.procType==2){ with this unit's procs}(type.procType==3){ and this entity's procs}]. }]",
+            "[(type.procType==1|type.procType==3){have}(type.procType==2){replace}] ",
+            "the original attack's procs[(type.procType==2){ with this unit's procs}(type.procType==3){ and this entity's procs}]. }]",
             "The counter will hit [(type.areaAttack){ all enemies}(!type.areaAttack){ only the attacker}][(type.areaAttack|!type.outRange){[(!type.areaAttack){ if they're}] standing ",
             "[(minRange!=0|maxRange!=0){(minRange) ~ (maxRange) units away from this entity}(minRange==0&maxRange==0){on this entity's range}]}]."
         ],
@@ -1377,7 +1381,8 @@
         "abbr_name": "D.Surge",
         "full_name": "Death Surge",
         "tooltip": null,
-        "format": "(prob)% chance to make a surge attack[(pid){ with (_toString(pid)) IDs}] for (_dispTime(time)) when killed (_left)Created within (dis_0) ~ (dis_1) range(_right)",
+        "format": ["[(spawns>1){Every (spawns)th deployed[(prob<100){ has}] }][(prob<100){(prob)% chance to make}(prob==100){Makes}] ",
+            "a surge attack[(pid){ with (_toString(pid)) IDs}] for (_dispTime(time)) when killed (_left)Created within (dis_0) ~ (dis_1) range(_right)"],
         "class": {
             "prob": {
                 "name": "chance",
@@ -1398,6 +1403,48 @@
             "pid": {
                 "name": "ID",
                 "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
+            },
+            "spawns": {
+                "name": "Kill Count",
+                "tooltip": "Amount of kills per surge proc"
+            }
+        }
+    },
+    "MINIDEATHSURGE": {
+        "abbr_name": "M.D.Surge",
+        "full_name": "Mini Death Surge",
+        "tooltip": null,
+        "format": ["[(spawns>1){Every (spawns)th deployed[(prob<100){ has}] }][(prob<100){(prob)% chance to make}(prob==100){Makes}] ",
+            "a mini-surge attack[(pid){ with (_toString(pid)) IDs}] for (_dispTime(time)) when killed (_left)Created within ",
+            "(dis_0) ~ (dis_1) range[(mult!=20){, deals (mult)% of attacker's damage}](_right)"],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
+            },
+            "spawns": {
+                "name": "Kill Count",
+                "tooltip": "Amount of kills per surge proc"
             }
         }
     },
@@ -1686,7 +1733,7 @@
         "abbr_name": "rage",
         "full_name": "Rage",
         "tooltip": "Enrages the target, making it's attacks hurt both enemies and it's own allies",
-        "format": "(prob)% chance to enrage target for (_dispTimeF(time))",
+        "format": "[(prob<100){(prob)% chance to enrage}(prob==100){Enrages}] target for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1702,7 +1749,7 @@
         "abbr_name": "hypno",
         "full_name": "Hypnotize",
         "tooltip": "Turns the target against its own allies",
-        "format": "(prob)% chance to hypnotize target for (_dispTimeF(time))",
+        "format": "[(prob<100){(prob)% chance to hypnotize}(prob==100){Hypnotizes}] target for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1760,7 +1807,7 @@
         "abbr_name": "M.Surge",
         "full_name": "Mini Surge",
         "tooltip": "Creates small surge that does exactly same behavior of normal surge, but with less damage",
-        "format": "(prob)% chance to make a Lv(time/20) Mini Surge[(pid){ with (_toString(pid)) IDs}] within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of attacker's damage(_right)}]",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a Lv(time/20) Mini Surge[(pid){ with (_toString(pid)) IDs}] within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of attacker's damage(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1796,7 +1843,7 @@
         "abbr_name": "C.Surge",
         "full_name": "CounterSurge",
         "tooltip": "Creates a surge when hit by a surge with the hitting surge's level and duration",
-        "format": "(prob)% chance to make a surge when hit by a surge, with (mult)% of the surge's damage",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a surge when hit by a surge, with (mult)% of the surge's damage",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1860,7 +1907,7 @@
             "Summon (_entity(id,form)) as spirit up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
             "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
             "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]",
-            "[(moneyCost!=0){. Summoning a spirit costs (moneyCost)$}]",
+            "[(moneyCost!=0){. Summoning a spirit costs (moneyCost)¢}]",
             "[(!type.inv){ (_left)This spirit can be killed(_right)}]"
         ],
         "class": {
@@ -1886,7 +1933,7 @@
             },
             "moneyCost": {
                 "name": "Cost Penalty",
-                "tooltip": "Makes the spirit cost money to summon"
+                "tooltip": "Makes the spirit cost money to summon (measured in EoC Chapter 1 cost)"
             },
             "animType": {
                 "name": "Animation Type",
@@ -1922,7 +1969,8 @@
         "abbr_name": "blast atk",
         "full_name": "Blast Attack",
         "tooltip": "Creates blast attack that spreads to each side with weaker damage over each blasts",
-        "format": "(prob)% chance to create a Level (lv) blast attack[(pid){ with (_toString(pid)) IDs}][(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)",
+        "format": ["[(prob<100){(prob)% chance to create}(prob==100){Creates}] a Level (lv) blast attack[(pid){ with (_toString(pid)) IDs}]",
+            "[(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)"],
         "class": {
             "prob": {
                 "name": "chance",
@@ -1979,7 +2027,7 @@
         "abbr_name": "absorb",
         "full_name": "Absorber",
         "tooltip": "Drains HP per enemy damaged",
-        "format": "(prob)% chance to absorb (mult)% of the damage dealt as HP",
+        "format": "[(prob<100){(prob)% chance to absorb}(prob==100){Absorbs}] (mult)% of the damage dealt as HP",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1987,7 +2035,7 @@
             },
             "mult": {
                 "name": "multiplier",
-                "tooltip": "What percent of original attack the target will be weaken to"
+                "tooltip": "What percent of damage dealt will be recovered as HP"
             }
         }
     },
@@ -1996,7 +2044,7 @@
         "full_name": "Blessing",
         "tooltip": "Gives procs and abilities to affected entities. The opposite of curse, essentially",
         "format": [
-            "(prob)% chance to bless units for (_dispTime(time)), granting the blessed entities ",
+            "[(prob<100){(prob)% chance to bless}(prob==100){Blesses}] units for (_dispTime(time)), granting the blessed entities ",
             "[(abis!=0){Abilities: (_bitMask(abis))[((procs)|(traits)){, }]}][(procs){Procs: (_proc(procs))[(traits){, }]}]",
             "[(traits){Traits: (_toString(traits))}].[(stackable){This blessing is stackable.}]"
         ],
@@ -2024,6 +2072,26 @@
             "traits": {
                 "name": "Added Traits",
                 "tooltip": "Temporarily adds traits to the blessed entities"
+            }
+        }
+    },
+    "REFUND": {
+        "abbr_name": "Refund",
+        "full_name": "Refund",
+        "tooltip": null,
+        "format": "[(count>1){Every (count)th deployed[(prob<100){ has}] }] [(prob<100){(prob)% chance to refund}(prob==100){Refunds}] (mult)% of unit's cost when killed",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": "% of cost to be refunded"
+            },
+            "count": {
+                "name": "kill count",
+                "tooltip": "Amount of killed units for refund to trigger"
             }
         }
     }

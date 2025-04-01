@@ -1,191 +1,22 @@
 {
-    "unformatted": [
+    "history": [
         {
-            "version":"0.6.0.1",
-            "forceUpdate":"false",
-            "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-1.jar",
-            "info":"Adds favorite implementation feature and (unstable) pack merge feature"
-        },
-        {
-            "version":"0.6.0.2",
-            "forceUpdate":"false",
-            "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-2.jar",
-            "info":"Adds enemy total damage table, other QoL stuff"
-        },
-        {
-            "ver":"0.6.0.3",
-            "forkver":5,
-            "info":"Fix auto-update, config saving, use seconds for dojo timer data storing"
-        }
-    ],
-    "past": [
-        {
-            "ver":"0.6.0.4",
-            "CORE_VER":"0.7.1.1",
-            "forkver":5,
-            "info":"Fix export problems for soul and custom bg FX anims, can't deploy text display, errors on custombgeffect reading & sorting, atk ability settings not being updated, crashes on replay getter, level setting & copying effect/soul anims"
-        },
-        {
-            "ver":"0.6.0.5",
-            "CORE_VER":"0.7.3.0",
-            "forkver":5,
-            "info":"Syncs upstream BCU branch updates (12.3 content & such), makes Background Preview accurate and Pack soul animations viewable, fix some big bad bugs, and more QoL"
-        },
-        {
-            "ver":"0.6.0.6",
-            "CORE_VER":"0.7.3.0",
-            "forkver":6,
-            "info":"Implement way to allow multiple attacks in one frame, Custom BGEffect Spacer, Bugfixes and QoL stuff"
-        },
-        {
-            "ver":"0.6.0.7",
-            "CORE_VER":"0.7.3.0",
-            "forkver":6,
-            "info":"Reduce lag on collab/recurring/favorite filters, replace custom filter with pack filter on enemy search page, fix visual bugs for poison and def aura, fix atk share bug, use talented HP/ATK on unit search page"
-        },
-        {
-            "ver":"0.6.0.8",
-            "CORE_VER":"0.7.3.0",
-            "forkver":6,
-            "info":"Fix Pack Enemy Filter Bug"
-        },
-        {
-            "ver":"0.6.0.9",
-            "CORE_VER":"0.7.3.0",
-            "forkver":6,
-            "info":"https://discord.gg/Xya9gg5KR"
-        },
-        {
-            "ver":"0.6.1.0",
-            "CORE_VER":"0.7.4.0",
-            "forkver":7,
-            "info":"12.4 contents (requires downloading new asset.bcuzip file), (some) Custom Procs for talents, bugfixes"
-        },
-        {
-            "ver":"0.6.1.1",
-            "CORE_VER":"0.7.4.0",
-            "forkver":8,
-            "info":"Make more fields compatible to language localization, add pack progression, (requires re-downloading asset.bcuzip file), bugfixes & tweaks"
-        },
-        {
-            "ver":"0.6.1.2",
-            "CORE_VER":"0.7.4.0",
-            "forkver":8,
-            "info":"Allow syncing packs' save data, support a new extension for packs (.userpack), fix bugs"
-        },
-        {
-            "ver":"0.6.1.3",
-            "CORE_VER":"0.7.4.0",
-            "forkver":9,
-            "info":"Merge DMG Dealt+ abilities and DMG taken- abilities, advanced proc filters, allow multiple unit rewards for a stage, improve localization, a lot of bugfixes"
-        },
-        {
-            "ver":"0.6.1.4",
-            "CORE_VER":"0.7.4.0",
-            "forkver":9,
-            "info":"Fixes bugs, allow music naming and other music-related QoL"
-        },
-        {
-            "ver":"0.6.1.5",
-            "CORE_VER":"0.7.4.1",
-            "forkver":9,
-            "info":"Allow 0 share for multi-atks and 12.5 content"
-        },
-        {
-            "ver":"0.6.1.6",
-            "CORE_VER":"0.7.4.1",
-            "forkver":10,
-            "info":"A lot of QoL and Bugfixes, and TypeShield proc (Increases Core Version)"
-        },
-        {
-            "ver":"0.6.1.7",
-            "CORE_VER":"0.7.4.2",
-            "forkver":10,
-            "info":"Bug Fixes"
-        },
-        {
-            "ver":"0.6.1.8",
-            "CORE_VER":"0.7.4.3",
-            "forkver":10,
-            "info":"Bug Fixes, 60fps, other stuff"
-        },
-        {
-            "ver":"0.6.1.9",
-            "CORE_VER":"0.7.4.3",
-            "forkver":10,
-            "info":"Bug Fixes, corrupt animation detection, localization QoL"
-        },
-        {
-            "ver":"0.6.1.10",
-            "CORE_VER":"0.7.4.3",
-            "forkver":10,
-            "info":"The usual"
-        },
-        {
-            "ver":"0.6.1.12",
-            "CORE_VER":"0.7.6.0",
-            "forkver":10,
-            "info":"13.1 Data, Allow CDSetter ability to affect all slots by setting slot to 11, allow Wave/Surgeblockers to take damage from what they block by setting mult to negative, QoL and BugFixes"
-        },
-        {
-            "ver":"0.6.1.13",
-            "CORE_VER":"0.7.7.0",
-            "forkver":10,
-            "info":"13.2 and 13.3 Data"
-        },
-        {
-            "ver":"0.6.1.14",
-            "CORE_VER":"0.7.8.0",
-            "forkver":10,
-            "info":"Adds 13.5 data, decimal procs and boss baseBarrier (for custom stages only)"
-        },
-        {
-            "ver":"0.6.2.0",
-            "CORE_VER":"0.7.8.0",
+            "ver":"0.6.2.11",
+            "CORE_VER":"0.7.11.0",
             "forkver":11,
-            "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression (Refer to latest announcement on <a href=\"https://discord.gg/vyrsu4YbRq\">Discord</a> for full list)"
+            "info":"<a href=\"https://battlecats.miraheze.org/wiki/Version_14.3_Update\">14.3 data</a>, fix bugs, tweak everywhere door & auto-updater"
         },
         {
-            "ver":"0.6.2.1",
-            "CORE_VER":"0.7.8.2",
+            "ver":"0.6.2.10",
+            "CORE_VER":"0.7.10.0",
             "forkver":11,
-            "info":"<a href=\"https://battle-cats.fandom.com/wiki/Version_13.6_Update\">13.6 content</a>, new colosseum restrictions, set colosseum restrictions to stages, HTML support for descriptions, fix bugs"
+            "info":"Bugfixes, QoL, Adrenaline"
         },
         {
-            "ver":"0.6.2.2",
-            "CORE_VER":"0.7.8.2",
+            "ver":"0.6.2.9",
+            "CORE_VER":"0.7.10.0",
             "forkver":11,
-            "info":"Fix bugs, adds Zero Form icons & timeSlow effect for freeze, auto-download forked assets"
-        },
-        {
-            "ver":"0.6.2.3",
-            "CORE_VER":"0.7.8.3",
-            "forkver":11,
-            "info":"Fix bugs, fix choppy border pixels, 13.7 data, anim QoL"
-        },
-        {
-            "ver":"0.6.2.4",
-            "CORE_VER":"0.7.8.3",
-            "forkver":11,
-            "info":"Fix blast range, improve drawing, make modification 51 usable, add modification 54"
-        },
-        {
-            "ver":"0.6.2.5",
-            "CORE_VER":"0.7.9.0",
-            "forkver":11,
-            "info":"14.0 content, fix bugs"
-        },
-        {
-            "ver":"0.6.2.6",
-            "CORE_VER":"0.7.9.0",
-            "forkver":11,
-            "info":"Adds new procs, fix visual bugs"
-        },
-        {
-            "ver":"0.6.2.7",
-            "CORE_VER":"0.7.9.0",
-            "forkver":11,
-            "info":"Fix breakerblast crash, make dire/easing editing more straightforward"
+            "info":"14.2 data, fix 4th form Orbs not working"
         },
         {
             "ver":"0.6.2.8",
@@ -194,16 +25,205 @@
             "info":"Fix bugs, improve Moving Atk ID system"
         },
         {
-            "ver":"0.6.2.9",
+            "ver":"0.6.2.7",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"Fix breakerblast crash, make dire/easing editing more straightforward"
+        },
+        {
+            "ver":"0.6.2.6",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"Adds new procs, fix visual bugs"
+        },
+        {
+            "ver":"0.6.2.5",
+            "CORE_VER":"0.7.9.0",
+            "forkver":11,
+            "info":"14.0 content, fix bugs"
+        },
+        {
+            "ver":"0.6.2.4",
+            "CORE_VER":"0.7.8.3",
+            "forkver":11,
+            "info":"Fix blast range, improve drawing, make modification 51 usable, add modification 54"
+        },
+        {
+            "ver":"0.6.2.3",
+            "CORE_VER":"0.7.8.3",
+            "forkver":11,
+            "info":"Fix bugs, fix choppy border pixels, 13.7 data, anim QoL"
+        },
+        {
+            "ver":"0.6.2.2",
+            "CORE_VER":"0.7.8.2",
+            "forkver":11,
+            "info":"Fix bugs, adds Zero Form icons & timeSlow effect for freeze, auto-download forked assets"
+        },
+        {
+            "ver":"0.6.2.1",
+            "CORE_VER":"0.7.8.2",
+            "forkver":11,
+            "info":"<a href=\"https://battle-cats.fandom.com/wiki/Version_13.6_Update\">13.6 content</a>, new colosseum restrictions, set colosseum restrictions to stages, HTML support for descriptions, fix bugs"
+        },
+        {
+            "ver":"0.6.2.0",
+            "CORE_VER":"0.7.8.0",
+            "forkver":11,
+            "info":"Lots of QoL, bugfixes, and mechanic updates, specially around progression"
+        },
+        {
+            "ver":"0.6.1.14",
+            "CORE_VER":"0.7.8.0",
+            "forkver":10,
+            "info":"Adds 13.5 data, decimal procs and boss baseBarrier (for custom stages only)"
+        },
+        {
+            "ver":"0.6.1.13",
+            "CORE_VER":"0.7.7.0",
+            "forkver":10,
+            "info":"13.2 and 13.3 Data"
+        },
+        {
+            "ver":"0.6.1.12",
+            "CORE_VER":"0.7.6.0",
+            "forkver":10,
+            "info":"13.1 Data, Allow CDSetter ability to affect all slots by setting slot to 11, allow Wave/Surgeblockers to take damage from what they block by setting mult to negative, QoL and BugFixes (Hey where did 0-6-1-11 go)"
+        },
+        {
+            "ver":"0.6.1.10",
+            "CORE_VER":"0.7.4.3",
+            "forkver":10,
+            "info":"The usual"
+        },
+        {
+            "ver":"0.6.1.9",
+            "CORE_VER":"0.7.4.3",
+            "forkver":10,
+            "info":"Bug Fixes, corrupt animation detection, localization QoL"
+        },
+        {
+            "ver":"0.6.1.8",
+            "CORE_VER":"0.7.4.3",
+            "forkver":10,
+            "info":"Bug Fixes, 60fps, other stuff"
+        },
+        {
+            "ver":"0.6.1.7",
+            "CORE_VER":"0.7.4.2",
+            "forkver":10,
+            "info":"Bug Fixes"
+        },
+        {
+            "ver":"0.6.1.6",
+            "CORE_VER":"0.7.4.1",
+            "forkver":10,
+            "info":"A lot of QoL and Bugfixes, and TypeShield proc (Increases Core Version)"
+        },
+        {
+            "ver":"0.6.1.5",
+            "CORE_VER":"0.7.4.1",
+            "forkver":9,
+            "info":"Allow 0 share for multi-atks and 12.5 content"
+        },
+        {
+            "ver":"0.6.1.4",
+            "CORE_VER":"0.7.4.0",
+            "forkver":9,
+            "info":"Fixes bugs, allow music naming and other music-related QoL"
+        },
+        {
+            "ver":"0.6.1.3",
+            "CORE_VER":"0.7.4.0",
+            "forkver":9,
+            "info":"Merge DMG Dealt+ abilities and DMG taken- abilities, advanced proc filters, allow multiple unit rewards for a stage, improve localization, a lot of bugfixes"
+        },
+        {
+            "ver":"0.6.1.2",
+            "CORE_VER":"0.7.4.0",
+            "forkver":8,
+            "info":"Allow syncing packs' save data, support a new extension for packs (.userpack), fix bugs"
+        },
+        {
+            "ver":"0.6.1.1",
+            "CORE_VER":"0.7.4.0",
+            "forkver":8,
+            "info":"Make more fields compatible to language localization, add pack progression, (requires re-downloading asset.bcuzip file), bugfixes & tweaks"
+        },
+        {
+            "ver":"0.6.1.0",
+            "CORE_VER":"0.7.4.0",
+            "forkver":7,
+            "info":"12.4 contents (requires downloading new asset.bcuzip file), (some) Custom Procs for talents, bugfixes"
+        },
+        {
+            "ver":"0.6.0.9",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"We're going to fucking kill you"
+        },
+        {
+            "ver":"0.6.0.8",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"Fix Pack Enemy Filter Bug"
+        },
+        {
+            "ver":"0.6.0.7",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"Reduce lag on collab/recurring/favorite filters, replace custom filter with pack filter on enemy search page, fix visual bugs for poison and def aura, fix atk share bug, use talented HP/ATK on unit search page"
+        },
+        {
+            "ver":"0.6.0.6",
+            "CORE_VER":"0.7.3.0",
+            "forkver":6,
+            "info":"Implement way to allow multiple attacks in one frame, Custom BGEffect Spacer, Bugfixes and QoL stuff"
+        },
+        {
+            "ver":"0.6.0.5",
+            "CORE_VER":"0.7.3.0",
+            "forkver":5,
+            "info":"Syncs upstream BCU branch updates (12.3 content & such), makes Background Preview accurate and Pack soul animations viewable, fix some big bad bugs, and more QoL"
+        },
+        {
+            "ver":"0.6.0.4",
+            "CORE_VER":"0.7.1.1",
+            "forkver":5,
+            "info":"Fix export problems for soul and custom bg FX anims, can't deploy text display, errors on custombgeffect reading & sorting, atk ability settings not being updated, crashes on replay getter, level setting & copying effect/soul anims"
+        }
+    ],
+    "unformatted": [
+        {
+            "ver":"0.6.0.3",
+            "forkver":5,
+            "info":"Fix auto-update, config saving, use seconds for dojo timer data storing"
+        }
+        {
+            "version":"0.6.0.2",
+            "forceUpdate":"false",
+            "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-2.jar",
+            "info":"Adds enemy total damage table, other QoL stuff"
+        },
+        {
+            "version":"0.6.0.1",
+            "forceUpdate":"false",
+            "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-1.jar",
+            "info":"Adds favorite implementation feature and (unstable) pack merge feature"
+        },
+    ],
+    "past": [
+        {
+            "ver":"0.6.2.10",
             "CORE_VER":"0.7.10.0",
             "forkver":11,
-            "info":"14.2 data, fix 4th form Orbs not working"
+            "info":"Bugfixes, QoL, Adrenaline"
         }
     ],
     "latest": {
-        "ver":"0.6.2.10",
-        "CORE_VER":"0.7.10.0",
+        "ver":"0.6.2.11",
+        "CORE_VER":"0.7.11.0",
         "forkver":11,
-        "info":"Bugfixes, QoL, Adrenaline"
+        "info":"<a href=\"https://battlecats.miraheze.org/wiki/Version_14.3_Update\">14.3 data</a>, fix bugs, tweak everywhere door & auto-updater"
     }
 }
