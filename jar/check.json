@@ -198,7 +198,7 @@
             "ver":"0.6.0.3",
             "forkver":5,
             "info":"Fix auto-update, config saving, use seconds for dojo timer data storing"
-        }
+        },
         {
             "version":"0.6.0.2",
             "forceUpdate":"false",
@@ -210,7 +210,7 @@
             "forceUpdate":"false",
             "url":"https://github.com/Blacksun420/bcu-assets/raw/master/jar/BCU-0-6-0-1.jar",
             "info":"Adds favorite implementation feature and (unstable) pack merge feature"
-        },
+        }
     ],
     "past": [
         {
