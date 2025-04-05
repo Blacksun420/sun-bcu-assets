@@ -27,7 +27,7 @@
         "abbr_name": "stop",
         "full_name": "Freeze",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult==0){freeze}(mult!=0){[(mult<0){hasten}(mult>0){slow}] time for hit enemies by (_abs(mult))%}] for (_dispTimeF(time))",
+        "format": "[(prob<100){(prob)% chance to }][(mult==0){Freeze}(mult!=0){[(mult<0){Hasten}(mult>0){Slow}][(prob==100){s}] time for hit enemies by (_abs(mult))%}] for (_dispTimeF(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -99,7 +99,7 @@
             },
             "inverted": {
                 "name": "Inverted",
-                "tooltip": "Start point, end point, and traversal direction are all inverted"
+                "tooltip": "Wave starts in the end point, and makes its way to the unit"
             },
             "pid": {
                 "name": "ID",
@@ -111,7 +111,7 @@
         "abbr_name": "weak",
         "full_name": "Weaken",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult>100){strengthen}(mult<=100){weaken}] target's attack to (mult)% for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]",
+        "format": "[(prob<100){(prob)% chance to }][(mult>100){Strengthen}(mult<=100){Weaken}][(prob==100){s}] target's attack to (mult)% for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -135,7 +135,7 @@
         "abbr_name": "Lethargy",
         "full_name": "Lethargy",
         "tooltip": null,
-        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] target's TBA by [(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}] for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]",
+        "format": "[(prob<100){(prob)% chance to }][(mult>0){Increase}(mult<0){Decrease}][(prob==100){s}] target's TBA by [(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}] for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -163,7 +163,7 @@
         "abbr_name": "break",
         "full_name": "Barrier Breaker",
         "tooltip": null,
-        "format": "[(prob<100){(prob)% chance to }]break barriers",
+        "format": "[(prob<100){(prob)% chance to }]Break[(prob==100){s}] barriers",
         "class": {
             "prob": {
                 "name": "chance",
@@ -288,7 +288,7 @@
     "REVIVE": {
         "abbr_name": "revive",
         "full_name": "Revive",
-        "tooltip": "Basic Revive only includes first 3 parameter. Later parameters are used for Ranged Revive",
+        "tooltip": "Basic Revive only includes first 3 parameters. Later parameters are used for Ranged Revive",
         "format": [
             "Revive [(count<0){infinite times}(count==1){once}(count==2){twice}(count>2){(count) times}]",
             " after (_dispTime(time)) with (health)% of  max health.",
@@ -416,9 +416,9 @@
         "full_name": "Immune/Resistant to Wave",
         "tooltip": null,
         "format": [
-            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Wave[(pid){ with (_toString(pid)) IDs}]",
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Waves[(pid){ with (_toString(pid)) IDs}]",
             "[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
-            "[(block!=0&block<100){ & }]}][(block!=0){Wave [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Wave[(block==0&pid){ with (_toString(pid)) IDs}] [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
             "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"
         ],
         "class": {
@@ -432,7 +432,7 @@
             },
             "pid": {
                 "name": "ID",
-                "tooltip": "Values will only make resistance apply to wave attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
+                "tooltip": "Values will only make resistance apply to wave attacks with these ids, if any. Value 0 targets ID-less Wave Attacks"
             }
         }
     },
@@ -588,7 +588,7 @@
         "abbr_name": "time",
         "full_name": "Stop Time",
         "tooltip": "Unlike Stop, this ability freezes everything including waves, money gain, cat and enemy cool down, etc",
-        "format": "(prob)% chance to [(intensity==100){stop}(intensity>0&intensity<100){slow}(intensity<0){hasten}] time[(intensity!=100){ by (_abs(intensity))%}] for (_dispTime(time))",
+        "format": "[(prob<100){(prob)% chance to }][(Intensity==100){Stop}(intensity>0&intensity<100){Slow}(intensity<0){Hasten}][(prob==100){s}] time[(intensity!=100){ by (_abs(intensity))%}] for (_dispTime(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -638,8 +638,8 @@
             "[(type.pass_proc!=0){, and carry all procs from [(type.pass_proc!=2){the summoner}][(type.pass_proc==3){ and }]}][(type.pass_proc!=1){ each entity hit}]. ",
             "Summoned entities will be in [(min_layer==max_layer){[(min_layer==-1){the same layer as this entity}(min_layer!=-1){layer (min_layer)}]}",
             "(min_layer!=max_layer){a random layer between (min_layer) and (max_layer)}]. ",
-            "Summon will display [(type.anim_type==0){no}(type.anim_type==1){warp}(type.anim_type>=2){burrow}]",
-            " animation[(type.anim_type==3){ and disable burrow for summoned entities}]."
+            "[(type.anim_type!=0){Summon will display [(type.anim_type==1){warp}(type.anim_type==2|type.anim_type==3){burrow}(type.anim_type==4){entry}(type.anim_type==5){",
+            "attack}(type.anim_type==6){Everywhere Door}] animation[(type.anim_type==3){ and disable burrow for summoned entities}]}]."
         ],
         "class": {
             "prob": {
@@ -678,7 +678,8 @@
                 "name": "summon anim",
                 "tooltip": [
                     "summon animation, 0 for no animation, 1 for warp animation,",
-                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation.",
+                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation,",
+                    " 5 for attack animation, 6 for Everywhere Door animation.", 
                     " The summoned entity must have burrow animation in order to use 2 or 3."
                 ]
             },
@@ -736,7 +737,7 @@
         "full_name": "Moving Attack",
         "tooltip": null,
         "format": [
-            "[(prob<100){(prob)% chance to have}(prob==100){Has}] moving hit box[(pid){ with (_toString(pid)) IDs}], ",
+            "[(prob<100){(prob)% chance to have}(prob==100){Has}] moving hitbox[(pid){ with (_toString(pid)) IDs}], ",
             "originated at a distance of (dis) from this entity ",
             "with (width) widths, ",
             " (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))"
@@ -793,7 +794,7 @@
         "full_name": "Background Switch",
         "tooltip": null,
         "format": [
-            "(prob)% chance to change the background to (_bg(id)) for (_dispTime(time))",
+            "[(prob<100){(prob)% chance to }]Change[(prob==100){s}] [(id){the background to (_id(id))[(mus){ and }]}][(mus){the music to (_id(mus))}] for (_dispTime(time))",
             "[(type.kill){ and kills all entities on the field}]"
         ],
         "class": {
@@ -824,9 +825,9 @@
         "full_name": "Venom",
         "tooltip": null,
         "format": [
-            "(prob)% chance to [(type.damage_type==0){burn}(type.damage_type==1){poison}",
-            "(type.damage_type==2){bleed}(type.damage_type==3){corrode}] target for (_dispTime(time)), ",
-            "dealing [(type.damage_type==0){(damage) damage}",
+            "[(prob<100){(prob)% chance to }][(type.damage_type==0){Burn}(type.damage_type==1){Poison}",
+            "(type.damage_type==2){Bleed}(type.damage_type==3){Corrode}][(prob==100){s}] target for ",
+            "(_dispTime(time)), dealing [(type.damage_type==0){(damage) damage}",
             "(type.damage_type>0){a damage of (damage)% of target's ",
             "[(type.damage_type==1){total}(type.damage_type==2){current}(type.damage_type==3){lost}]",
             " health}] every (_dispTime(itv)). ",
@@ -930,7 +931,7 @@
         "abbr_name": "Strong Hit",
         "full_name": "Strong Hit",
         "tooltip": null,
-        "format": "(prob)% chance to savage blow (_left)Gives (mult)% more damage(_right)",
+        "format": "[(prob<100){(prob)% chance to }]Savage blow[(prob==100){s}] (_left)Gives (mult)% more damage(_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1076,7 +1077,7 @@
             },
             "stackable": {
                 "name": "Stackable",
-                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
+                "tooltip": "If true, the armor effect will stack, increasing the effect the more stacks there are"
             }
         }
     },
@@ -1106,7 +1107,7 @@
             },
             "stackable": {
                 "name": "Stackable",
-                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
+                "tooltip": "If true, the weaken haste will stack, increasing the effect the more stacks there are"
             },
             "type": {
                 "name": "type",
@@ -1204,7 +1205,7 @@
         "abbr_name": "Spr. Armor",
         "full_name": "Super Armor",
         "tooltip": "This ability reduces all damage that is below certain amount to zero.",
-        "format": "(prob)% chance to [(reduction>=0){reduce}(reduction<0){increase}] [(type.traitIgnore){all }]damage lower than [(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}] by (reduction)% [(type.procs){ and ignore the attack's procs}]",
+        "format": "[(prob<100){(prob)% chance to }][(reduction>=0){Reduce}(reduction<0){Increase}][(prob==100){s}] [(type.traitIgnore){all }]damage lower than [(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}] by (reduction)% [(type.procs){ and ignore the attack's procs}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1312,7 +1313,7 @@
         "abbr_name": "Shield Pierce",
         "full_name": "Shield Piercer",
         "tooltip": "Directly breaks Aku shield. Be aware that this doesn't prevent shield from regenerating when hitbacked.",
-        "format": "[(prob<100){(prob)% chance to break}(prob==100){Breaks}] Aku shield",
+        "format": "[(prob<100){(prob)% chance to }]Break[(prob==100){s}] Aku shield",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1405,8 +1406,8 @@
                 "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
             },
             "spawns": {
-                "name": "Kill Count",
-                "tooltip": "Amount of kills per surge proc"
+                "name": "Deploy Count",
+                "tooltip": "Amount of spawns per surge proc"
             }
         }
     },
@@ -1478,7 +1479,7 @@
         "abbr_name": "2x Money",
         "full_name": "Money Multiplier",
         "tooltip": null,
-        "format": "[(mult>0){Pocket Sweep}(mult<0){Theft}] (_left)(_abs(mult))% [(mult>0){more}(mult<0){less}] money received upon defeating enemies(_right)",
+        "format": "[(mult>0){Extra Money}(mult<0){Theft}] (_left)(_abs(mult))% [(mult>0){more}(mult<0){less}] money received upon defeating enemies(_right)",
         "class": {
             "mult": {
                 "name": "percent",
@@ -1522,7 +1523,7 @@
         "abbr_name": "Worker Lv",
         "full_name": "Efficiency Bonus",
         "tooltip": "Increases worker level by a given amount",
-        "format": "(prob)% chance to [(mult>0){increase}(mult<0){decrease}] Worker Cat's level by (_abs(mult))",
+        "format": "[(prob<100){(prob)% chance to }][(mult>0){Increase}(mult<0){Decrease}][(prob==100){s}] Worker Cat's level by (_abs(mult))",
         "class": {
             "prob": {
                 "name": "Chance",
@@ -1655,12 +1656,12 @@
         "full_name": "Remote Shield",
         "tooltip": "Lowers damage of attacks coming from a specified range",
         "format": [
-            "[(reduction!=0&block!=100){(prob)% chance to [(reduction>0){reduce}(reduction<0){increase}][(!type.traitCon){ all}] damage",
-            " taken from hits originating (minrange) ~ (maxrange) units away from this entity by (_abs(reduction))%[(type.procs){ and",
-            " ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] damage taken from other units hit by",
-            " the attack by (_abs(block))%}]}(reduction==0&block!=0){(prob)% chance to [(block>0){block}(block<0){amplify}][(!type.traitCon){ all}]",
-            " damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by (_abs(block))%[(type.procs){ and block the ",
-            " attack's procs}].}][(type.waves){Wave/Surge attacks will be affected by this too.}]"
+            "[(prob<100{(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100{s}]",
+            "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
+            "(_abs(reduction))%[(type.procs){ and ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] ",
+            "damage taken from other units hit by the attack by (_abs(block))%}]}(reduction==0&block!=0){[(block>0){block}(block<0){amplify}]",
+            "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
+            "(_abs(block))%[(type.procs){ and block the attack's procs}].}][(type.waves){Wave/Surge attacks will be affected by this too.}]"
         ],
         "class": {
             "prob": {
@@ -1703,7 +1704,8 @@
         "tooltip": "Allows the unit to keep away from enemy attacks and fight smarter",
         "format": [
             "Strategist [(type.calcstrongest){ (_left)Unit will seek the most effective attack to use(_right)}]",
-            "[(retreatDist>0){ (_left)When in danger or enemies are (retreatDist) units away from this entity, unit will retreat at (retreatSpeed) speed(_right)}]",
+            "[(retreatDist>0|danger){ (_left)[(danger){When in danger[(retreatDist>0){ or }][(retreatDist>0)",
+            "{enemies are (retreatDist) units away from this entity}],this unit will retreat at (retreatSpeed) speed(_right)}]",
             "[(type.calcblindspot){ (_left)Unit will not count entities on it's blindspot for attack detection or other effectiveness calculations(_right)}]"
         ],
         "class": {
@@ -1711,8 +1713,8 @@
                 "name": "Check Strongest Attack",
                 "tooltip": "If this unit has more than one attack pattern, choose an attack based on which will deal the most effective damage instead of randomly"
             },
-            "type.retreat": {
-                "name": "Retreat",
+            "neardanger": {
+                "name": "Evade Danger",
                 "tooltip": "Move back if this unit is near an unit that is about to attack"
             },
             "type.calcblindspot": {
@@ -1843,7 +1845,7 @@
         "abbr_name": "C.Surge",
         "full_name": "CounterSurge",
         "tooltip": "Creates a surge when hit by a surge with the hitting surge's level and duration",
-        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a surge when hit by a surge, with (mult)% of the surge's damage",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a surge when hit by a surge[(mult!=100){, with (mult)% of the surge's damage}]",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1921,7 +1923,7 @@
             },
             "cd1": {
                 "name": "Respawn CD",
-                "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+                "tooltip": "Minimum and default is 15. Cooldown for the second+ spirit spawn"
             },
             "amount": {
                 "name": "Amount",
@@ -1939,7 +1941,8 @@
                 "name": "Animation Type",
                 "tooltip": [
                     "summon animation, 0 for no animation, 1 for warp animation,",
-                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation.",
+                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation,",
+                    " 5 for attack animation, 6 for Everywhere Door animation.", 
                     " The summoned entity must have burrow animation in order to use 2 or 3."
                 ]
             },
@@ -2090,8 +2093,8 @@
                 "tooltip": "% of cost to be refunded"
             },
             "count": {
-                "name": "kill count",
-                "tooltip": "Amount of killed units for refund to trigger"
+                "name": "Deploy count",
+                "tooltip": "Amount of deploys needed for refund to trigger"
             }
         }
     }

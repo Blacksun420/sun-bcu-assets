@@ -1,6 +1,12 @@
 {
     "history": [
         {
+            "ver":"0.6.2.12",
+            "CORE_VER":"0.7.11.0",
+            "forkver":12,
+            "info":"The usual"
+        },
+        {
             "ver":"0.6.2.11",
             "CORE_VER":"0.7.11.0",
             "forkver":11,
