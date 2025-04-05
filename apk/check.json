@@ -4,7 +4,7 @@
             "ver":"0.20.14",
             "CORE_VER":"0.7.11.0",
             "FORK_VER":12,
-            "desc":"The usual"
+            "desc":"Fix orb-related crashes, fix lang errors, restructure everywhere door, fix erroneous calculation on progressive strengthen, more summon animation types, more customizability for AI proc"
         },
         {
             "ver":"0.20.13",

@@ -4,7 +4,7 @@
             "ver":"0.6.2.12",
             "CORE_VER":"0.7.11.0",
             "forkver":12,
-            "info":"The usual"
+            "info":"Fix orb-related crashes, restructure everywhere door, fix erroneous calculation on progressive strengthen, more summon animation types, Fix bugs on the revival UI, Implement pack parenting, fix a single error generating many log files"
         },
         {
             "ver":"0.6.2.11",
