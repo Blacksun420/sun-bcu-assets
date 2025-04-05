@@ -1656,7 +1656,7 @@
         "full_name": "Remote Shield",
         "tooltip": "Lowers damage of attacks coming from a specified range",
         "format": [
-            "[(prob<100{(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100{s}]",
+            "[(prob<100{(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100){s}]",
             "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
             "(_abs(reduction))%[(type.procs){ and ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] ",
             "damage taken from other units hit by the attack by (_abs(block))%}]}(reduction==0&block!=0){[(block>0){block}(block<0){amplify}]",
