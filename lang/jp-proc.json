@@ -1,1847 +1,72 @@
 {
-  "KB": {
-    "abbr_name": "ふっとばす",
-    "full_name": "ふっとばす",
-    "tooltip": null,
-    "format": [
-      "[{prob<100}((prob)%の確率で)][(time>0&time!=11){(_dispTime(time))の継続期間で}]",
-      "[(dis>0&dis!=165){(dis)後方に}(dis<0){(_abs(dis))前方に}]ふっとばす"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": "0と入力するとデフォルトの値に設定されます"
-      },
-      "dis": {
-        "name": "距離",
-        "tooltip": "0と入力するとデフォルトの値に設定されます"
-      }
-    }
-  },
-  "STOP": {
-    "abbr_name": "止める",
-    "full_name": "動きを止める",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間動きを止める",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": "実際の期間は宝の効果と特性で増加します"
-      }
-    }
-  },
-  "SLOW": {
-    "abbr_name": "遅くする",
-    "full_name": "動きを遅くする",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間動きを遅くする",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": "実際の期間は宝の効果と特性で増加します"
-      }
-    }
-  },
-  "CRIT": {
-    "abbr_name": "クリット",
-    "full_name": "クリティカル",
-    "tooltip": "非メタルの敵により多くのダメージを与え、メタルの敵には本来のダメージを与えます。 水鉄砲型攻撃については倍率フィールドを参照。",
-    "format": [
-      "[{prob<100}((prob)%の確率で)][(mult>0&mult!=200){敵に(mult)%のダメージを与える}、",
-      "(mult<0){メタルの敵に現在HPの(_abs(mult))%のダメージを与える}]クリティカルヒットを打つ"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "倍率",
-        "tooltip": "デフォルトの値は200%です。 マイナス値を入力すると入力したマイナス値の割合ダメージをメタルの敵に与える水鉄砲型攻撃になります。"
-      }
-    }
-  },
-  "WAVE": {
-    "abbr_name": "波動",
-    "full_name": "波動",
-    "tooltip": null,
-    "format": "[(type.hitless){攻撃が当たらなくても}][{prob<100}((prob)%の確率で)]Lv.(lv)の波動",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "lv": {
-        "name": "Lv",
-        "tooltip": null
-      },
-      "type.hitless": {
-        "name": "不発でも発動",
-        "tooltip": "攻撃が当たらなくても波動を生成する"
-      },
-	  "inverted": {
-        "name": "Inverted",
-        "tooltip": "Start point, end point, and traversal direction are all inverted"
-      },
-      "pid": {
-        "name": "ID",
-        "tooltip": "Sets the IDs of the wave attack, allowing for type-based resistance discrimination"
-      }
-    }
-  },
-  "WEAK": {
-    "abbr_name": "攻撃力低下",
-    "full_name": "攻撃力ダウン",
-    "tooltip": null,
-    "format": "[(stackable){ (_left)重複可能(_right)}][{prob<100}((prob)%の確率で)](_dispTimeF(time))の間攻撃力を(mult)%に[(mult>100){上昇}(mult<=100){ダウン}]させる",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "倍率",
-        "tooltip": "ここでターゲットの元々の攻撃力が何%までダウンするかを設定出来ます。逆に-100%(相手を回復させる)や、200%(攻撃力上昇と分けて攻撃力が上がる)に設定も出来ます"
-      },
-      "stackable": {
-		"name": "重複可能か",
-		"tooltip": "有効の場合、攻撃力低下の効果が重複し、回数が重なる毎に効果が大きくなります"
-            }
-    }
-  },
-  "LETHARGY": {
-    "abbr_name": "無気力",
-    "full_name": "無気力",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間TBAを[(type.percentage){(_abs(mult)%)}(!type.percentage){(_dispTimeD(mult))}]に増加させる",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "倍率",
-        "tooltip": "What amount will the original TBA of the target will be increased to"
-      },
-      "type.percentage": {
-        "name": "Percentage",
-        "tooltip": "Simply adds when false, and increases the TBA by percentage when true"
-      }
-    }
-  },
-  "BREAK": {
-    "abbr_name": "ブレイク",
-    "full_name": "バリアブレイカー",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)]バリアを破壊する",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      }
-    }
-  },
-  "WARP": {
-    "abbr_name": "ワープ",
-    "full_name": "ワープ",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](_dispTime(time))経過後に(_abs(dis))[(dis<0){前方}(dis>=0){後方}][(dis_1!=dis){~(_abs(dis_1))[(dis_1<0){前方}(dis_1>=0){後方}]}]へワープさせる",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": "ワープアニメーションの時間は除外されます。"
-      },
-      "dis": {
-        "name": "最小距離",
-        "tooltip": null
-      },
-      "dis_1": {
-        "name": "最大距離",
-        "tooltip": null
-      }
-    }
-  },
-  "CURSE": {
-    "abbr_name": "呪い",
-    "full_name": "呪い",
-    "tooltip": "特殊能力封印",
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間[(_isEnemy){古代の}]呪う",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      }
-    }
-  },
-  "STRONG": {
-    "abbr_name": "攻撃力上昇",
-    "full_name": "攻撃力上昇",
-    "tooltip": null,
-    "format": "体力が(health)%以下で攻撃力(mult)%上昇",
-    "class": {
-      "health": {
-        "name": "体力%",
-        "tooltip": "ここで体力が何%以下で攻撃力が上昇するかを設定出来ます。"
-      },
-      "mult": {
-        "name": "上昇量",
-        "tooltip": null
-      }
-    }
-  },
-  "LETHAL": {
-    "abbr_name": "生き残る",
-    "full_name": "一度だけ生き残る",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)]一度だけ生き残る",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      }
-    }
-  },
-  "BURROW": {
-    "abbr_name": "地中移動",
-    "full_name": "地中移動",
-    "tooltip": null,
-    "format": "射程圏に入ると(dis)の距離まで[(count<0){無制限に}(count>1){(count)回}]潜る",
-    "class": {
-      "count": {
-        "name": "移動回数",
-        "tooltip": "-1と入力すると無制限に潜る。"
-      },
-      "dis": {
-        "name": "移動距離",
-        "tooltip": "地中移動の時間は潜った敵/味方の移動速度と移動距離により異なります。"
-      }
-    }
-  },
-  "SPEEDUP": {
-    "abbr_name": "inc. spd",
-    "full_name": "アドレナリン",
-    "tooltip": null,
-    "format": "[(!incremental){体力が(health)%になった時、移動移動が(_abs(mult))%に}(incremental){体力が(health)%に近づくにつれ、移動速度が(_abs(mult))%まで}][(mult>=100){増加}(mult<100){減少}] ",
-    "class": {
-        "health": {
-            "name": "体力",            
-            "tooltip": null
-        },
-        "mult": {
-            "name": "増加量",
-            "tooltip": "移動速度を遅くなるようにしたいなら100%未満の値に設定する"
-        },
-        "incremental": {
-            "name": "徐々に変動するか",
-            "tooltip": "これを有効にすると体力が指定の%になるのと同時に発動されるのではなく、その%に近づくにつれて徐々に効果が発動するようになる"
-      }
-    }
-  },
-  "REVIVE": {
-    "abbr_name": "蘇生",
-    "full_name": "蘇生",
-    "tooltip": "基本的な蘇生には上から3つのパラメーターのみが含まれます。 後のパラメーターは範囲指定された蘇生に使用されます。",
-    "format": [
-      "死亡後(_dispTime(time))経過後に最大体力の(health)%で[(count<0){無制限に}(count>1){(count)回}]蘇生",
-      "[(type.imu_zkill){ ゾンビキラー無効}]",
-      "[(type.revive_others){この種類は能力が他の仲間にも適応されます ",
-      "[(type.revive_non_zombie){他の蘇生しない味方に適用可}]",
-      "[(!type.revive_non_zombie){他の蘇生する仲間に適用可}] ",
-      "[(type.range_type>=2){(dis_0)~(dis_1)の範囲に居る}]",
-      "[(type.range_type==0){ステージ上でアクティブな状態で}]",
-      "[(type.range_type==1){ステージ上で生きている間に}]",
-      "[(type.range_type==2){ステージ上に存在する限り}]",
-      "[(type.range_type==3){この実体から(dis_0)~(dis_1)の範囲にある間は永久に効果的}].}]"
-    ],
-    "class": {
-      "count": {
-        "name": "蘇生回数",
-        "tooltip": "-1と入力すると無制限に復活する。"
-      },
-      "time": {
-        "name": "遅延",
-        "tooltip": null
-      },
-      "health": {
-        "name": "体力%",
-        "tooltip": "蘇生後の体力の割合をここで設定出来ます。"
-      },
-      "dis_0": {
-        "name": "地点0",
-        "tooltip": "範囲指定の蘇生地点0。 味方の蘇生が有効な場合にのみ適用可能(高度な設定)"
-      },
-      "dis_1": {
-        "name": "地点1",
-        "tooltip": "範囲指定の蘇生地点1。 味方の蘇生が有効な場合にのみ適用可能(高度な設定)"
-      },
-      "type.range_type": {
-        "name": "範囲蘇生の種類",
-        "tooltip": [
-          "0 = ステージ上での活動中に効果を発揮します。 ",
-          "1 = ステージ上で生きている間は効果的",
-          "2 = 実体がステージ上にあるときに効果を発揮します。 ",
-          "3で永久的に有効。",
-          "(高度な設定)"
-        ]
-      },
-      "type.imu_zkill": {
-        "name": "ゾンビキラー無効",
-        "tooltip": "ゾンビキラーの能力が無効"
-      },
-      "type.revive_non_zombie": {
-        "name": "非ゾンビ",
-        "tooltip": "非ゾンビであるものも蘇生させる。 他者の復活が有効な場合にのみ適用可能"
-      },
-      "type.revive_others": {
-        "name": "他者の復活",
-        "tooltip": "範囲蘇生機能のトグルオプション"
-      }
-    }
-  },
-  "IMUKB": {
-    "abbr_name": "ふっとばす無効",
-    "full_name": "ふっとばす無効/耐性",
-    "tooltip": null,
-    "format": [
-      "ふっとばす[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(mult)%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100でふっとばすを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUSTOP": {
-    "abbr_name": "止める無効",
-    "full_name": "動きを止める無効/耐性",
-    "tooltip": null,
-    "format": [
-      "動きを止める[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で止めるを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUSLOW": {
-    "abbr_name": "遅くする無効",
-    "full_name": "動きを遅くする無効/耐性",
-    "tooltip": null,
-    "format": [
-      "動きを遅くする[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で遅くするを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUWAVE": {
-    "abbr_name": "波動無効",
-    "full_name": "波動ダメージ無効/耐性",
-    "tooltip": null,
-    "format": "波動ダメージ[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "IMUWEAK": {
-    "abbr_name": "攻撃力ダウン無効",
-    "full_name": "攻撃力ダウン無効/耐性",
-    "tooltip": null,
-    "format": [
-      "攻撃力ダウン[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-      "[(smartImu!=0){攻撃[(smartImu>0){デ}]バフにのみ抵抗する}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で攻撃力ダウンを完全にブロックします。100以下の正の数値では効果が減少します。"
-      },
-      "smartImu": {
-        "name": "無視する",
-        "tooltip": "0 = バフとデバフに耐性あり, 1 = 攻撃デバフにのみ耐性あり, -1 = 攻撃バフにのみ耐性あり"
-      }
-    }
-  },
-  "IMULETHARGY": {
-    "abbr_name": "imu. Lethargy",
-    "full_name": "無気力無効/耐性",
-    "tooltip": null,
-    "format": [
-      "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Lethargy",
-      "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
-      "[(block!=0&block<100){ & }]}][(block!=0){Lethargy [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
-      "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
-      "[(smartImu!=0){. Only affects attack [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": "1から99に設定すると効果時間が短くなり、100を入れると完全に無効化されます。負の値を入れると効果時間が伸びます"
-      },
-      "block": {
-        "name": "Blocker",
-        "tooltip": "1から99に設定すると効果時間が短くなり、100を入れると完全に無効化されます。負の値を入れると効果時間が伸びます"
-      },
-      "smartImu": {
-        "name": "無視する",
-        "tooltip": "0 = バフ、デバフ両方無効化, 1 = デバフのみ無効化, -1 = バフのみ無効化"
-      }
-    }
-  },
-  "IMUWARP": {
-    "abbr_name": "ワープ無効",
-    "full_name": "ワープ無効/耐性",
-    "tooltip": null,
-    "format": "ワープ[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100でワープを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUCURSE": {
-    "abbr_name": "呪い無効",
-    "full_name": "呪い無効/耐性",
-    "tooltip": null,
-    "format": "[(!_isEnemy){古代の}]呪い[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で呪いを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUSEAL": {
-    "abbr_name": "封印無効",
-    "full_name": "封印無効/耐性",
-    "tooltip": null,
-    "format": "封印の呪い[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で封印を完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUSUMMON": {
-    "abbr_name": "召喚無効",
-    "full_name": "召喚無効/耐性",
-    "tooltip": null,
-    "format": [
-      "「オンヒット」と「オンキル」召喚[(mult==100){無効}(mult<100&mult>0){耐性 (_left)召喚された実体の強さを(mult)%減少させる(_right)}",
-      "(mult<0){脆弱性 (_left)召喚された実体は(_abs(mult))%強くなる(_right)}][(mult!=0&block!=0){と}][(block==100){ストッパー}",
-      "(block<100&block>0){アブソーバー (_left)召喚された実体の強さを(block)%減少させる(_right)}(mult<0){強化 (_left)召喚された実体は(_abs(block))%強くなる(_right)}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": "「オンヒット」と「オンキル」の召喚にのみ適用されます。"
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で「オンヒット」と「オンキル」召喚を完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "SNIPER": {
-    "abbr_name": "スナイプ",
-    "full_name": "スニャイパーKB",
-    "tooltip": "この能力はふっとばし無効/耐性の能力を無視します",
-    "format": "[{prob<100}((prob)%の確率で)]ターゲットをスナイプKBする。",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      }
-    }
-  },
-  "TIME": {
-    "abbr_name": "時間停止",
-    "full_name": "時間停止",
-    "tooltip": "能力の動きを止める能力と違い、この能力は波動、お金の取得、敵と味方の再生産含む全てを停止します。",
-    "format": "[{prob<100}((prob)%の確率で)](_dispTime(time))の間時間を停止させる (_left)強度: (intensity)(_right)",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      },
-      "intensity": {
-        "name": "強度",
-        "tooltip": "時間停止の強度のこと。強度が継続期間より低い場合、ユニットが移動できる間隔が一定になる。マイナスに設定すると時間停止無効の実体が早くなります。"
-      }
-    }
-  },
-  "SEAL": {
-    "abbr_name": "封印",
-    "full_name": "封印の呪い",
-    "tooltip": "封印は地中移動、メタル、自滅、ターゲット、基本的な蘇生(範囲蘇生は無効化される)を除く全ての能力を無効にします。",
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間封印",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      }
-    }
-  },
-  "SUMMON": {
-    "abbr_name": "召喚",
-    "full_name": "召喚",
-    "tooltip": null,
-    "format": [
-      "[{prob<100}((prob)%の確率で)](_dispTime(time))後に(amount)匹の(_summonMagnification(type.fix_buff,mult,id))(_entity(id,form))を召喚、",
-      "[(!type.on_hit&!type.on_kill){召喚者から1つの召喚(dis)範囲離れている}",
-      "(type.on_hit){各ターゲットの命中時に召喚された(dis)の範囲が1つ離れる}",
-      "(type.on_kill){対象が倒れるたびに1回召喚(dis)の範囲が離れる}]",
-      "[(type.same_health){ (_left)召喚されたエンティティはこのエンティティが持つヘルスと同じになる(_right)}]",
-      "[(type.bond_hp){ (_left)召喚獣のHPと各召喚獣のHPがバインドされます(_right)}]",
-      "[(type.ignore_limit){ (_left)ステージのエンティティの制限によって制限されない(_right)}]",
-      "(_left)召喚されたエンティティは[(min_layer==max_layer){[(min_layer==-1){このエンティティと同じレイヤーになる}(min_layer!=-1){(min_layer)レイヤーになる}]}",
-      "(min_layer!=max_layer){(min_layer)～(max_layer)のランダムなレイヤーに存在する}](_right) ",
-      "(_left)召喚は[(type.anim_type==1){ワープの}(type.anim_type>=2){埋葬終了の}]",
-      "[(type.anim_type==3){(_left)+埋葬の無効化(_right)}]アニメーションを表示[(type.anim_type!=0){する}(type.anim_type==0){しません}](_right)"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "id": {
-        "name": "ID",
-        "tooltip": null
-      },
-      "dis": {
-        "name": "位置",
-        "tooltip": "デフォルトではこの実体からの距離。攻撃を当てた時または倒した時が有効になっている場合はターゲットからの距離"
-      },
-      "mult": {
-        "name": "強化倍率",
-        "tooltip": "召喚された実体の強化倍率、デフォルトではこのエンティティの強化倍率×入力値の強化倍率。固定倍率を有効にした場合は入力値の強化倍率"
-      },
-      "time": {
-        "name": "遅延",
-        "tooltip": "この召喚での遅延"
-      },
-      "min_layer": {
-        "name": "最小レイヤー",
-        "tooltip": "召喚された実体が置かれる最小レイヤーを指定します。この実体と同じレイヤーを使用する場合は-1に設定します。"
-      },
-      "max_layer": {
-        "name": "最大レイヤー",
-        "tooltip": "召喚された実体が置かれる最大レイヤーを指定します。この実体と同じレイヤーを使用する場合は-1に設定します。"
-      },
-      "type.anim_type": {
-        "name": "召喚アニメ",
-        "tooltip": [
-          "召喚時アニメーション: ",
-          "0: アニメーションなし。",
-          "1: ワープのアニメーション。",
-          "2: 掘り上げのアニメーション。",
-          "3: 掘り上げのアニメーションで地中移動を無効にする。",
-          "4: 到着のアニメーション。",
-          "召喚されるエンティティが2か3を使う為には掘り上げのアニメーションを作る必要があります。"
-        ]
-      },
-      "type.ignore_limit": {
-        "name": "制限無視",
-        "tooltip": "ステージの出撃制限を無視する。あまり召喚をしないでください、大量に召喚するとゲームを高確率でクラッシュさせます"
-      },
-      "type.fix_buff": {
-        "name": "固定倍率",
-        "tooltip": [
-          "相対倍率の代わりに固定倍率を使用する",
-          "例: 固定倍率が無効の場合、強化倍率200%の召喚元と300%の強化倍率は600%の強化倍率を意味し、固定倍率が有効の場合は入力値の300%になる"
-        ]
-      },
-      "type.same_health": {
-        "name": "同じ体力",
-        "tooltip": "召喚された実体を召喚時のこの実体と同じ体力を持つように設定します。"
-      },
-      "type.bond_hp": {
-        "name": "魂の絆",
-        "tooltip": "発動時、召喚体が受ける全てのダメージとデバフを召喚者が受けるようになる"
-      },
-      "type.on_hit": {
-        "name": "当たる毎に",
-        "tooltip": [
-          "この攻撃が敵に当たった場合にのみ召喚します。",
-          "敵が攻撃される毎に召喚し、距離の原点は敵の位置に設定されます。",
-          "範囲攻撃では複数体の召喚が可能です。"
-        ]
-      },
-      "type.on_kill": {
-        "name": "倒す毎に",
-        "tooltip": [
-          "この攻撃が敵を倒した場合にのみ召喚します。",
-          "倒された敵ごとに召喚し、距離の原点は敵の位置に設定されます。",
-          "範囲攻撃では複数体の召喚が可能です。"
-        ]
-      },
-      "type.pass_proc": {
-        "name": "Pass procs",
-        "tooltip": "Passes all inflicted status to summoned units. 0 = none, 1 = from summoner, 2 = from attacked entities, 3 = from both"
-      },
-      "amount": {
-        "name": "量",
-        "tooltip": null
-      },
-      "form": {
-        "name": "フォーム",
-        "tooltip": "召喚したいユニットの形態を設定します。ネコにのみ適用されます。"
-      }
-    }
-  },
-  "MOVEWAVE": {
-    "abbr_name": "動く攻撃",
-    "full_name": "動く攻撃",
-    "tooltip": null,
-    "format": [
-      "[{prob<100}((prob)%の確率で)]攻撃の動きをは攻撃範囲を持ち、",
-      "この実体から[(dis>0){後方(dis)}(dis<0){前方(dis)}]距離で発生し、",
-      "(width)の範囲で、(speed)の移速で動き(_dispTime(time))の間継続する。",
-      "この攻撃は(_dispTime(itv))の間隔でダメージを与えます。"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "speed": {
-        "name": "移速",
-        "tooltip": "フレームあたりの単位での"
-      },
-      "width": {
-        "name": "範囲",
-        "tooltip": "攻撃の範囲、左から右への"
-      },
-      "time": {
-        "name": "継続時間",
-        "tooltip": null
-      },
-      "dis": {
-        "name": "位置",
-        "tooltip": "ここで開始時のヒットボックスの中心の位置を記述可能"
-      },
-      "itv": {
-        "name": "間隔",
-        "tooltip": null
-      }
-    }
-  },
-  "IMUMOVING": {
-    "abbr_name": "動く攻撃無効",
-    "full_name": "動く攻撃ダメージ無効/耐性",
-    "tooltip": null,
-    "format": "動く攻撃ダメージ[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "THEME": {
-    "abbr_name": "BG変更",
-    "full_name": "背景変更",
-    "tooltip": null,
-    "format": [
-      "[{prob<100}((prob)%の確率で)]背景を(_bg(id))に置き換え(_dispTime(time))経過後に元に戻す。",
-      "[(type.kill){同時に全ての実体を削除する。}]"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続時間",
-        "tooltip": "背景が元に戻るまでの時間"
-      },
-      "id": {
-        "name": "背景ID",
-        "tooltip": null
-      },
-      "mus": {
-        "name": "BGM ID",
-        "tooltip": null
-      },
-      "type.kill": {
-        "name": "削除",
-        "tooltip": "全ての実体を削除する"
-      }
-    }
-  },
-  "POISON": {
-    "abbr_name": "毒・火傷",
-    "full_name": "毒・火傷",
-    "tooltip": null,
-    "format": [
-      "[{prob<100}((prob)%の確率で)](_dispTime(time))の間毒または火傷させる。",
-      "(_dispTime(itv))経過毎に[(type.damage_type==0){(damage)ダメージ}(type.damage_type==1){最大}",
-      "(type.damage_type==2){現在}(type.damage_type==3){損失}][(type.damage_type>0){HPの(damage)%ダメージ}]を継続して与える。",
-      "この効果は重複[(type.unstackable){不}]可能です。"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続時間",
-        "tooltip": null
-      },
-      "damage": {
-        "name": "ダメージ",
-        "tooltip": "%割合か実際の値かは、ダメージタイプによって異なります"
-      },
-      "itv": {
-        "name": "間隔",
-        "tooltip": null
-      },
-      "type.damage_type": {
-        "name": "ダメージタイプ",
-        "tooltip": "0で固定ダメージ、1で最大HPの%割合、2で現在HPの%割合、3で損失HPの%割合。"
-      },
-      "type.unstackable": {
-        "name": "重複不可",
-        "tooltip": null
-      },
-      "type.ignoreMetal": {
-        "name": "バイパスメタル",
-        "tooltip": "発動すると、金属製の敵に通常のダメージを与えます。"
-      },
-      "type.modifAffected": {
-        "name": "ATKアビリティ使用",
-        "tooltip": "毒のダメージを「めっぽう強い」や「クリティカル」などのダメージ修正能力の影響を受けるようにするには、これをトグルする。"
-      }
-    }
-  },
-  "BOSS": {
-    "abbr_name": "衝撃波",
-    "full_name": "衝撃波",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)]衝撃波を生成する",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      }
-    }
-  },
-  "CRITI": {
-    "abbr_name": "クリティカル無効",
-    "full_name": "クリティカル無効",
-    "tooltip": null,
-    "format": [
-      "クリティカル[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&mult!=0){と}]",
-      "[(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "種類",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100でクリティカルを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "SATK": {
-    "abbr_name": "渾身の一撃",
-    "full_name": "渾身の一撃",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)]攻撃力の(mult)%のダメージを更に与える",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "IMUATK": {
-    "abbr_name": "攻撃無効",
-    "full_name": "攻撃無効",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間攻撃を無効にする",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "期間",
-        "tooltip": null
-      }
-    }
-  },
-  "POIATK": {
-    "abbr_name": "毒撃",
-    "full_name": "毒撃",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)]最大HP(mult)%の追加ダメージを与える",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "VOLC": {
-    "abbr_name": "烈波",
-    "full_name": "烈波",
-    "tooltip": null,
-    "format": "[(type.hitless){攻撃が当たらなくても}][{prob<100}((prob)%の確率で)](dis_0)~(dis_1)の距離に(_dispTime(time))の間烈波を生成する",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "dis_0": {
-        "name": "最小距離",
-        "tooltip": null
-      },
-      "dis_1": {
-        "name": "最大距離",
-        "tooltip": null
-      },
-      "time": {
-        "name": "発生期間",
-        "tooltip": null
-      },
-      "type.hitless": {
-        "name": "不発でも発動",
-        "tooltip": "攻撃が当たらなくても烈波を生成する"
-      },
-	  "pid": {
-        "name": "ID",
-        "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
-      }
-    }
-  },
-  "IMUPOI": {
-    "abbr_name": "毒無効",
-    "full_name": "毒・火傷無効/耐性",
-    "tooltip": null,
-    "format": [
-      "毒・火傷[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-      "[(smartImu!=0){[(smartImu>0){痛い}(smartImu<0){癒し}]毒にのみ抵抗する}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "軽減割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で毒・火傷を完全にブロックします。100以下の正の数値では効果が減少します。"
-      },
-      "smartImu": {
-        "name": "無視する",
-        "tooltip": "0 = バフとデバフに耐性あり, 1 = 痛い毒にのみ耐性がある, -1 = 癒し毒にのみ耐性がある"
-      }
-    }
-  },
-  "IMUPOIATK": {
-    "abbr_name": "毒撃無効",
-    "full_name": "毒撃無効/耐性",
-    "tooltip": null,
-    "format": "毒撃[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-    "class": {
-      "mult": {
-        "name": "軽減割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で毒撃を完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUVOLC": {
-    "abbr_name": "烈波ダメージ無効",
-    "full_name": "烈波ダメージ無効/耐性",
-    "tooltip": null,
-    "format": [
-      "烈波ダメージ[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&block!=100&mult!=0){と}]",
-      "[(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "種類",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で烈波ダメージを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "ARMOR": {
-    "abbr_name": "アーマーブレイク",
-    "full_name": "アーマーブレイク",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間受けるダメージを(_abs(mult))%[(mult<0){軽減する}(mult>=0){増加させる}]",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続時間",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "増減倍率",
-        "tooltip": "マイナス値を記述した場合、入力したマイナス値の%割合でダメージが軽減されます。"
-      }
-    }
-  },
-  "SPEED": {
-    "abbr_name": "軽率",
-    "full_name": "軽率",
-    "tooltip": null,
-    "format": [
-      "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間",
-      "[(type==2){移動速度を(speed)に固定する。}(type!=2){対象の移動速度を",
-      "(_abs(speed))[(type==1){%}][(speed>=0){増加させる}(speed<0){下げる}]}]"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続時間",
-        "tooltip": null
-      },
-      "speed": {
-        "name": "速度",
-        "tooltip": null
-      },
-      "type": {
-        "name": "種類",
-        "tooltip": "0で実体の速度に「速度」を加算/減算させ、1で実体の速度を「速度」%割合で増加/減少、 2で実体の速度を「速度」に設定する。"
-      }
-    }
-  },
-  "MINIWAVE": {
-    "abbr_name": "小波動",
-    "full_name": "小波動",
-    "tooltip": "通常の波動の2倍の速さで動く小型の波動を作成し、ダメージの倍率パラメータも調整できる。",
-    "format": "[(type.hitless){攻撃が当たらなくても}][{prob<100}((prob)%の確率で)]Lv(lv)の[(multi<=100){小}(multi>100){大}]波動を発生させ、 元の攻撃の(multi)%ダメージを与える",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "lv": {
-        "name": "Lv",
-        "tooltip": null
-      },
-      "multi": {
-        "name": "倍率",
-        "tooltip": "倍率が20の場合、攻撃力の20%のダメージを与えます。負の値も可能です。"
-      },
-      "type.hitless": {
-        "name": "不発でも発動",
-        "tooltip": "攻撃が当たらなくても小波動を生成する"
-      },
-	  "inverted": {
-        "name": "Inverted",
-        "tooltip": "Start point, end point, and traversal direction are all inverted"
-      },
-      "pid": {
-        "name": "ID",
-        "tooltip": "Sets the IDs of miniwave attack, allowing for type-based resistance discrimination"
-      }
-    }
-  },
-  "IMUARMOR": {
-    "abbr_name": "アーマー無効",
-    "full_name": "アーマーブレイク無効/耐性",
-    "tooltip": null,
-    "format": [
-      "アーマーブレイク[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-      "[(smartImu!=0){アーマー[(smartImu>0){デ}]バフにのみ抵抗する}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で攻撃力ダウンを完全にブロックします。100以下の正の数値では効果が減少します。"
-      },
-      "smartImu": {
-        "name": "無視する",
-        "tooltip": "0 = バフとデバフに耐性あり, 1 = アーマーデバフにのみ耐性あり, -1 = アーマーのバフにのみ耐性あり"
-      }
-    }
-  },
-  "IMUSPEED": {
-    "abbr_name": "軽率無効",
-    "full_name": "軽率無効/耐性",
-    "tooltip": null,
-    "format": [
-      "軽率[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
-      "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-      "[(smartImu!=0){軽率[(smartImu>0){デ}]バフにのみ抵抗する}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で攻撃力ダウンを完全にブロックします。100以下の正の数値では効果が減少します。"
-      },
-      "smartImu": {
-        "name": "無視する",
-        "tooltip": "0 = バフとデバフに耐性あり, 1 = スピードデバフのみ耐性, -1 = スピードバフにのみ耐性を持つ"
-      }
-    }
-  },
-  "DMGCUT": {
-    "abbr_name": "超装甲",
-    "full_name": "スーパー装甲",
-    "tooltip": "このアビリティは、一定量以下のすべてのダメージを0にする。",
-    "format": "[{prob<100}((prob)%の確率で)][(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}]以下のダメージを(reduction)%で[(reduction>=0){軽減}(reduction<0){増加}]する[(type.traitIgnore){ (_left)属性に関わらず(_right)}][(type.procs){ (_left)攻撃の能力も無効にする(_right)}]",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "dmg": {
-        "name": "攻撃力",
-        "tooltip": "無効化されるダメージの最小値。"
-      },
-      "reduction": {
-        "name": "ダメージ軽減%",
-        "tooltip": "ダメージを軽減する割合"
-      },
-      "type.traitIgnore": {
-        "name": "属性無視",
-        "tooltip": "これがチェックされると、この能力は敵の属性に関係なく発動できる。"
-      },
-      "type.procs": {
-        "name": "能力を無視する",
-        "tooltip": "これをチェックすると、無効化された攻撃による能力も無効化されます。"
-      },
-      "type.magnif": {
-        "name": "HP倍率を考える",
-        "tooltip": "発動するとスーパー装甲のHPが実体のHP倍率の影響を受けるようになる。"
-      }
-    }
-  },
-  "DMGCAP": {
-    "abbr_name": "魔法盾",
-    "full_name": "魔法盾",
-    "tooltip": "このアビリティは、一定量以上のすべてのダメージを当該量に軽減する（「ダメージを無効にする」がチェックされている場合は無効にする）。",
-    "format": "[{prob<100}((prob)%の確率で)][(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}]以上のダメージを[(!type.nullify){に}(type.nullify){無効化}]する[(type.traitIgnore){ (_left)属性に関わらず(_right)}][(type.procs){ (_left)攻撃の能力も無効にする(_right)}]",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "dmg": {
-        "name": "攻撃力",
-        "tooltip": "無効化されるダメージの最大値です。"
-      },
-      "type.traitIgnore": {
-        "name": "属性無視",
-        "tooltip": "これがチェックされると、この能力は敵の属性に関係なく発動できる。"
-      },
-      "type.nullify": {
-        "name": "ダメージを無効にする",
-        "tooltip": "これがチェックされると、攻撃によるダメージは「攻撃力」に設定されるのではなく、無効化されます。"
-      },
-      "type.procs": {
-        "name": "能力を無視する",
-        "tooltip": "これをチェックすると、無効化された攻撃による能力も無効化されます。"
-      },
-      "type.magnif": {
-        "name": "HP倍率を考える",
-        "tooltip": "発動すると魔法盾のHPが実体のHP倍率の影響を受けるようになる。"
-      }
-    }
-  },
-  "BARRIER": {
-    "abbr_name": "バリア",
-    "full_name": "バリア",
-    "tooltip": "バリアのHP以下のダメージを全て遮断します。HP以上のダメージを与える攻撃を受けると壊れます。",
-    "format": [
-      "バリア(_left)HP:[(type.magnif){(_shield(health))}(!type.magnif){(health)}]",
-      "[(regentime>0){, 壊されても(_dispTime(regentime))後には再生されます}]",
-      "[(timeout>0){, (_dispTime(timeout))後にバリアが切れる}](_right)"
-    ],
-    "class": {
-      "health": {
-        "name": "HP",
-        "tooltip": "バリアのHP"
-      },
-      "regentime": {
-        "name": "再生時期",
-        "tooltip": "時間が経つとバリアが再生されます。 0に設定すると、この能力は無効になります。"
-      },
-      "timeout": {
-        "name": "タイムアウト",
-        "tooltip": "時間が経つとバリアがブレイクされます。 0に設定すると、この能力は無効になります。"
-      },
-      "type.magnif": {
-        "name": "HP倍率を考える",
-        "tooltip": "発動するとバリアのHPが実体のHP倍率の影響を受けるようになる。"
-      }
-    }
-  },
-  "DEMONSHIELD": {
-    "abbr_name": "シールド",
-    "full_name": "悪魔シールド",
-    "tooltip": "一定量のダメージを遮断します。バリアとは異なり、ダメージを無効化するのではなく、吸収します。",
-    "format": "悪魔シールド(_left)HP:(_shield(hp)),KB再生HP:(regen)%(_right)",
-    "class": {
-      "hp": {
-        "name": "HP",
-        "tooltip": "シールドのHP"
-      },
-      "regen": {
-        "name": "再生",
-        "tooltip": "HB時に回復する基本HPの割合"
-      }
-    }
-  },
-  "SHIELDBREAK": {
-    "abbr_name": "シールドブレイク",
-    "full_name": "悪魔シールドブレイカー",
-    "tooltip": "悪魔のシールドを直接破壊する。ヒットバックしたときのシールドの再生を防ぐことはできないので注意が必要。",
-    "format": "[{prob<100}((prob)%の確率で)]悪魔シールドを破壊する",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      }
-    }
-  },
-  "COUNTER": {
-    "abbr_name": "反撃",
-    "full_name": "反撃",
-    "tooltip": "攻撃されたとき、このキャラを攻撃した敵を攻撃する。",
-    "format": [
-      "[{prob<100}((prob)%の確率で)]反撃し、(damage)%[(!type.useOwnDamage){攻撃で受けたダメージの}(type.useOwnDamage){このキャラクターの攻撃力の}]を返す。",
-      "[(type.counterWave!=0){この事業体は反[(type.counterWave==1){撃}(type.counterWave==2){射}]波動/烈波も。}]",
-      "この反撃は元の攻撃の能力[(type.procType==2){をこのユニットの能力で置き換える}(type.procType!=2){[(type.procType==3){とこのユニットの能力}]を持[(type.procType==0){たない}(type.procType!=0){つ}]}]。",
-      "この反撃は、[(type.areaAttack){このエンティティ[(minRange==0&maxRange==0){の範囲内に立っているすべての敵にヒットします}(minRange!=0|maxRange!=0){から(minRange)~(maxRange)距離離れて立っているすべての敵に当たる}]}",
-      "(!type.areaAttack){攻撃者がこのエンティティ[(minRange==0&maxRange==0){の範囲内に立っている場合、攻撃者のみにヒットします}(minRange!=0|maxRange!=0){から(minRange)~(maxRange)距離離れた場所に立っている場合、攻撃者のみにヒットする}]}]。"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "damage": {
-        "name": "倍率",
-        "tooltip": "被弾時に反射するダメージの割合。"
-      },
-      "minRange": {
-        "name": "遠方空点",
-        "tooltip": "この数字より下に立っているものには反撃が当たらない。キャラクターの射程を使用する場合は、このフィールドと遠方リーチを0のままにします。"
-      },
-      "maxRange": {
-        "name": "遠方リーチ",
-        "tooltip": "反撃は、この数字より下に立っているものに当たります。キャラクターの射程を使用する場合は、このフィールドと遠方空点を0のままにします。"
-      },
-      "type.procType": {
-        "name": "アビリティ",
-        "tooltip": "このパラメータは、どのアビリティが反映されるかを扱います。0 = すべてのアビリティを削除します。1 = すべてのアビリティを反映させます。2 = 攻撃側のすべてのアビリティを、このキャラクターのアビリティで置き換える。3 = このキャラクターと攻撃側のアビリティの両方を使用します。"
-      },
-      "type.counterWave": {
-        "name": "反撃波動",
-        "tooltip": "波動や烈波が当たったときの反応をトグルします。0 = 何もしない。1 = 反撃する。2 = 反射する。"
-      },
-      "type.useOwnDamage": {
-        "name": "独自の攻撃力を使う",
-        "tooltip": "このキャラクターの攻撃力を、受けたダメージの代わりにカウンターに使う."
-      },
-      "type.outRange": {
-        "name": "無視する距離",
-        "tooltip": "これを有効にすると、攻撃者との距離に関わらず、ユニットは反撃します。."
-      },
-      "type.areaAttack": {
-        "name": "範囲",
-        "tooltip": "これを有効にすると、カウンターは反撃の範囲内にいるすべてのユニットを対象とします。オフにすると、攻撃側のみがダメージを受けます。"
-      }
-    }
-  },
-  "DEATHSURGE": {
-    "abbr_name": "死烈波",
-    "full_name": "死烈波",
-    "tooltip": null,
-    "format": "[{prob<100}((prob)%の確率で)](dis_0)~(dis_1)の距離に(_dispTime(time))の間烈波殺された後を生成する",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "dis_0": {
-        "name": "最小距離",
-        "tooltip": null
-      },
-      "dis_1": {
-        "name": "最大距離",
-        "tooltip": null
-      },
-      "time": {
-        "name": "発生期間",
-        "tooltip": null
-      }
-    }
-  },
-  "IMUCANNON": {
-    "abbr_name": "にゃんこ砲無効",
-    "full_name": "にゃんこ砲無効/耐性",
-    "tooltip": null,
-    "format": [
-      "[(type!=127){[(type&1>0){デフォルトにゃんこ砲の波動[(type>2){、}]}",
-      "(type&2>0){スロウ砲[(type>4){、}]}",
-      "(type&4>0){かみなり砲[(type>8){、}]}",
-      "(type&8>0){水鉄砲[(type>16){、}]}",
-      "(type&16>0){エンジェル砲[(type>32){、}]}",
-      "(type&32>0){ブレイク砲[(type>64){と}]}",
-      "(type&64>0){呪い砲}]}(type==127){にゃんこ砲}]",
-      "[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "type": {
-        "name": "種類",
-        "tooltip": "+1 = デフォルトにゃんこ砲の波動、+2 = スロウ砲無効、+4 = かみなり砲無効、+8 = 水鉄砲無効、+16 = エンジェル砲無効、+32 = ブレイク砲無効、+64 = 呪い砲無効"
-      }
-    }
-  },
-  "BOUNTY": {
-    "abbr_name": "撃破時お金x2",
-    "full_name": "撃破時お金アップ",
-    "tooltip": null,
-    "format": "撃破時お金(_abs(mult))%[(mult>0){UP}(mult<0){DOWN}]",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "ATKBASE": {
-    "abbr_name": "城破壊得意",
-    "full_name": "城破壊が得意",
-    "tooltip": null,
-    "format": "対 お城 与ダメ[(mult>0){+}](mult)%",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "BSTHUNT": {
-    "abbr_name": "獣特効",
-    "full_name": "超獣特効",
-    "tooltip": null,
-    "format": "超獣特効(_left)与ダメx2.5 被ダメx0.6[(prob>0){&[{prob<100}((prob)%の確率で)](_dispTime(time))の間攻撃を無効にする}](_right)",
-    "class": {
-      "type.active": {
-        "name": "対 超獣敵めっぽう強い",
-        "tooltip": null
-      },
-      "prob": {
-        "name": "超獣の攻撃無効の確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "発生期間",
-        "tooltip": null
-      }
-    }
-  },
-  "WORKERLV": {
-    "abbr_name": "働きネコ",
-    "full_name": "働きネコボーナス",
-    "tooltip": "働きネコのレベルを一定量上げることができる",
-    "format": "[{prob<100}((prob)%の確率で)]働きネコのレベルを (mult) [(mult>0){増加}(mult<0){減少}]させる",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "Lvの増加量",
-        "tooltip": "負の値を入力すると働きネコのレベルを下げることができる"
-      }
-    }
-  },
-  "CDSETTER": {
-    "abbr_name": "再生産",
-    "full_name": "再生産時間",
-    "tooltip": "特定のユニットの再生産時間を増減させることができる",
-    "format": [
-      "[{prob<100}((prob)%の確率で)][(slot<0){ランダムな味方スロット}(slot>=0&slot<10){味方スロット(slot+1)番目}(slot==10){攻撃された味方スロット}(slot==11){全ての味方スロット}]の再生産時間を",
-      "(amount)[(type!=1){fに}(type==1){%}に][(type==2){する}(type!=2){[(amount>0){増加させる}(amount<0){減少させる}]}]"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "amount": {
-        "name": "増減量",
-        "tooltip": "再生産時間を増加させる場合は正の数値、減少させる場合は負の値を入力する"
-      },
-      "slot": {
-        "name": "スロット",
-        "tooltip": "影響を与えるユニットのスロット番号、ランダムにしたい場合は-1を入力する"
-      },
-      "type": {
-        "name": "種類",
-        "tooltip": "0 = 単位増減, 1 = パーセンテージを増減する, 2 = 入力した値に再生産時間を設定する"
-      }
-    }
-  },
-  "WEAKAURA": {
-    "abbr_name": "弱体化オーラ",
-    "full_name": "弱体化オーラ",
-    "tooltip": "指定された範囲にいる敵を弱体化する",
-    "format": [
-      "このキャラから (min_dis) ~ (max_dis) の距離に居る[(type.trait){全ての}]敵は ",
-      "[(amult!=0){攻撃力が[(amult>0){増加して}(amult<0){減少して}] (amult)% になる }]",
-      "[(dmult!=0){攻撃を受けた時、 (_abs(dmult))% [(dmult>0){多い}(dmult<0){少ない}]ダメージを受ける }]",
-      "[(smult!=0){移動速度が[(smult>0){増加}(smult<0){減少}]し (smult)% になる }]",
-      "[(tmult!=0){TBAが[(tmult>0){増加}(tmult<0){減少}]し (_abs(tmult))% になる }]"
-    ],
-    "class": {
-      "amult": {
-        "name": "攻撃力倍率",
-        "tooltip": "増減する攻撃力を％で指定"
-      },
-      "dmult": {
-        "name": "防御力倍率",
-        "tooltip": "増減する防御力を％で指定"
-      },
-      "smult": {
-        "name": "移動速度倍率",
-        "tooltip": "増減する移動速度を％で指定"
-      },
-      "tmult": {
-        "name": "攻撃間隔倍率",
-        "tooltip": "増減する攻撃間隔を%で指定"
-      },
-      "min_dis": {
-        "name": "盲点範囲",
-        "tooltip": "この範囲以下ではオーラの効果がない"
-      },
-      "max_dis": {
-        "name": "最大範囲",
-        "tooltip": "この範囲の外ではオーラの効果がない"
-      },
-      "type.trait": {
-        "name": "属性を無視する",
-        "tooltip": "これが有効の場合、属性に関係なく敵にオーラの効果が出るようになる"
-      }
-    }
-  },
-  "STRONGAURA": {
-    "abbr_name": "強化オーラ",
-    "full_name": "強化オーラ",
-    "tooltip": "指定された範囲にいる味方を強化する",
-    "format": [
-      "このキャラから (min_dis) ~ (max_dis) の距離に居る[(type.trait){全ての}]味方は ",
-      "[(amult!=0){攻撃力が[(amult>0){増加し(dmult)%になる}(amult<0){減少し(dmult)%になる}]}]",
-      "[(dmult!=0){攻撃を受けた時、 (dmult)% [(dmult>0){多い}(dmult<0){少ない}]ダメージを受ける }]",
-      "[(smult!=0){移動速度が[(smult>0){増加}(smult<0){減少}]し (smult)% になる }]",
-      "[(tmult!=0){攻撃間隔が[(amult>0){増加し}(amult<0){減少し}] (amult)% になる }]"
-    ],
-    "class": {
-      "amult": {
-        "name": "攻撃力倍率",
-        "tooltip": "増減する攻撃力を％で指定"
-      },
-      "dmult": {
-        "name": "防御力倍率",
-        "tooltip": "増減する防御力を％で指定"
-      },
-      "smult": {
-        "name": "移動速度倍率",
-        "tooltip": "増減する移動速度を％で指定"
-      },
-      "tmult": {
-        "name": "攻撃間隔倍率",
-        "tooltip": "増減する攻撃間隔を%で指定"
-      },
-      "min_dis": {
-        "name": "盲点範囲",
-        "tooltip": "この範囲以下ではオーラの効果がない"
-      },
-      "max_dis": {
-        "name": "最大範囲",
-        "tooltip": "この範囲の外ではオーラの効果がない"
-      },
-      "type.trait": {
-        "name": "属性を無視する",
-        "tooltip": "これが有効の場合、属性に関係なく味方にオーラの効果が出るようになる"
-      },
-	  "skip_self": {
-        "name": "自身に対して無効",
-        "tooltip": "これが有効の場合、オーラを放っているキャラ自身には影響が出なくなる"
-      }
-    }
-  },
-  "REMOTESHIELD": {
-    "abbr_name": "rangeshield",
-    "full_name": "範囲シールド",
-    "tooltip": "指定された範囲からの攻撃を軽減する",
-    "format": [
-      "[(reduction!=0&block!=100){(prob)% chance to [(reduction>0){reduce}(reduction<0){increase}][(!type.traitCon){ all}] damage",
-      " taken from hits originating (minrange) ~ (maxrange) units away from this entity by (_abs(reduction))%[(type.procs){ and",
-      " ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] damage taken from other units hit by",
-      " the attack by (_abs(block))%}]}(reduction==0&block!=0){(prob)% chance to [(block>0){block}(block<0){amplify}][(!type.traitCon){ all}]",
-      " damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by (_abs(block))%[(type.procs){ and block the ",
-      " attack's procs}].}][(type.waves){Wave/Surge attacks will be affected by this too.}]"
-    ],
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "minrange": {
-        "name": "最小範囲",
-        "tooltip": "この範囲より近い位置で発生した攻撃は効果の影響を受けない"
-      },
-      "maxrange": {
-        "name": "最大範囲",
-        "tooltip": "この範囲より遠い位置で発生した攻撃は効果の影響を受けない"
-      },
-      "reduction": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "割合と同様の効果だが全てのユニットに適応される"
-      },
-      "type.traitCon": {
-        "name": "Focus Traits",
-        "tooltip": "Activate this to make this proc only work if the this unit targets a trait from the attacker"
-      },
-      "type.procs": {
-        "name": "Evade Procs",
-        "tooltip": "Attack's procs won't apply if shield triggers and this is activated"
-      },
-      "type.waves": {
-        "name": "Target waves",
-        "tooltip": null
-      }
-    }
-  },
-  "AI": {
-    "abbr_name": "AI",
-    "full_name": "戦闘頭脳",
-    "tooltip": "キャラが敵の攻撃を避けるようになりより賢く戦闘するようになる",
-    "format": [
-      "戦闘知能が高い [(type.calcstrongest){ (_left)キャラは最も効果的な攻撃方法を模索する(_right)}]",
-      "[(retreatDist>0){ (_left)このキャラが危険な状態にあったり敵が(retreatDist)の範囲内にいるとき、このキャラは (retreatSpeed)の速度で退却する(_right)}]",
-      "[(type.calcblindspot){ (_left)このキャラは攻撃の検知やその他の効果計算において、盲点範囲に居る敵を考慮しない。(_right)}]"
-    ],
-    "class": {
-      "type.calcstrongest": {
-        "name": "最も適する攻撃を模索する",
-        "tooltip": "これが有効の場合かつこのキャラが複数の攻撃パターンを持っている場合、ランダムではなく最適で最もダメージを与えられる攻撃を行うようになる"
-      },
-      "type.retreat": {
-        "name": "退却",
-        "tooltip": "このユニットが攻撃されそうになった時退却するようになる"
-      },
-      "type.calcblindspot": {
-        "name": "盲点範囲索敵",
-        "tooltip": "これが有効の場合かつ立ち位置と盲点範囲内に敵がいる場合このキャラが攻撃することはない。 退却が有効な場合、盲点範囲に入った敵が居るとキャラが後退する"
-      },
-      "retreatDist": {
-        "name": "後退距離",
-        "tooltip": "ユニットの後退が発動する最短距離"
-      },
-      "retreatSpeed": {
-        "name": "後退速度",
-        "tooltip": "後退が発動した時の後退する速度"
-      }
-    }
-  },
-  "RAGE": {
-    "abbr_name": "怒り",
-    "full_name": "怒り",
-    "tooltip": "対象を激怒させ、敵と味方の両方を攻撃させる。",
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間激怒させる",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      }
-    }
-  },
-  "HYPNO": {
-    "abbr_name": "催眠術",
-    "full_name": "催眠術",
-    "tooltip": "対象が味方を裏切るようにする",
-    "format": "[{prob<100}((prob)%の確率で)](_dispTimeF(time))の間催眠術をかける",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      }
-    }
-  },
-  "IMURAGE": {
-    "abbr_name": "怒り無効",
-    "full_name": "怒り無効/耐性",
-    "tooltip": null,
-    "format": [
-      "怒り[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&block!=100&mult!=0){と}]",
-      "[(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "種類",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で怒りを完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "IMUHYPNO": {
-    "abbr_name": "催眠術無効",
-    "full_name": "催眠術無効/耐性",
-    "tooltip": null,
-    "format": [
-      "催眠術[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}][(block!=0&block!=100&mult!=0){と}]",
-      "[(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]"
-    ],
-    "class": {
-      "mult": {
-        "name": "種類",
-        "tooltip": null
-      },
-      "block": {
-        "name": "ストッパー",
-        "tooltip": "100で催眠術を完全にブロックします。100以下の正の数値では効果が減少します。"
-      }
-    }
-  },
-  "MINIVOLC": {
-    "abbr_name": "小烈波",
-    "full_name": "小烈波",
-    "tooltip": "通常烈波と同じ動作をする小さな烈波を発生させ、ダメージの倍率パラメータも調整できる。",
-    "format": "[(type.hitless){攻撃が当たらなくても}][{prob<100}((prob)%の確率で)] Lv (time/20) 小烈波攻撃を生成する。 (_left)持続時間は (_dispTime(time))、  (dis_0) ~ (dis_1) の範囲で発生し、元の攻撃の (mult)% ダメージを与える(_right)",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "dis_0": {
-        "name": "最小距離",
-        "tooltip": null
-      },
-      "dis_1": {
-        "name": "最大距離",
-        "tooltip": null
-      },
-      "time": {
-        "name": "継続期間",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "倍率",
-        "tooltip": null
-      },
-	  "type.hitless": {
-        "name": "不発でも発動",
-        "tooltip": "攻撃が当たらなくても小烈波を生成する"
-      },
-      "pid": {
-        "name": "ID",
-            "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
-      }
-    }
-  },
-  "DEMONVOLC" : {
-    "abbr_name": "反撃烈波",
-    "full_name": "反撃烈波",
-    "tooltip": "烈波に当たると反撃で烈波を生成する",
-    "format": "[{prob<100}((prob)%の確率で)]烈波の攻撃を受けたとき烈波を作る(_left)烈波のダメージの(mult)%を持つ(_right)",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "DMGINC" : {
-    "abbr_name": "ダメージ+",
-    "full_name": "ダメージ+",
-    "tooltip": "ユニットが対象とする属性の敵に与えるダメージが増加する",
-    "format": "[(mult<100){小さい}(mult>100&mult<300){めっぽう強い}(mult>=300&mult<500){超}(mult>=500){極}]ダメージ (_left)(_resDiv(mult))x(_right)",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "DEFINC" : {
-    "abbr_name": "ダメージ軽減",
-    "full_name": "ダメージ軽減",
-    "tooltip": "ユニットが対象とする属性を持つ敵から受けるダメージを軽減",
-    "format": "[(mult<100){壊れやすい}(mult>100&mult<400){めっぽう強い}(mult>=400){[(mult>=600){超}]打たれ強い}] (_left)1/(_resDiv(mult))x(_right)",
-    "class": {
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      }
-    }
-  },
-  "RANGESHIELD" : {
-    "abbr_name": "TypeShield",
-    "full_name": "攻撃種別シールド",
-    "tooltip": "単体攻撃または範囲攻撃によるダメージを軽減します",
-    "format": "[{prob<100}((prob)%の確率で)]受けた[(type.range){範囲}(!type.range){単体}]攻撃を(_abs(mult))%に[(mult>0){減少}(mult<0){増加}]する",
-    "class": {
-      "prob": {
-        "name": "確率",
-        "tooltip": null
-      },
-      "mult": {
-        "name": "割合",
-        "tooltip": null
-      },
-      "type.range": {
-        "name": "範囲",
-        "tooltip": "これを有効にすると、シールドが単体攻撃ではなく範囲攻撃に影響を与えるようになる"
-      }
-    }
-  },
-  "SPIRIT" : {
-    "abbr_name" : "精霊召喚",
-    "full_name" : "精霊召喚",
-    "tooltip": "召喚者の後方150射程にネコの精神を召喚し、攻撃無効と衝撃波無効が自動的に付与される。",
-    "format": [
-        "精霊召喚 (_left)精霊：(_entity(id,form))(_right), up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
-        "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
-        "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]"
-    ],
-    "class": {
-        "id": {
-            "name": "ID",
-            "tooltip": null
-        },
-        "cd0": {
-            "name": "初回の再生産f",
-            "tooltip": "最低値は15です。"
-        },
-        "cd1": {
-            "name": "再登場の再生産f",
-            "tooltip": "最低値は15です。"
-        },
-        "amount": {
-            "name": "Amount",
-            "tooltip": "精神召喚の最高値、召喚者が死亡するとリセットされる。"
-        },
-        "summonerCd": {
-            "name": "召喚者の罰の再生産f",
-            "tooltip": "精神が召喚されたときに召喚者に追加される再生産fの量"
-        },
-        "animType": {
-            "name": "召喚アニメ",
-            "tooltip": [
-              "召喚時アニメーション: ",
-              "0: アニメーションなし。",
-              "1: ワープのアニメーション。",
-              "2: 掘り上げのアニメーション。",
-              "3: 掘り上げのアニメーションで地中移動を無効にする。",
-              "4: 到着のアニメーション。",
-              "召喚されるエンティティが2か3を使う為には掘り上げのアニメーションを作る必要があります。"
-            ]
-        },
-        "form": {
-            "name": "フォーム",
-            "tooltip": "召喚したいユニットの形態を設定します。"
-        }
-    }
-  },
-  "METALKILL" : {
-      "abbr_name": "メタルキラー",
-        "full_name": "メタルキラー",
-        "tooltip": "攻撃時、メタル属性を持つ敵に対し残っているHPの割合ダメージを与える",
-        "format": "メタルキラー (_left)残り体力に対し割合 (mult)%のダメージを与える (_right)",
-        "class": {
-            "mult": {
-                "name": "割合",
-                "tooltip": null
-            }
-        }
-    },
-    "BLAST" : {
-        "abbr_name": "爆波",
-        "full_name": "爆波",
-        "tooltip": "前後に広がる爆波攻撃を生成する。この爆波は段階的にダメージが下がっていく",
-        "format": "[{prob<100}((prob)%の確率で)]Lv.(lv)の爆破攻撃を生成する[(lv>1){、段階的に(reduction)%ごとのダメージ減少 }] (_left)[(dis_0==dis_1){ (dis_0) の位置に生成}(dis_0!=dis_1){ (dis_0) ~ (dis_1) の範囲に生成}](_right)",
+    "KB": {
+        "abbr_name": "ふっとばす",
+        "full_name": "ふっとばす",
+        "tooltip": null,
+        "format": [
+            "[(prob<100){(prob)%の確率で}][(time>0&time!=11){(_dispTime(time))の継続時間で}]",
+            "[(dis>0&dis!=165){(dis)後方に}(dis<0){(_abs(dis))前方に}]ふっとばす"
+        ],
         "class": {
             "prob": {
                 "name": "確率",
                 "tooltip": null
             },
-            "dis_0": {
-                "name": "最小距離",
-                "tooltip": null
+            "time": {
+                "name": "継続時間",
+                "tooltip": "0と入力するとデフォルトの値に設定される"
             },
-            "dis_1": {
-                "name": "最長距離",
-                "tooltip": null
-            },
-            "lv": {
-                "name": "レベル",
-                "tooltip": "デフォルトでは3. 値を大きく設定するほど前後に発生する爆発が多くなり、より遠くまで届くようになる"
-            },
-            "reduction": {
-                "name": "減少割合",
-                "tooltip": "デフォルトでは30. 爆破のダメージが段階的に減少する割合を％で設定する事ができる"
+            "dis": {
+                "name": "距離",
+                "tooltip": "0と入力するとデフォルトの値に設定される"
             }
         }
     },
-    "IMUBLAST" : {
-        "abbr_name": "爆破耐性",
-        "full_name": "爆破無効/耐性",
+    "STOP": {
+        "abbr_name": "止める",
+        "full_name": "動きを止める",
         "tooltip": null,
-        "format": ["[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Blast",
-            "[(mult<100&mult>0){ (_left)Decreases damage by (mult)%(_right)}(mult<0){ (_left)Increases damage by (_abs(mult))%(_right)}]",
-            "[(block!=0&block<100){ & }]}][(block!=0){Blast [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
-            "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"],
+        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間動きを[(mult!=0){[(mult<0){加速}(mult>0){減速}](_abs(mult))%}(mult==0){停止}]させる",
         "class": {
-            "mult": {
-                "name": "割合",
-                "tooltip": "0％未満に設定すると、その効果に対して弱くなります"
+            "prob": {
+                "name": "確率",
+                "tooltip": null
             },
-            "block": {
-                "name": "ストッパー",
-                "tooltip": "1から99の値に設定すると爆破のダメージが減少し、100に設定すると完全に打ち消されます。負の値に設定するとダメージが増加します"
+            "time": {
+                "name": "継続時間",
+                "tooltip": "実際の時間は宝の効果と特性で変化する。負の値を入力する事で与える継続時間が上回る時のみ上書きする"
+            },
+            "mult": {
+                "name": "仕様",
+                "tooltip": "0でデフォルトの停止。1以上100未満の値を入力する事で敵の動作を減速させる。負の値を入力すると逆に加速させる"
             }
         }
     },
-    "DRAIN": {
-        "abbr_name": "HP吸収",
-        "full_name": "HP吸収",
-        "tooltip": "敵にダメージを与えるごとにHPを吸収する",
-        "format": "[{prob<100}((prob)%の確率で)]与えたダメージの(mult)%をHPとして吸収する",
+    "SLOW": {
+        "abbr_name": "遅くする",
+        "full_name": "動きを遅くする",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間動きを遅くする",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            },
+            "time": {
+                "name": "継続時間",
+                "tooltip": "実際の時間は宝の効果と特性で変化。負の値を入力する事で与える継続時間が上回る時のみ上書きする"
+            }
+        }
+    },
+    "CRIT": {
+        "abbr_name": "クリティカル",
+        "full_name": "クリティカルヒット",
+        "tooltip": "敵により多くのダメージを与えます。水鉄砲型攻撃については倍率フィールドを参照",
+        "format": [
+            "[(prob<100){(prob)%の確率で}]",
+            "[(mult>0&mult!=200){(mult)%のダメージを与える}",
+            "(mult<0){メタルな敵のHP(_abs(mult))%ダメージを与える}]クリティカルヒットを放つ"
+        ],
         "class": {
             "prob": {
                 "name": "確率",
@@ -1849,7 +74,1968 @@
             },
             "mult": {
                 "name": "倍率",
-                "tooltip": "元の攻撃の何パーセントまで吸収するか"
+                "tooltip": "デフォルトの値は200%。負の値を入力すると入力した値の割合ダメージをメタルの敵に与える水鉄砲型攻撃になる"
+            }
+        }
+    },
+    "WAVE": {
+        "abbr_name": "波動",
+        "full_name": "波動",
+        "tooltip": null,
+        "format": "[(type.hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}]Lv.(lv)の[(inverted){逆側}]波動を[(pid){ID(_toString(pid))付きで}]生成する",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            },
+            "lv": {
+                "name": "Lv",
+                "tooltip": null
+            },
+            "type.hitless": {
+                "name": "不発でも発動",
+                "tooltip": "攻撃が当たらなくても波動を生成する"
+            },
+            "inverted": {
+                "name": "逆側波動",
+                "tooltip": "開始地点、終了地点、横断方向が逆になる"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "波動攻撃のIDを設定し、タイプによる耐性の識別を可能にする"
+            }
+        }
+    },
+    "WEAK": {
+        "abbr_name": "攻撃力低下",
+        "full_name": "攻撃力ダウン",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間、攻撃力を(mult)%に[(mult>100){アップ}(mult<=100){ダウン}]させる[(stackable){(_left)重複可(_right)}]",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            },
+            "time": {
+                "name": "継続時間",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "倍率",
+                "tooltip": "ここで対象の元々の攻撃力が何%に変動するかを設定可能。-100%(相手を回復させる)や、200%(攻撃力上昇と分けて攻撃力が上がる)等に設定したりも可"
+            },
+            "stackable": {
+                "name": "重複可能か",
+                "tooltip": "有効の場合、攻撃力変動効果が重複し、回数が重なる毎に効果が大きくなる"
+            }
+        }
+    },
+    "LETHARGY": {
+        "abbr_name": "無気力",
+        "full_name": "無気力",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間、攻撃間隔を[(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}][(mult>0){増加}(mult<0){減少}(mult==0){でそのままに}]させる[(stackable){(_left)重複可(_right)}]",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            },
+            "time": {
+                "name": "継続時間",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "倍率",
+                "tooltip": "ここで対象の元々の攻撃間隔がいくらに変化するかを設定可能"
+            },
+            "stackable": {
+                "name": "重複可能か",
+                "tooltip": "有効の場合、効果が重複し、回数が重なる毎に効果が大きくなる"
+            },
+            "type.percentage": {
+                "name": "割合化",
+                "tooltip": "無効の場合は単純に変化させ、有効の場合は%割合で変化させる"
+            }
+        }
+    },
+    "BREAK": {
+        "abbr_name": "ブレイク",
+        "full_name": "バリアブレイカー",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)%の確率で}]バリアを破壊する",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            }
+        }
+    },
+    "WARP": {
+        "abbr_name": "ワープ",
+        "full_name": "ワープ",
+        "tooltip": null,
+        "format": [
+            "[(prob<100){(prob)%の確率で}](_dispTime(time))経過後",
+            "[(dis==dis_1){(_abs(dis))[(dis<0){前方}(dis>0){後方}]}]",
+            "[(dis!=dis_1){(_abs(dis))[(dis<0){前方}(dis>0){後方}]",
+            "~(_abs(dis_1))[(dis_1<0){前方}(dis_1>0){後方}]のランダムな距離}]にワープさせる"
+        ],
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            },
+            "time": {
+                "name": "継続時間",
+                "tooltip": "ワープアニメーションの時間は除外される"
+            },
+            "dis": {
+                "name": "最小距離",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "最大距離",
+                "tooltip": null
+            }
+        }
+    },
+    "CURSE": {
+        "abbr_name": "呪い",
+        "full_name": "呪い",
+        "tooltip": "特殊能力を一定時間無効化する",
+        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間呪う",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            },
+            "time": {
+                "name": "継続時間",
+                "tooltip": "実際の時間は宝の効果と特性で変化。負の値を入力する事で与える継続時間が上回る時のみ上書きする"
+            }
+        }
+    },
+    "STRONG": {
+        "abbr_name": "攻撃力上昇",
+        "full_name": "攻撃力上昇",
+        "tooltip": null,
+        "format": "体力が(health)%[(!incremental){以下で}(incremental){に近付く程}]攻撃力が(_abs(mult))%[(mult>0){上昇}(mult<0){減少}]する",
+        "class": {
+            "health": {
+                "name": "体力%",
+                "tooltip": "ここで体力が何%以下で攻撃力が変化するかを設定出来る"
+            },
+            "mult": {
+                "name": "上昇量",
+                "tooltip": "負の値を入力すると逆に減少する"
+            },
+            "incremental": {
+                "name": "段階的",
+                "tooltip": "有効にすると、即座に変化するのではなく、設定した体力%に近づく程段々と攻撃力が変化する"
+            }
+        }
+    },
+    "SPEEDUP": {
+        "abbr_name": "移動速度上昇",
+        "full_name": "移動速度上昇",
+        "tooltip": null,
+        "format": "体力が(health)%[(!incremental){以下で}(incremental){に近付く程}]移動速度が(_abs(mult))%[(mult>=100){上昇}(mult<100){減少}]する",
+        "class": {
+            "health": {
+                "name": "体力%",
+                "tooltip": "ここで体力が何%以下で移動速度が変化するかを設定出来る"
+            },
+            "mult": {
+                "name": "上昇量",
+                "tooltip": "負の値を入力すると逆に遅くなる"
+            },
+            "incremental": {
+                "name": "段階的",
+                "tooltip": "即座に変化するのではなく、設定した体力%に近づく程段々と移動速度が変化する"
+            }
+        }
+    },
+    "LETHAL": {
+        "abbr_name": "生き残る",
+        "full_name": "一度だけ生き残る",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)%の確率で}]一度だけ生き残る",
+        "class": {
+            "prob": {
+                "name": "確率",
+                "tooltip": null
+            }
+        }
+    },
+    "BURROW": {
+        "abbr_name": "地中移動",
+        "full_name": "地中移動",
+        "tooltip": null,
+        "format": "感知射程に入ると(dis)の距離まで[(count<0){無制限に}(count==1){一回だけ}(count==2){二回まで}(count>2){(count)回}]潜る",
+        "class": {
+            "count": {
+                "name": "移動回数",
+                "tooltip": "-1と入力すると無制限に潜る"
+            },
+            "dis": {
+                "name": "移動距離",
+                "tooltip": "地中移動の時間は潜ったキャラの移動速度と移動距離により異なる"
+            }
+        }
+    },
+    "REVIVE": {
+        "abbr_name": "蘇生",
+        "full_name": "蘇生",
+        "tooltip": "基本的な蘇生には上から3つのパラメーターのみが含まれ、後のパラメーターは範囲指定された蘇生に使用される",
+        "format": [
+            "死亡後(_dispTime(time))経過後に最大体力の(health)%で[(count<0){無制限に}(count==1){一回だけ}(count==2){二回まで}(count>2){(count)回}]蘇生",
+            "[(type.imu_zkill){(_left)ゾンビキラー無効(_right)}]",
+            "[(type.revive_others){(_left)この蘇生は他の",
+            "[(type.revive_non_zombie){味方}]",
+            "[(!type.revive_non_zombie){ゾンビの味方}]",
+            "[(type.range_type>=2){が一度でも}(!type.range_type>=2){が}]",
+            "(dis_0)~(dis_1)の範囲",
+            "[(type.range_type==0){に入り、このキャラが移動/待機/攻撃中の場合}]",
+            "[(type.range_type==1){に入り、このキャラがステージ上にいる限り}]",
+            "[(type.range_type==2){を通過し、このキャラがステージ上にいる限り}]",
+            "[(type.range_type==3){を通過すると}]蘇生する(_right)}]"
+        ],
+        "class": {
+            "count": {
+                "name": "蘇生回数",
+                "tooltip": "-1と入力すると無限に復活する"
+            },
+            "time": {
+                "name": "遅延",
+                "tooltip": null
+            },
+            "health": {
+                "name": "体力%",
+                "tooltip": "蘇生後の体力の割合をここで設定可能"
+            },
+            "dis_0": {
+                "name": "範囲0",
+                "tooltip": "高度な設定：他キャラ蘇生の範囲指定位置0。 味方の蘇生が有効な場合にのみ適用可能"
+            },
+            "dis_1": {
+                "name": "範囲1",
+                "tooltip": "高度な設定：他キャラ蘇生の範囲指定位置1。 味方の蘇生が有効な場合にのみ適用可能"
+            },
+            "type.range_type": {
+                "name": "範囲蘇生の種類",
+                "tooltip": [
+                    "味方の蘇生が有効な場合にのみ適用可能",
+                    "0で通常時の範囲内にて蘇生を行う",
+                    "1でステージにいる限り範囲内にて蘇生を行う",
+                    "2でステージにいる限り一度でも範囲を通過した味方に対し蘇生を行う",
+                    "3で一度でも範囲を通過した味方に対し蘇生を行う"
+                ]
+            },
+            "type.imu_zkill": {
+                "name": "ゾンビキラー無効",
+                "tooltip": "ゾンビキラー能力が無効"
+            },
+            "type.revive_non_zombie": {
+                "name": "非ゾンビ",
+                "tooltip": "非ゾンビのキャラも蘇生させる。 味方の蘇生が有効な場合にのみ適用可能"
+            },
+            "type.revive_others": {
+                "name": "味方の蘇生",
+                "tooltip": "範囲蘇生機能のオプション"
+            }
+        }
+    },
+    "IMUKB": {
+        "abbr_name": "ふっとばす無効",
+        "full_name": "ふっとばす無効/耐性",
+        "tooltip": null,
+        "format": [
+            "ふっとばす[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)ふっとばしの距離を(mult)%減らす(_right)}(mult<0){ (_left)ふっとばしの距離が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){ふっとばし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対するふっとばしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対するふっとばしの距離が(_abs(block))%増える(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100でふっとばを完全にブロックする。1から99に設定すると味方のふっとばされる距離を減らす"
+            }
+        }
+    },
+    "IMUSTOP": {
+        "abbr_name": "止める無効",
+        "full_name": "動きを止める無効/耐性",
+        "tooltip": null,
+        "format": [
+            "動きを止める[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)動きを止めしの距離を(mult)%減らす(_right)}(mult<0){ (_left)動きを止めしの距離が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){動きを止めし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する動きを止めしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対する動きを止めしの距離が(_abs(block))%増える(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100で動きを止めるを完全にブロックする。1から99に設定すると味方の動きを止めされる距離を減らす"
+            }
+        }
+    },
+    "IMUSLOW": {
+        "abbr_name": "遅くする無効",
+        "full_name": "動きを遅くする無効/耐性",
+        "tooltip": null,
+        "format": [
+            "動きを遅くする[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)遅くしの距離を(mult)%減らす(_right)}(mult<0){ (_left)遅くしの距離が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){遅くし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する遅くしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対する遅くしの距離が(_abs(block))%増える(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100で動きを遅くするを完全にブロックする。1から99に設定すると味方の遅くされる距離を減らす"
+            }
+        }
+    },
+    "IMUWAVE": {
+        "abbr_name": "波動無効",
+        "full_name": "波動無効/耐性",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Waves[(pid){ with (_toString(pid)) IDs}]",
+            "[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Wave[(block==0&pid){ with (_toString(pid)) IDs}] [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100で波動を完全にブロックする。1から99に設定すると味方の波動される距離を減らす"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Values will only make resistance apply to wave attacks with these ids, if any. Value 0 targets ID-less Wave Attacks"
+            }
+        }
+    },
+    "IMUWEAK": {
+        "abbr_name": "攻撃力低下無効",
+        "full_name": "攻撃力ダウン無効/耐性",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Weaken",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Weaken [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
+            "[(smartImu!=0){. Only affects attack [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100で攻撃力ダウンを完全にブロックする。1から99に設定すると味方の攻撃力ダウンされる距離を減らす"
+            },
+            "smartImu": {
+                "name": "Ignore",
+                "tooltip": "0 = Resist buffs and debuffs, 1 = Only resistant to attack debuffs, -1 = Only resistant to attack buffs"
+            }
+        }
+    },
+    "IMULETHARGY": {
+        "abbr_name": "無気力無効",
+        "full_name": "無気力無効/耐性",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Lethargy",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Lethargy [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
+            "[(smartImu!=0){. Only affects attack [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100で無気力を完全にブロックする。1から99に設定すると味方の無気力される距離を減らす"
+            },
+            "smartImu": {
+                "name": "Ignore",
+                "tooltip": "0 = Resist buffs and debuffs, 1 = Only resistant to debuffs, -1 = Only resistant to buffs"
+            }
+        }
+    },
+    "IMUWARP": {
+        "abbr_name": "ワープ無効",
+        "full_name": "ワープ無効/耐性",
+        "tooltip": null,
+        "format": [
+            "ワープ[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)ワープしの距離を(mult)%減らす(_right)}(mult<0){ (_left)ワープしの距離が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){ワープし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対するワープしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対するワープしの距離が(_abs(block))%増える(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100でワープを完全にブロックする。1から99に設定すると味方のワープされる距離を減らす"
+            }
+        }
+    },
+    "IMUCURSE": {
+        "abbr_name": "呪い無効",
+        "full_name": "呪い無効/耐性",
+        "tooltip": null,
+        "format": [
+            "呪い[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)呪いしの距離を(mult)%減らす(_right)}(mult<0){ (_left)呪いしの距離が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){呪いし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する呪いしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対する呪いしの距離が(_abs(block))%増える(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "100で呪いを完全にブロックする。1から99に設定すると味方の呪いされる距離を減らす"
+            }
+        }
+    },
+    "IMUSEAL": {
+        "abbr_name": "imu. Seal",
+        "full_name": "Immune/Resistant to Seal",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Seal",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Seal [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": null
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block seal"
+            }
+        }
+    },
+    "IMUSUMMON": {
+        "abbr_name": "imu. Summon",
+        "full_name": "Immune/Resistant to Summon",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to On Hit/On Kill Summon",
+            "[(mult<100&mult>0){ (_left)Reduces (mult)% of the summoned entity's strength(_right)}(mult<0){ (_left)Summoned entities will be (_abs(mult))% stronger(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Summon [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Reduces (block)% of the summoned entity's strength(_right)}(block<0){ (_left)Summoned entities will be (_abs(block))% stronger(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "割合",
+                "tooltip": "Only applies to On Hit and On Kill summon."
+            },
+            "block": {
+                "name": "ストッパー",
+                "tooltip": "Set from 1 to 99 to reduce all summoned entities' strength. Set to 100 to completely block summon"
+            }
+        }
+    },
+    "SNIPER": {
+        "abbr_name": "sniper",
+        "full_name": "Sniper Style Knock Back",
+        "tooltip": "This ability penetrates Knock Back Immunity",
+        "format": "[(prob<100){(prob)% chance to deal}(prob==100){Deals}] sniper-styled knock back to target",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            }
+        }
+    },
+    "TIME": {
+        "abbr_name": "time",
+        "full_name": "Stop Time",
+        "tooltip": "Unlike Stop, this ability freezes everything including waves, money gain, cat and enemy cool down, etc",
+        "format": "[(prob<100){(prob)% chance to }][(Intensity==100){Stop}(intensity>0&intensity<100){Slow}(intensity<0){Hasten}][(prob==100){s}] time[(intensity!=100){ by (_abs(intensity))%}] for (_dispTime(time))",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "intensity": {
+                "name": "intensity",
+                "tooltip": "The power of the timestop. If the intensity is lower than the duration, there will be certain intervals where units will be able to move. Set to negative to speed up entities with time stop immunity"
+            }
+        }
+    },
+    "SEAL": {
+        "abbr_name": "seal",
+        "full_name": "Seal",
+        "tooltip": "Seal will disable all abilities except Burrow, Metal, Self-Destruct, Only-Attack, and basic Revive",
+        "format": "[(prob<100){(prob)% chance to seal}(prob==100){Seals}] target for (_dispTimeF(time))",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": "actual duration is subjected to treasure values and traits. Set duration to negative to override only if proc duration is higher"
+            }
+        }
+    },
+    "SUMMON": {
+        "abbr_name": "SUMMON",
+        "full_name": "Summon",
+        "tooltip": null,
+        "format": [
+            "[(prob<100){(prob)% chance to summon}(prob==100){Summons}] (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
+            "each summoned (dis)[(max_dis!=dis){ ~ (max_dis)}] range away from ",
+            "[(type.on_kill|type.on_hit){each target}",
+            "(!type.on_hit&!type.on_kill){the summoner}] ",
+            "[(type.on_hit){hit}",
+            "(type.on_kill&!type.on_hit){killed}",
+            "(!type.on_kill&!type.on_hit){on this attack}], ",
+            "[(type.same_health){each entity will have the same hp as the summoner, }]",
+            "[(type.bond_hp){the summoner's hp will be bound with each summoned entity's hp, }]",
+            "[(type.pass_proc!=0){and }]are[(type.ignore_limit){n't}] restricted by the stage entity limit",
+            "[(type.pass_proc!=0){, and carry all procs from [(type.pass_proc!=2){the summoner}][(type.pass_proc==3){ and }]}][(type.pass_proc!=1){ each entity hit}]. ",
+            "Summoned entities will be in [(min_layer==max_layer){[(min_layer==-1){the same layer as this entity}(min_layer!=-1){layer (min_layer)}]}",
+            "(min_layer!=max_layer){a random layer between (min_layer) and (max_layer)}]. ",
+            "[(type.anim_type!=0){Summon will display [(type.anim_type==1){warp}(type.anim_type==2|type.anim_type==3){burrow}(type.anim_type==4){entry}(type.anim_type==5){",
+            "attack}(type.anim_type==6){Everywhere Door}] animation[(type.anim_type==3){ and disable burrow for summoned entities}]}]."
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "id": {
+                "name": "ID",
+                "tooltip": null
+            },
+            "dis": {
+                "name": "min distance",
+                "tooltip": "Minimum distance from this entity by default, or from the target if on hit or on kill is enabled"
+            },
+            "max_dis": {
+                "name": "max distance",
+                "tooltip": "Max distance from this entity by default, or from the target if on hit or on kill is enabled"
+            },
+            "mult": {
+                "name": "buff",
+                "tooltip": "Buff of the summoned entity, relative to this entity by default, fixed buff if you enable fix buff"
+            },
+            "time": {
+                "name": "delay",
+                "tooltip": "delay of this summon"
+            },
+            "min_layer": {
+                "name": "min layer",
+                "tooltip": "lowest layer the summoned entity will be at. Set to -1 to use same layer as this entity"
+            },
+            "max_layer": {
+                "name": "max layer",
+                "tooltip": "highest layer the summoned entity will be at. Set to -1 to use same layer as this entity"
+            },
+            "type.anim_type": {
+                "name": "summon anim",
+                "tooltip": [
+                    "summon animation, 0 for no animation, 1 for warp animation,",
+                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation,",
+                    " 5 for attack animation, 6 for Everywhere Door animation.", 
+                    " The summoned entity must have burrow animation in order to use 2 or 3."
+                ]
+            },
+            "type.ignore_limit": {
+                "name": "ignore limit",
+                "tooltip": "ignore the stage entity limit. Be careful with this, don't summon too much. It can break the game"
+            },
+            "type.fix_buff": {
+                "name": "fix buff",
+                "tooltip": [
+                    "Use fixed buff instead of relative buff. ",
+                    "Ex: 200% summoner and 300% buff would mean 600% buff if fix buff is disabled and 300% buff if fix buff is enabled"
+                ]
+            },
+            "type.same_health": {
+                "name": "same health",
+                "tooltip": "Set the summoned entity to have the same health as this entity."
+            },
+            "type.bond_hp": {
+                "name": "Bond health",
+                "tooltip": "When activated, the summoner will receive all damage and procs the summoned entity receives"
+            },
+            "type.on_hit": {
+                "name": "on hit",
+                "tooltip": [
+                    "Summon if and only if this attack hits targets.",
+                    " Summon per target attacked, distance origins are set to the targets' positions.",
+                    " Multiple summon possible for ranged attack."
+                ]
+            },
+            "type.on_kill": {
+                "name": "on kill",
+                "tooltip": [
+                    "Summon if and only if this attack kills targets.",
+                    " Summon per target killed, distance origins are set to the targets' positions.",
+                    " Multiple summon possible for ranged attack."
+                ]
+            },
+            "type.pass_proc": {
+                "name": "Pass procs",
+                "tooltip": "Passes all inflicted status to summoned units. 0 = none, 1 = from summoner, 2 = from attacked entities, 3 = from both"
+            },
+            "amount": {
+                "name": "Amount",
+                "tooltip": "The amount to be summoned."
+            },
+            "form": {
+                "name": "Form",
+                "tooltip": "Set which form of the unit you want to summon. Only applicable on Cat Units."
+            }
+        }
+    },
+    "MOVEWAVE": {
+        "abbr_name": "move atk",
+        "full_name": "Moving Attack",
+        "tooltip": null,
+        "format": [
+            "[(prob<100){(prob)% chance to have}(prob==100){Has}] moving hitbox[(pid){ with (_toString(pid)) IDs}], ",
+            "originated at a distance of (dis) from this entity ",
+            "with (width) widths, ",
+            " (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))"
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "speed": {
+                "name": "speed",
+                "tooltip": "in units per frame"
+            },
+            "width": {
+                "name": "width",
+                "tooltip": "width of the hitbox, from left to right"
+            },
+            "time": {
+                "name": "time",
+                "tooltip": null
+            },
+            "dis": {
+                "name": "distance",
+                "tooltip": "describes the location of the center of the hitbox when initiated"
+            },
+            "itv": {
+                "name": "interval",
+                "tooltip": null
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of moving attack, allowing for type-based resistance discrimination"
+            }
+        }
+    },
+    "IMUMOVING": {
+        "abbr_name": "imu. Move",
+        "full_name": "Immune/Resistant to Moving Atk",
+        "tooltip": null,
+        "format": "[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Moving Attacks[(pid){ with (_toString(pid)) IDs}][(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "pid": {
+                "name": "id",
+                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
+            }
+        }
+    },
+    "THEME": {
+        "abbr_name": "theme",
+        "full_name": "Background Switch",
+        "tooltip": null,
+        "format": [
+            "[(prob<100){(prob)% chance to }]Change[(prob==100){s}] [(id){the background to (_id(id))[(mus){ and }]}][(mus){the music to (_id(mus))}] for (_dispTime(time))",
+            "[(type.kill){ and kills all entities on the field}]"
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "time",
+                "tooltip": "time until background switch back"
+            },
+            "id": {
+                "name": "BG ID",
+                "tooltip": null
+            },
+            "mus": {
+                "name": "BGM ID",
+                "tooltip": null
+            },
+            "type.kill": {
+                "name": "kill",
+                "tooltip": "Kill all entities in the stage"
+            }
+        }
+    },
+    "POISON": {
+        "abbr_name": "venom",
+        "full_name": "Venom",
+        "tooltip": null,
+        "format": [
+            "[(prob<100){(prob)% chance to }][(type.damage_type==0){Burn}(type.damage_type==1){Poison}",
+            "(type.damage_type==2){Bleed}(type.damage_type==3){Corrode}][(prob==100){s}] target for ",
+            "(_dispTime(time)), dealing [(type.damage_type==0){(damage) damage}",
+            "(type.damage_type>0){a damage of (damage)% of target's ",
+            "[(type.damage_type==1){total}(type.damage_type==2){current}(type.damage_type==3){lost}]",
+            " health}] every (_dispTime(itv)). ",
+            "This effect is [(type.unstackable){not }]stackable[(type.ignoreMetal){, [(!type.modifAffected){and }]bypasses metal ability}][(type.modifAffected){, and it's damage is affected by anything that modifies the original attack's damage}]."
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "time",
+                "tooltip": null
+            },
+            "damage": {
+                "name": "damage",
+                "tooltip": "whether it is percent or actual value depends on the damage type"
+            },
+            "itv": {
+                "name": "interval",
+                "tooltip": null
+            },
+            "type.damage_type": {
+                "name": "damage type",
+                "tooltip": "0 for fixed damage (burn), 1 for a % of total health (poison), 2 for a % of current health, 3 for a % of lost health (corrode)."
+            },
+            "type.unstackable": {
+                "name": "unstackable",
+                "tooltip": null
+            },
+            "type.ignoreMetal": {
+                "name": "Bypass Metal",
+                "tooltip": "Activate this to deal regular damage to metal enemies."
+            },
+            "type.modifAffected": {
+                "name": "Consider Abilities",
+                "tooltip": "Toggle this to make poison damage affected by damage-modifying abilities such as strong against or critical."
+            }
+        }
+    },
+    "IMUPOI": {
+        "abbr_name": "imu. Venom",
+        "full_name": "Immune/Resistant to Venom",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Venom",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Poison [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
+            "[(smartImu!=0){. Only affects [(smartImu>0){harmful}(smartImu<0){healing}] venom}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce damage over time. Set to 100 to completely block poison"
+            },
+            "smartImu": {
+                "name": "Ignore",
+                "tooltip": "0 = Resist all venom, 1 = Only resistant to harmful venom, -1 = Only resistant to healing venom"
+            }
+        }
+    },
+    "BOSS": {
+        "abbr_name": "boss",
+        "full_name": "Boss Shockwave",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)% chance to }]boss wave",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            }
+        }
+    },
+    "CRITI": {
+        "abbr_name": "imu. crit",
+        "full_name": "Immunity to Critical Hit",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Critical Hits",
+            "[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Critical Hit [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases damage taken by (block)%(_right)}(block<0){ (_left)Increases damage taken by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce critical damage. Set to 100 to completely block crits"
+            }
+        }
+    },
+    "SATK": {
+        "abbr_name": "Strong Hit",
+        "full_name": "Strong Hit",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)% chance to }]Savage blow[(prob==100){s}] (_left)Gives (mult)% more damage(_right)",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            }
+        }
+    },
+    "IMUATK": {
+        "abbr_name": "Invi.",
+        "full_name": "Invincibility",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)% chance to dodge}(prob==100){Dodges}] attacks for (_dispTimeF(time))[(cd>0){, with a cooldown of (_dispTimeF(cd)) per dodge}]",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "cd": {
+                "name": "cooldown",
+                "tooltip": "Unit will not be able to dodge after the given amount of frames after proc ends"
+            }
+        }
+    },
+    "POIATK": {
+        "abbr_name": "toxic",
+        "full_name": "Toxic",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)% chance to inflict}(prob==100){Inflicts}] toxic (_left)Deals (mult)% of target's max health(_right)",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            }
+        }
+    },
+    "VOLC": {
+        "abbr_name": "surge",
+        "full_name": "Surge",
+        "tooltip": null,
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a Lv (time/20) surge attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "type.hitless": {
+                "name": "Miss Trigger",
+                "tooltip": "Wave will spawn even if this attack misses"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
+            }
+        }
+    },
+    "IMUPOIATK": {
+        "abbr_name": "imu. toxic",
+        "full_name": "Immune/Resistant to Toxic",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Toxic",
+            "[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Toxic [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases damage taken by (block)%(_right)}(block<0){ (_left)Increases damage taken by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block toxic"
+            }
+        }
+    },
+    "IMUVOLC": {
+        "abbr_name": "imu. Surge",
+        "full_name": "Immune/Resistant to Surge",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Surge Attack[(pid){ with (_toString(pid)) IDs}][(mult<100&mult>0)",
+            "{ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases taken damage by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Surge Attack [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block surges"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
+            }
+        }
+    },
+    "ARMOR": {
+        "abbr_name": "armor break",
+        "full_name": "Armor Break",
+        "tooltip": null,
+        "format": "(prob)% chance to [(mult<0){enchance}(mult>=0){break}] target's armor for (_dispTimeF(time)) (_left)Makes target take (_abs(mult))% [(mult<0){less}(mult>=0){more}] damage(_right)[(stackable){ (_left)Stackable(_right)}]",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
+            }
+        }
+    },
+    "SPEED": {
+        "abbr_name": "haste",
+        "full_name": "Haste",
+        "tooltip": null,
+        "format": [
+            "(prob)% chance to ",
+            "[(type==2){set}(type!=2){[(speed>=0){increase}(speed<0){decrease}]}]",
+            " target's speed ",
+            "[(type!=2){by}(type==2){to}] [(type==2){(speed)}(type!=2){(_abs(speed))}][(type==1){%}]",
+            " for (_dispTimeF(time))[(stackable){ (_left)Stackable(_right)}]"
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "speed": {
+                "name": "speed",
+                "tooltip": null
+            },
+            "stackable": {
+                "name": "Stackable",
+                "tooltip": "If true, the weaken effect will stack, increasing the effect the more stacks there are"
+            },
+            "type": {
+                "name": "type",
+                "tooltip": "0 for adding speed by a value, 1 for increasing the speed by a percentage, 2 for setting speed to a value"
+            }
+        }
+    },
+    "IMUARMOR": {
+        "abbr_name": "Imu. ABreak",
+        "full_name": "Immune/Resistant to Armor Break",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Armor Break",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Armor Break [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
+            "[(smartImu!=0){. Only affects armor [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block armor break"
+            },
+            "smartImu": {
+                "name": "Ignore",
+                "tooltip": "0 = Resist buffs and debuffs, 1 = Only resistant to armor debuffs, -1 = Only resistant to armor buffs"
+            }
+        }
+    },
+    "IMUSPEED": {
+        "abbr_name": "Imu.Haste",
+        "full_name": "Immune/Resistant to Haste",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Haste",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Haste [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
+            "[(smartImu!=0){. Only affects speed [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block Haste"
+            },
+            "smartImu": {
+                "name": "Ignore",
+                "tooltip": "0 = Resist buffs and debuffs, 1 = Only resistant to speed debuffs, -1 = Only resistant to speed buffs"
+            }
+        }
+    },
+    "MINIWAVE": {
+        "abbr_name": "mini-wave",
+        "full_name": "Mini-Wave",
+        "tooltip": "Creates small wave which moves twice faster than normal wave with dynamic damage multiplication parameter",
+        "format": ["[(prob<100){(prob)% chance to create}(prob==100){Creates}] ",
+            "a lv.(lv) [(inverted){inverted }][(multi>100){mega}(multi<=100){mini}]-wave[(pid){ with (_toString(pid)) IDs}]",
+            "[(type.hitless){, even if this attack misses}] [(multi!=20){(_left)Gives target (multi)% of activator's damage(_right)}]"],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "lv": {
+                "name": "level",
+                "tooltip": null
+            },
+            "multi": {
+                "name": "multi",
+                "tooltip": "Percentage of activator's damage.<br>If multi is 20, it will have 20% of activator's damage. Negative values are allowed"
+            },
+            "type.hitless": {
+                "name": "Miss Trigger",
+                "tooltip": "Wave will spawn even if this attack misses"
+            },
+            "inverted": {
+                "name": "Inverted",
+                "tooltip": "Start point, end point, and traversal direction are all inverted"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of miniwave attack, allowing for type-based resistance discrimination"
+            }
+        }
+    },
+    "DMGCUT": {
+        "abbr_name": "Spr. Armor",
+        "full_name": "Super Armor",
+        "tooltip": "This ability reduces all damage that is below certain amount to zero.",
+        "format": "[(prob<100){(prob)% chance to }][(reduction>=0){Reduce}(reduction<0){Increase}][(prob==100){s}] [(type.traitIgnore){all }]damage lower than [(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}] by (reduction)% [(type.procs){ and ignore the attack's procs}]",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dmg": {
+                "name": "damage",
+                "tooltip": "The maximum amount of damage to be negated."
+            },
+            "reduction": {
+                "name": "reduction %",
+                "tooltip": "Percentage of the damage to reduce it by."
+            },
+            "type.traitIgnore": {
+                "name": "ignore traits",
+                "tooltip": "When this is checked, this ability can trigger regardless of the attacker's trait."
+            },
+            "type.procs": {
+                "name": "ignore procs",
+                "tooltip": "When this is checked, procs from nullified attacks will also be negated."
+            },
+            "type.magnif": {
+                "name": "Use Magnification",
+                "tooltip": "Activate this to make armor's HP affected by the entity's HP magnification."
+            }
+        }
+    },
+    "DMGCAP": {
+        "abbr_name": "M.Shield",
+        "full_name": "Mystic Shield",
+        "tooltip": "This ability reduces all damage that is above certain amount to said amount (Or nullifies, if 'nullify damage' is checked).",
+        "format": "(prob)% chance to [(type.nullify){nullify[(type.traitIgnore){ all}]}(!type.nullify){set}] damage higher than [(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}][(!type.nullify){ to [(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}]}(type.procs){ and ignore the attack's procs}]",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dmg": {
+                "name": "damage",
+                "tooltip": "The minimum amount of damage to be capped."
+            },
+            "type.traitIgnore": {
+                "name": "ignore traits",
+                "tooltip": "When this is checked, this ability can trigger regardless of the enemy's trait."
+            },
+            "type.nullify": {
+                "name": "nullify damage",
+                "tooltip": "When this is checked, damage from the attack will be negated instead of set to the amount"
+            },
+            "type.procs": {
+                "name": "ignore procs",
+                "tooltip": "When this is checked, procs from nullified attacks will also be negated."
+            },
+            "type.magnif": {
+                "name": "Use Magnification",
+                "tooltip": "Activate this to make shield's HP affected by the entity's HP magnification."
+            }
+        }
+    },
+    "BARRIER": {
+        "abbr_name": "barrier",
+        "full_name": "Barrier",
+        "tooltip": "Blocks all damage lower than the barrier's HP. Will break if an attack deals more damage than it's HP",
+        "format": [
+            "Barrier (_left)Barrier has [(type.magnif){(_shield(health))}(!type.magnif){(health)}] HP",
+            "[(regentime>0){, regenerates (_dispTime(regentime)) after being broken}]",
+            "[(timeout>0){, barrier breaks after (_dispTime(timeout))}](_right)"
+        ],
+        "class": {
+            "health": {
+                "name": "Health",
+                "tooltip": "Health of the barrier"
+            },
+            "regentime": {
+                "name": "Regeneration Time",
+                "tooltip": "The entity's barrier will regenerate after a period of time passes. Set to 0 to deactivate this ability."
+            },
+            "timeout": {
+                "name": "Timeout",
+                "tooltip": "The entity's barrier will break after a period of time passes. Set to 0 to deactivate this ability."
+            },
+            "type.magnif": {
+                "name": "Use Magnification",
+                "tooltip": "Activate this to make barrier's HP affected by the entity's HP magnification."
+            }
+        }
+    },
+    "DEMONSHIELD": {
+        "abbr_name": "D.Shield",
+        "full_name": "Aku Shield",
+        "tooltip": "Blocks a certain amount of damage. Unlike barrier, it absorbs damage instead of negating it.",
+        "format": "Aku Shield (_left)Shield has (_shield(hp)) HP, regenerates with (regen)% of its original HP when unit gets hitbacked(_right)",
+        "class": {
+            "hp": {
+                "name": "health",
+                "tooltip": "Health of the shield"
+            },
+            "regen": {
+                "name": "regen",
+                "tooltip": "Percentage of the base HP it regenerates upon HB"
+            }
+        }
+    },
+    "SHIELDBREAK": {
+        "abbr_name": "Shield Pierce",
+        "full_name": "Shield Piercer",
+        "tooltip": "Directly breaks Aku shield. Be aware that this doesn't prevent shield from regenerating when hitbacked.",
+        "format": "[(prob<100){(prob)% chance to }]Break[(prob==100){s}] Aku shield",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            }
+        }
+    },
+    "COUNTER": {
+        "abbr_name": "Counter",
+        "full_name": "Counter Attack",
+        "tooltip": "Deal damage back when attacked.",
+        "format": [
+            "[(prob<100){(prob)% chance to counterattack}(prob==100){Counterattacks}], ",
+            "dealing (damage)% [(!type.useOwnDamage){of the damage received from an attack [(maxDamage!=0){(_left)Up to (_abs(maxDamage))(_right)}]}",
+            "(type.useOwnDamage){of this unit's damage}] back. [(maxDamage<0){Counter damage will not exceed this unit's remaining HP. }]",
+            "[(type.counterWave!=0){This unit will also [(type.counterWave==1){counter}(type.counterWave==2){reflect}] wave/surge attacks. }][(type.procType!=0){This counterattack will ",
+            "[(type.procType==1|type.procType==3){have}(type.procType==2){replace}] ",
+            "the original attack's procs[(type.procType==2){ with this unit's procs}(type.procType==3){ and this entity's procs}]. }]",
+            "The counter will hit [(type.areaAttack){ all enemies}(!type.areaAttack){ only the attacker}][(type.areaAttack|!type.outRange){[(!type.areaAttack){ if they're}] standing ",
+            "[(minRange!=0|maxRange!=0){(minRange) ~ (maxRange) units away from this entity}(minRange==0&maxRange==0){on this entity's range}]}]."
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "damage": {
+                "name": "Damage%",
+                "tooltip": "The percentage of damage to reflect when getting hit."
+            },
+            "minRange": {
+                "name": "Blindspot",
+                "tooltip": "The counter won't hit anything standing below this number. Leave this and Max Range in 0 to use the unit's normal range."
+            },
+            "maxRange": {
+                "name": "Max Range",
+                "tooltip": "The counter will hit anything standing below this number. Leave this and Blindspot in 0 to use the unit's normal range."
+            },
+            "type.procType": {
+                "name": "Proc Type",
+                "tooltip": "The parameter here affects how attack procs are handled. 0 = Removes all procs. 1 = Reflects all procs back to the attacker. 2 = Replaces all the attack's procs with this unit's procs. 3 = Uses both this entity and the attacker's procs. Useless if there's a hit registered as counter"
+            },
+            "type.counterWave": {
+                "name": "Counter Waves",
+                "tooltip": "Toggle response when hit with a Wave or Surge. 0 = Do Nothing. 1 = Counter. 2 = Reflect."
+            },
+            "type.useOwnDamage": {
+                "name": "Use Own Damage",
+                "tooltip": "Use this unit's damage for counters instead of received damage."
+            },
+            "type.outRange": {
+                "name": "Ignore Distance",
+                "tooltip": "Toggle this on and the unit will counter regardless of how far away the attacker is."
+            },
+            "type.areaAttack": {
+                "name": "Area Attack",
+                "tooltip": "Toggle this on and the counter will target all units in the counter's range. If left off, only the attacker will receive damage."
+            },
+            "maxDamage": {
+                "name": "Damage Limit",
+                "tooltip": "Counter won't deal more than the specified amount of damage. Set to 0 for no limit. Set to negative number to also cap it to unit's remaining HP"
+            }
+        }
+    },
+    "DEATHSURGE": {
+        "abbr_name": "D.Surge",
+        "full_name": "Death Surge",
+        "tooltip": null,
+        "format": ["[(spawns>1){Every (spawns)th deployed[(prob<100){ has}] }][(prob<100){(prob)% chance to make}(prob==100){Makes}] ",
+            "a surge attack[(pid){ with (_toString(pid)) IDs}] for (_dispTime(time)) when killed (_left)Created within (dis_0) ~ (dis_1) range(_right)"],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
+            },
+            "spawns": {
+                "name": "Deploy Count",
+                "tooltip": "Amount of spawns per surge proc"
+            }
+        }
+    },
+    "MINIDEATHSURGE": {
+        "abbr_name": "M.D.Surge",
+        "full_name": "Mini Death Surge",
+        "tooltip": null,
+        "format": ["[(spawns>1){Every (spawns)th deployed[(prob<100){ has}] }][(prob<100){(prob)% chance to make}(prob==100){Makes}] ",
+            "a mini-surge attack[(pid){ with (_toString(pid)) IDs}] for (_dispTime(time)) when killed (_left)Created within ",
+            "(dis_0) ~ (dis_1) range[(mult!=20){, deals (mult)% of attacker's damage}](_right)"],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
+            },
+            "spawns": {
+                "name": "Kill Count",
+                "tooltip": "Amount of kills per surge proc"
+            }
+        }
+    },
+    "IMUCANNON": {
+        "abbr_name": "Imu.Cannon",
+        "full_name": "Cannon Immunity",
+        "tooltip": null,
+        "format": [
+            "[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to ",
+            "[(type!=127){[(type&1>0){regular cannon waves[(type>2){, }]}",
+            "(type&2>0){slow beam[(type>4){, }]}",
+            "(type&4>0){thunderbolt[(type>8){, }]}",
+            "(type&8>0){waterblast[(type>16){, }]}",
+            "(type&16>0){holy blast[(type>32){, }]}",
+            "(type&32>0){breakerblast[(type>64){, and}]}",
+            "(type&64>0){curseblast}]}(type==127){cannon attacks}]",
+            "[(mult!=100){ (_left)[(mult>0){Reduces}(mult<0){Increases}] damage taken and procs by (_abs(mult))%(_right)}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "type": {
+                "name": "type",
+                "tooltip": "+1 for regular cannon immunity, +2 for slow beam immunity, +4 for thunderbolt immunity, +8 for waterblast immunity, +16 for holy blast immunity, +32 for breakerblast immunity, +64 for curseblast immunity"
+            }
+        }
+    },
+    "BOUNTY": {
+        "abbr_name": "2x Money",
+        "full_name": "Money Multiplier",
+        "tooltip": null,
+        "format": "[(mult>0){Extra Money}(mult<0){Theft}] (_left)(_abs(mult))% [(mult>0){more}(mult<0){less}] money received upon defeating enemies(_right)",
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            }
+        }
+    },
+    "ATKBASE": {
+        "abbr_name": "Vs. Base",
+        "full_name": "Base Destroyer",
+        "tooltip": null,
+        "format": "[(mult>0){Base Destroyer}(mult<0){Bad at castle destruction}] (_left)Deals (_abs(mult))% [(mult>0){more}(mult<0){less}] damage to the Enemy Base(_right)",
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            }
+        }
+    },
+    "BSTHUNT": {
+        "abbr_name": "BST Kill",
+        "full_name": "Behemoth Slayer",
+        "tooltip": null,
+        "format": "Behemoth Slayer (_left)Deals 2.5x damage[(prob>0){, }(prob==0){ and }]only takes 0.6x damage[(prob>0){, and (prob)% chance to dodge their attacks for (_dispTime(time))}](_right)",
+        "class": {
+            "type.active": {
+                "name": "Stronger Vs. Behemoth",
+                "tooltip": null
+            },
+            "prob": {
+                "name": "dodge chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            }
+        }
+    },
+    "WORKERLV": {
+        "abbr_name": "Worker Lv",
+        "full_name": "Efficiency Bonus",
+        "tooltip": "Increases worker level by a given amount",
+        "format": "[(prob<100){(prob)% chance to }][(mult>0){Increase}(mult<0){Decrease}][(prob==100){s}] Worker Cat's level by (_abs(mult))",
+        "class": {
+            "prob": {
+                "name": "Chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "Lv increase",
+                "tooltip": "The amount to add. Use negative numbers to decrease worker lv instead"
+            }
+        }
+    },
+    "CDSETTER": {
+        "abbr_name": "CD Modifier",
+        "full_name": "Research Breaker",
+        "tooltip": "Increases a certain unit's cooldown by a given amount",
+        "format": [
+            "(prob)% chance to [(type==2){set}(type!=2){[(amount>0){increase}(amount<0){decrease}]}] ",
+            "[(slot<0){a random unit}(slot>=0&slot<10){the unit in the lineup's (slot+1)[(slot==0){st}(slot==1){nd}(slot==2){rd}(slot>2){th}] slot}(slot==10){attacked unit}]'s cooldown ",
+            "[(type==2){to}(type!=2){by}] (amount)[(type!=1){f}(type==1){%}]"
+        ],
+        "class": {
+            "prob": {
+                "name": "Chance",
+                "tooltip": null
+            },
+            "amount": {
+                "name": "increase",
+                "tooltip": "The amount to add. Use negative numbers to decrease cooldown instead"
+            },
+            "slot": {
+                "name": "slot",
+                "tooltip": "The slot of the unit to affect. Use -1 for random, and 10 to make the slot depend on the hit unit"
+            },
+            "type": {
+                "name": "type",
+                "tooltip": "0 = unit increase, 1 = percentage increase, 2 = set to value"
+            }
+        }
+    },
+    "WEAKAURA": {
+        "abbr_name": "Weak Aura",
+        "full_name": "Weakening Aura",
+        "tooltip": "Decreases morale for all enemies in the given range",
+        "format": [
+            "[(type.trait){All }]Enemies within (min_dis) ~ (max_dis) from this entity will",
+            "[(amult!=0){ deal (amult)% damage}]",
+            "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (_abs(dmult))% [(dmult>0){more}(dmult<0){less}] damage}]",
+            "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move at (smult)% speed}]",
+            "[(tmult!=0){[(amult!=0|dmult!=0|smult!=0){, and}] have (_abs(tmult))% [(tmult>0){more}(tmult<0){less}] TBA}]."
+        ],
+        "class": {
+            "amult": {
+                "name": "ATK Mult.",
+                "tooltip": "Attack Modifier"
+            },
+            "dmult": {
+                "name": "DEF Mult.",
+                "tooltip": "Defense Modifier"
+            },
+            "smult": {
+                "name": "SPD Mult.",
+                "tooltip": "Speed Modifier"
+            },
+            "tmult": {
+                "name": "TBA Mult.",
+                "tooltip": "TBA Modifier"
+            },
+            "min_dis": {
+                "name": "Blindspot",
+                "tooltip": "Below this range, aura has no effect"
+            },
+            "max_dis": {
+                "name": "Max Reach",
+                "tooltip": "Above this range, aura has no effect"
+            },
+            "type.trait": {
+                "name": "Ignore Traits",
+                "tooltip": "Weakens all enemies regardless of typing if true"
+            }
+        }
+    },
+    "STRONGAURA": {
+        "abbr_name": "Strong Aura",
+        "full_name": "Empowering Aura",
+        "tooltip": "Increases morale for all units in the given range",
+        "format": [
+            "[(type.trait){All }]Units [(skip_self){(_left)except self(_right) }]within (min_dis) ~ (max_dis) from this entity will",
+            "[(amult!=0){ deal (_abs(amult))% [(amult>0){more}(amult<0){less}] damage}]",
+            "[(dmult!=0){[(amult!=0){,[(smult==0&tmult==0){ and}]}] receive (dmult)% damage}]",
+            "[(smult!=0){[(amult!=0|dmult!=0){,[(tmult==0){ and}]}] move (_abs(smult))% [(smult>0){faster}(smult<0){slower}]}]",
+            "[(tmult!=0){[(amult!=0|dmult!=0|smult!=0){, and}] have (tmult)% of their TBA}]."
+        ],
+        "class": {
+            "amult": {
+                "name": "ATK Mult.",
+                "tooltip": "Attack Modifier"
+            },
+            "dmult": {
+                "name": "DEF Mult.",
+                "tooltip": "Defense Modifier"
+            },
+            "smult": {
+                "name": "SPD Mult.",
+                "tooltip": "Speed Modifier"
+            },
+            "tmult": {
+                "name": "TBA Mult.",
+                "tooltip": "TBA Modifier"
+            },
+            "min_dis": {
+                "name": "Blindspot",
+                "tooltip": "Below this range, aura has no effect"
+            },
+            "max_dis": {
+                "name": "Max Reach",
+                "tooltip": "Above this range, aura has no effect"
+            },
+            "type.trait": {
+                "name": "Ignore Traits",
+                "tooltip": "Strenghtens all allies regardless of typing if true"
+            },
+            "skip_self": {
+                "name": "Self-Unaffected",
+                "tooltip": "If true, unit will not be affected by its own aura"
+            }
+        }
+    },
+    "REMOTESHIELD": {
+        "abbr_name": "rangeshield",
+        "full_name": "Remote Shield",
+        "tooltip": "Lowers damage of attacks coming from a specified range",
+        "format": [
+            "[(prob<100{(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100{s}]",
+            "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
+            "(_abs(reduction))%[(type.procs){ and ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] ",
+            "damage taken from other units hit by the attack by (_abs(block))%}]}(reduction==0&block!=0){[(block>0){block}(block<0){amplify}]",
+            "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
+            "(_abs(block))%[(type.procs){ and block the attack's procs}].}][(type.waves){Wave/Surge attacks will be affected by this too.}]"
+        ],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "minrange": {
+                "name": "Min. Range",
+                "tooltip": "Attacks originating closer than this point will not be affected."
+            },
+            "maxrange": {
+                "name": "Max. Range",
+                "tooltip": "Attacks originating further than this point will not be affected."
+            },
+            "reduction": {
+                "name": "Reduction",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Block",
+                "tooltip": "Like reduction, but applies to all units"
+            },
+            "type.traitCon": {
+                "name": "Focus Traits",
+                "tooltip": "Activate this to make this proc only work if the this unit targets a trait from the attacker"
+            },
+            "type.procs": {
+                "name": "Evade Procs",
+                "tooltip": "Attack's procs won't apply if shield triggers and this is activated"
+            },
+            "type.waves": {
+                "name": "Target waves",
+                "tooltip": null
+            }
+        }
+    },
+    "AI": {
+        "abbr_name": "AI",
+        "full_name": "Strategist",
+        "tooltip": "Allows the unit to keep away from enemy attacks and fight smarter",
+        "format": [
+            "Strategist [(type.calcstrongest){ (_left)Unit will seek the most effective attack to use(_right)}]",
+            "[(retreatDist>0|danger){ (_left)[(danger){When in danger[(retreatDist>0){ or }][(retreatDist>0)",
+            "{enemies are (retreatDist) units away from this entity}],this unit will retreat at (retreatSpeed) speed(_right)}]",
+            "[(type.calcblindspot){ (_left)Unit will not count entities on it's blindspot for attack detection or other effectiveness calculations(_right)}]"
+        ],
+        "class": {
+            "type.calcstrongest": {
+                "name": "Check Strongest Attack",
+                "tooltip": "If this unit has more than one attack pattern, choose an attack based on which will deal the most effective damage instead of randomly"
+            },
+            "neardanger": {
+                "name": "Evade Danger",
+                "tooltip": "Move back if this unit is near an unit that is about to attack"
+            },
+            "type.calcblindspot": {
+                "name": "Blindspot Check",
+                "tooltip": "Unit will not attack if there's no enemies within the width of it's standing range and blindspot. If retreat is activated, this moves back an unit enters it's blindspot as well"
+            },
+            "retreatDist": {
+                "name": "Retreat Distance",
+                "tooltip": "Minimum distance unit's retreat will activate"
+            },
+            "retreatSpeed": {
+                "name": "Retreat Speed",
+                "tooltip": "Speed used to move back if retreat is activated"
+            }
+        }
+    },
+    "RAGE": {
+        "abbr_name": "rage",
+        "full_name": "Rage",
+        "tooltip": "Enrages the target, making it's attacks hurt both enemies and it's own allies",
+        "format": "[(prob<100){(prob)% chance to enrage}(prob==100){Enrages}] target for (_dispTimeF(time))",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            }
+        }
+    },
+    "HYPNO": {
+        "abbr_name": "hypno",
+        "full_name": "Hypnotize",
+        "tooltip": "Turns the target against its own allies",
+        "format": "[(prob<100){(prob)% chance to hypnotize}(prob==100){Hypnotizes}] target for (_dispTimeF(time))",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            }
+        }
+    },
+    "IMURAGE": {
+        "abbr_name": "imu. Rage",
+        "full_name": "Immune/Resistant to Rage",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Rage",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Rage [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block Rage"
+            }
+        }
+    },
+    "IMUHYPNO": {
+        "abbr_name": "imu. Hypno",
+        "full_name": "Immune/Resistant to Hypnosis",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Hypnosis",
+            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Hypnosis [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": null
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block Hypnosis"
+            }
+        }
+    },
+    "MINIVOLC": {
+        "abbr_name": "M.Surge",
+        "full_name": "Mini Surge",
+        "tooltip": "Creates small surge that does exactly same behavior of normal surge, but with less damage",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a Lv(time/20) Mini Surge[(pid){ with (_toString(pid)) IDs}] within (dis_0) ~ (dis_1) range[(type.hitless){, even if this attack misses}] for (_dispTime(time))[(mult!=20){ (_left)Deals (mult)% of attacker's damage(_right)}]",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            },
+            "time": {
+                "name": "duration",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            },
+            "type.hitless": {
+                "name": "Miss Trigger",
+                "tooltip": "Wave will spawn even if this attack misses"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the surge attack, allowing for type-based resistance discrimination"
+            }
+        }
+    },
+    "DEMONVOLC": {
+        "abbr_name": "C.Surge",
+        "full_name": "CounterSurge",
+        "tooltip": "Creates a surge when hit by a surge with the hitting surge's level and duration",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a surge when hit by a surge[(mult!=100){, with (mult)% of the surge's damage}]",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            }
+        }
+    },
+    "DMGINC": {
+        "abbr_name": "Extra DMG",
+        "full_name": "Extra Damage",
+        "tooltip": "Increases damage dealt to enemies on the traits this unit targets. Pretty much Massive Damage, but adjustable",
+        "format": "[(mult<100){Pitiful}(mult>100&mult<300){Strong}(mult>=300&mult<500){Massive}(mult>=500){Insane}] Damage (_left)Deals (_resDiv(mult))x damage to target traits(_right)",
+        "class": {
+            "mult": {
+                "name": "multiplier",
+                "tooltip": "Actual value is affected by ITF fruits for some traits"
+            }
+        }
+    },
+    "DEFINC": {
+        "abbr_name": "Resistance",
+        "full_name": "Resistance",
+        "tooltip": "Decreases damage taken from enemies on the traits this unit targets. Pretty much Resistant, but adjustable",
+        "format": "[(mult<100){Fragile}(mult>100&mult<400){Sturdy}(mult>=400){[(mult>=600){Insanely }]Resistant}] (_left)Takes 1/(_resDiv(mult))x Damage(_right)",
+        "class": {
+            "mult": {
+                "name": "multiplier",
+                "tooltip": "Actual value is affected by ITF fruits for some traits"
+            }
+        }
+    },
+    "RANGESHIELD": {
+        "abbr_name": "TypeShield",
+        "full_name": "Target Shield",
+        "tooltip": "Decreases damage taken from either single target or area attacks",
+        "format": "(prob)% chance to [(mult>0){decrease}(mult<0){increase}] damage taken from [(type.range){Area}(!type.range){Single Target}] Attacks by (_abs(mult))%",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            },
+            "type.range": {
+                "name": "Area Attacks",
+                "tooltip": "Activate this to make the shield affect Area Attacks instead of Single Target Attacks"
+            }
+        }
+    },
+    "SPIRIT": {
+        "abbr_name": "spirit",
+        "full_name": "Spirit Summon",
+        "tooltip": "Summons unit with invincibility and self-destruct automatically given, 150 range behind the summoner",
+        "format": [
+            "Summon (_entity(id,form)) as spirit up to (amount) times[(amount>1){s}] per summoner, with a [(amount>1&cd0!=cd1){initial }]cooldown of (_dispTime(cd0))",
+            "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
+            "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]",
+            "[(moneyCost!=0){. Summoning a spirit costs (moneyCost)¢}]",
+            "[(!type.inv){ (_left)This spirit can be killed(_right)}]"
+        ],
+        "class": {
+            "id": {
+                "name": "entity ID",
+                "tooltip": null
+            },
+            "cd0": {
+                "name": "Initial CD",
+                "tooltip": "Minimum and default is 15. Cooldown for the first spirit spawn"
+            },
+            "cd1": {
+                "name": "Respawn CD",
+                "tooltip": "Minimum and default is 15. Cooldown for the second+ spirit spawn"
+            },
+            "amount": {
+                "name": "Amount",
+                "tooltip": "Max Amount of spirits"
+            },
+            "summonerCd": {
+                "name": "CD Penalty",
+                "tooltip": "Amount of Recharge time to be added (or removed if negative) to the main unit if a spirit is spawned"
+            },
+            "moneyCost": {
+                "name": "Cost Penalty",
+                "tooltip": "Makes the spirit cost money to summon (measured in EoC Chapter 1 cost)"
+            },
+            "animType": {
+                "name": "Animation Type",
+                "tooltip": [
+                    "summon animation, 0 for no animation, 1 for warp animation,",
+                    " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation,",
+                    " 5 for attack animation, 6 for Everywhere Door animation.", 
+                    " The summoned entity must have burrow animation in order to use 2 or 3."
+                ]
+            },
+            "form": {
+                "name": "Form",
+                "tooltip": "Form of the summoned spirit."
+            },
+            "type.inv": {
+                "name": "Invincible",
+                "tooltip": "Makes unit spirits unkillable, much like the soul ones"
+            }
+        }
+    },
+    "METALKILL": {
+        "abbr_name": "M.killer",
+        "full_name": "Metal Killer",
+        "tooltip": "Decreases metal target's current HP with specified percentage value along with the normal attack too",
+        "format": "Metal Killer (_left)Decreases (mult)% of target's current HP(_right)",
+        "class": {
+            "mult": {
+                "name": "multiplier",
+                "tooltip": null
+            }
+        }
+    },
+    "BLAST": {
+        "abbr_name": "blast atk",
+        "full_name": "Blast Attack",
+        "tooltip": "Creates blast attack that spreads to each side with weaker damage over each blasts",
+        "format": ["[(prob<100){(prob)% chance to create}(prob==100){Creates}] a Level (lv) blast attack[(pid){ with (_toString(pid)) IDs}]",
+            "[(lv>1){, with (reduction)% damage reduction per wave}] (_left)Created [(dis_0==dis_1){at (dis_0) range}(dis_0!=dis_1){within (dis_0) ~ (dis_1) range}](_right)"],
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "dis_0": {
+                "name": "point near",
+                "tooltip": null
+            },
+            "dis_1": {
+                "name": "point far",
+                "tooltip": null
+            },
+            "lv": {
+                "name": "Level",
+                "tooltip": "BC Default is 3. The higher, the further it reaches"
+            },
+            "reduction": {
+                "name": "Reduction",
+                "tooltip": "BC Default is 30. Determines the amount of damage in % the explosions' damage will be reduced per level"
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Sets the IDs of the blast attack, allowing for type-based resistance discrimination"
+            }
+        }
+    },
+    "IMUBLAST": {
+        "abbr_name": "imu. Blast",
+        "full_name": "Immune/Resistant to Blast",
+        "tooltip": null,
+        "format": [
+            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Blast[(pid){ with (_toString(pid)) IDs}]",
+            "[(mult<100&mult>0){ (_left)Decreases damage by (mult)%(_right)}(mult<0){ (_left)Increases damage by (_abs(mult))%(_right)}]",
+            "[(block!=0&block<100){ & }]}][(block!=0){Blast [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
+            "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"
+        ],
+        "class": {
+            "mult": {
+                "name": "percent",
+                "tooltip": "Set negative to make this unit weak to the effect"
+            },
+            "block": {
+                "name": "Blocker",
+                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block slow. Set negative to increase the effect."
+            },
+            "pid": {
+                "name": "ID",
+                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
+            }
+        }
+    },
+    "DRAIN": {
+        "abbr_name": "absorb",
+        "full_name": "Absorber",
+        "tooltip": "Drains HP per enemy damaged",
+        "format": "[(prob<100){(prob)% chance to absorb}(prob==100){Absorbs}] (mult)% of the damage dealt as HP",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": "What percent of damage dealt will be recovered as HP"
             }
         }
     },
@@ -1858,7 +2044,7 @@
         "full_name": "Blessing",
         "tooltip": "Gives procs and abilities to affected entities. The opposite of curse, essentially",
         "format": [
-            "(prob)% chance to bless units for (_dispTime(time)), granting the blessed entities ",
+            "[(prob<100){(prob)% chance to bless}(prob==100){Blesses}] units for (_dispTime(time)), granting the blessed entities ",
             "[(abis!=0){Abilities: (_bitMask(abis))[((procs)|(traits)){, }]}][(procs){Procs: (_proc(procs))[(traits){, }]}]",
             "[(traits){Traits: (_toString(traits))}].[(stackable){This blessing is stackable.}]"
         ],
@@ -1886,6 +2072,26 @@
             "traits": {
                 "name": "Added Traits",
                 "tooltip": "Temporarily adds traits to the blessed entities"
+            }
+        }
+    },
+    "REFUND": {
+        "abbr_name": "Refund",
+        "full_name": "Refund",
+        "tooltip": null,
+        "format": "[(count>1){Every (count)th deployed[(prob<100){ has}] }] [(prob<100){(prob)% chance to refund}(prob==100){Refunds}] (mult)% of unit's cost when killed",
+        "class": {
+            "prob": {
+                "name": "chance",
+                "tooltip": null
+            },
+            "mult": {
+                "name": "multiplier",
+                "tooltip": "% of cost to be refunded"
+            },
+            "count": {
+                "name": "Deploy count",
+                "tooltip": "Amount of deploys needed for refund to trigger"
             }
         }
     }

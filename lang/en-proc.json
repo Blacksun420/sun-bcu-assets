@@ -428,7 +428,7 @@
             },
             "block": {
                 "name": "Blocker",
-                "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block surges"
+                "tooltip": "Set from 1 to 99 to reduce damage. Set to 100 to completely block waves"
             },
             "pid": {
                 "name": "ID",
@@ -2018,11 +2018,11 @@
             },
             "block": {
                 "name": "Blocker",
-                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block slow. Set negative to increase the effect."
+                "tooltip": "Set from 1 to 99 to reduce duration amongst all units. Set to 100 to completely block blast. Set negative to increase the effect."
             },
             "pid": {
                 "name": "ID",
-                "tooltip": "Values will only make resistance apply to moving attacks with these ids, if any. Value 0 targets ID-less Moving Attacks"
+                "tooltip": "Values will only make resistance apply to blast attacks with these ids, if any. Value 0 targets ID-less Blast Attacks"
             }
         }
     },
