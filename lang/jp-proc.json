@@ -102,7 +102,7 @@
             },
             "pid": {
                 "name": "ID",
-                "tooltip": "波動攻撃のIDを設定し、タイプによる耐性の識別を可能にする"
+                "tooltip": "波動攻撃のIDを設定し、波動に対する耐性の識別を可能にする"
             }
         }
     },
@@ -350,8 +350,8 @@
         "full_name": "ふっとばす無効/耐性",
         "tooltip": null,
         "format": [
-            "ふっとばす[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
-            "[(mult<100&mult>0){(_left)ふっとばしの距離を(mult)%減らす(_right)}(mult<0){ (_left)ふっとばしの距離が(_abs(mult))%増える(_right)}]",
+            "[(mult!=0&block!=100){ふっとばす[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)ふっとばしの距離を(mult)%減らす(_right)}(mult<0){(_left)ふっとばしの距離が(_abs(mult))%増える(_right)}]",
             "[(block!=0&block<100){＆}]}][(block!=0){ふっとばし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
             "[(block<100&block>0){(_left)味方に対するふっとばしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対するふっとばしの距離が(_abs(block))%増える(_right)}]}]"
         ],
@@ -362,7 +362,7 @@
             },
             "block": {
                 "name": "ストッパー",
-                "tooltip": "100でふっとばを完全にブロックする。1から99に設定すると味方のふっとばされる距離を減らす"
+                "tooltip": "100でふっとばすを完全にブロックする。1から99に設定すると味方のふっとばされる距離を減らす"
             }
         }
     },
@@ -371,10 +371,10 @@
         "full_name": "動きを止める無効/耐性",
         "tooltip": null,
         "format": [
-            "動きを止める[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
-            "[(mult<100&mult>0){(_left)動きを止めしの距離を(mult)%減らす(_right)}(mult<0){ (_left)動きを止めしの距離が(_abs(mult))%増える(_right)}]",
-            "[(block!=0&block<100){＆}]}][(block!=0){動きを止めし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
-            "[(block<100&block>0){(_left)味方に対する動きを止めしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対する動きを止めしの距離が(_abs(block))%増える(_right)}]}]"
+            "[(mult!=0&block!=100){動きを止める[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)動きを止める時間を(mult)%減らす(_right)}(mult<0){(_left)動きを止める時間が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){動きを止める[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する動きを止める時間を(block)%減らす(_right)}(block<0){(_left)味方に対する動きを止める時間が(_abs(block))%増える(_right)}]}]"
         ],
         "class": {
             "mult": {
@@ -383,7 +383,7 @@
             },
             "block": {
                 "name": "ストッパー",
-                "tooltip": "100で動きを止めるを完全にブロックする。1から99に設定すると味方の動きを止めされる距離を減らす"
+                "tooltip": "100で動きを止めるを完全にブロックする。1から99に設定すると味方に対する動きを止める時間を減らす"
             }
         }
     },
@@ -392,10 +392,10 @@
         "full_name": "動きを遅くする無効/耐性",
         "tooltip": null,
         "format": [
-            "動きを遅くする[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
-            "[(mult<100&mult>0){(_left)遅くしの距離を(mult)%減らす(_right)}(mult<0){ (_left)遅くしの距離が(_abs(mult))%増える(_right)}]",
-            "[(block!=0&block<100){＆}]}][(block!=0){遅くし[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
-            "[(block<100&block>0){(_left)味方に対する遅くしの距離を(block)%減らす(_right)}(block<0){(_left)味方に対する遅くしの距離が(_abs(block))%増える(_right)}]}]"
+            "[(mult!=0&block!=100){動きを遅くする[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)動きを遅くする時間を(mult)%減らす(_right)}(mult<0){(_left)動きを遅くする時間が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){動きを遅くする[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する動きを遅くする時間を(block)%減らす(_right)}(block<0){(_left)味方に対する動きを遅くする時間が(_abs(block))%増える(_right)}]}]"
         ],
         "class": {
             "mult": {
@@ -404,19 +404,19 @@
             },
             "block": {
                 "name": "ストッパー",
-                "tooltip": "100で動きを遅くするを完全にブロックする。1から99に設定すると味方の遅くされる距離を減らす"
+                "tooltip": "100で動きを遅くするを完全にブロックする。1から99に設定すると味方に対する動きを遅くする時間を減らす"
             }
         }
     },
     "IMUWAVE": {
         "abbr_name": "波動無効",
-        "full_name": "波動無効/耐性",
+        "full_name": "波動ダメージ無効/耐性",
         "tooltip": null,
         "format": [
-            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Waves[(pid){ with (_toString(pid)) IDs}]",
-            "[(mult<100&mult>0){ (_left)Decreases damage taken by (mult)%(_right)}(mult<0){ (_left)Increases damage taken by (_abs(mult))%(_right)}]",
-            "[(block!=0&block<100){ & }]}][(block!=0){Wave[(block==0&pid){ with (_toString(pid)) IDs}] [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
-            "[(block<100&block>0){ (_left)Decreases damage by (block)%(_right)}(block<0){ (_left)Increases damage by (_abs(block))%(_right)}]}]"
+            "[(pid){ID(_toString(pid))付きの}]波動ダメージ[(mult!=0&block!=100){[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)波動によるダメージを(mult)%減らす(_right)}(mult<0){(_left)波動によるダメージが(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){[(block==0&pid){ID(_toString(pid))付きの}]波動ダメージ[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)波動ダメージを(block)%減らす(_right)}(block<0){(_left)波動ダメージが(_abs(block))%増える(_right)}]}]"
         ],
         "class": {
             "mult": {
@@ -425,24 +425,24 @@
             },
             "block": {
                 "name": "ストッパー",
-                "tooltip": "100で波動を完全にブロックする。1から99に設定すると味方の波動される距離を減らす"
+                "tooltip": "100で波動を完全にブロックする。1から99に設定すると波動ダメージを減らす"
             },
             "pid": {
                 "name": "ID",
-                "tooltip": "Values will only make resistance apply to wave attacks with these ids, if any. Value 0 targets ID-less Wave Attacks"
+                "tooltip": "この値によって耐性が適用されるのは、そのいずれかのIDを持つ波動攻撃のみ。ID0はIDを持たない波動攻撃を対象とする"
             }
         }
     },
     "IMUWEAK": {
-        "abbr_name": "攻撃力低下無効",
+        "abbr_name": "攻撃低下無効",
         "full_name": "攻撃力ダウン無効/耐性",
         "tooltip": null,
         "format": [
-            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Weaken",
-            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
-            "[(block!=0&block<100){ & }]}][(block!=0){Weaken [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
-            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
-            "[(smartImu!=0){. Only affects attack [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
+            "[(mult!=0&block!=100){攻撃力ダウン[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)攻撃力ダウンの時間を(mult)%減らす(_right)}(mult<0){(_left)攻撃力ダウンの時間が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){攻撃力ダウン[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する攻撃力ダウンの時間を(block)%減らす(_right)}(block<0){ (_left)味方に対する攻撃力ダウンの時間が(_abs(block))%増える(_right)}]}]",
+            "[(smartImu!=0){。攻撃力[(smartImu>0){デ}]バフにのみ抵抗する}]"
         ],
         "class": {
             "mult": {
@@ -451,11 +451,11 @@
             },
             "block": {
                 "name": "ストッパー",
-                "tooltip": "100で攻撃力ダウンを完全にブロックする。1から99に設定すると味方の攻撃力ダウンされる距離を減らす"
+                "tooltip": "100で攻撃力ダウンを完全にブロックする。1から99に設定すると味方に対する攻撃力ダウンの時間を減らす"
             },
             "smartImu": {
-                "name": "Ignore",
-                "tooltip": "0 = Resist buffs and debuffs, 1 = Only resistant to attack debuffs, -1 = Only resistant to attack buffs"
+                "name": "無視する",
+                "tooltip": "0 = バフとデバフに耐性あり, 1 = 攻撃力デバフにのみ耐性あり, -1 = 攻撃力バフにのみ耐性あり"
             }
         }
     },
@@ -585,7 +585,7 @@
         "abbr_name": "time",
         "full_name": "Stop Time",
         "tooltip": "Unlike Stop, this ability freezes everything including waves, money gain, cat and enemy cool down, etc",
-        "format": "[(prob<100){(prob)% chance to }][(Intensity==100){Stop}(intensity>0&intensity<100){Slow}(intensity<0){Hasten}][(prob==100){s}] time[(intensity!=100){ by (_abs(intensity))%}] for (_dispTime(time))",
+        "format": "[(prob<100){(prob)% chance to }][(intensity==100){Stop}(intensity>0&intensity<100){Slow}(intensity<0){Hasten}][(prob==100){s}] time[(intensity!=100){ by (_abs(intensity))%}] for (_dispTime(time))",
         "class": {
             "prob": {
                 "name": "chance",
@@ -1622,7 +1622,7 @@
         "full_name": "範囲シールド",
         "tooltip": "指定された範囲からの攻撃を軽減する",
         "format": [
-            "[(prob<100{(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100{s}]",
+            "[(prob<100){(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100{s}]",
             "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
             "(_abs(reduction))%[(type.procs){ and ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] ",
             "damage taken from other units hit by the attack by (_abs(block))%}]}(reduction==0&block!=0){[(block>0){block}(block<0){amplify}]",
