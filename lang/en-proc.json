@@ -1713,7 +1713,7 @@
                 "name": "Check Strongest Attack",
                 "tooltip": "If this unit has more than one attack pattern, choose an attack based on which will deal the most effective damage instead of randomly"
             },
-            "neardanger": {
+            "danger": {
                 "name": "Evade Danger",
                 "tooltip": "Move back if this unit is near an unit that is about to attack"
             },

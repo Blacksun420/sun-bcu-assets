@@ -464,11 +464,11 @@
         "full_name": "無気力無効/耐性",
         "tooltip": null,
         "format": [
-            "[(mult!=0&block!=100){[(mult==100){Immune}(mult<100&mult>0){Resistant}(mult<0){Weak}] to Lethargy",
-            "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
-            "[(block!=0&block<100){ & }]}][(block!=0){Lethargy [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
-            "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
-            "[(smartImu!=0){. Only affects attack [(smartImu>0){debuffs}(smartImu<0){buffs}]}]"
+            "[(mult!=0&block!=100){無気力[(mult==100){無効}(mult<100&mult>0){耐性}(mult<0){に脆弱}]",
+            "[(mult<100&mult>0){(_left)無気力の時間を(mult)%減らす(_right)}(mult<0){(_left)無気力の時間が(_abs(mult))%増える(_right)}]",
+            "[(block!=0&block<100){＆}]}][(block!=0){無気力[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
+            "[(block<100&block>0){(_left)味方に対する無気力の時間を(block)%減らす(_right)}(block<0){(_left)味方に対する無気力の時間が(_abs(block))%増える(_right)}]}]",
+            "[(smartImu!=0){。[(smartImu>0){無気力デバフ}(smartImu<0){気力バフ}]にのみ抵抗する}]"
         ],
         "class": {
             "mult": {
@@ -1679,7 +1679,7 @@
                 "name": "最も適する攻撃を模索する",
                 "tooltip": "これが有効の場合かつこのキャラが複数の攻撃パターンを持っている場合、ランダムではなく最適で最もダメージを与えられる攻撃を行うようになる"
             },
-            "neardanger": {
+            "danger": {
                 "name": "Evade Danger",
                 "tooltip": "Move back if this unit is near an unit that is about to attack"
             },
