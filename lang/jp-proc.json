@@ -82,7 +82,7 @@
         "abbr_name": "波動",
         "full_name": "波動",
         "tooltip": null,
-        "format": "[(type.hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}]Lv.(lv)の[(inverted){逆側}]波動を[(pid){ID(_toString(pid))付きで}]生成する",
+        "format": "[(hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}]Lv.(lv)の[(inverted){逆側}]波動を[(pid){ID(_toString(pid))付きで}]生成する",
         "class": {
             "prob": {
                 "name": "確率",
@@ -92,7 +92,7 @@
                 "name": "Lv",
                 "tooltip": null
             },
-            "type.hitless": {
+            "hitless": {
                 "name": "不発でも発動",
                 "tooltip": "攻撃が当たらなくても波動を生成する"
             },
@@ -134,7 +134,7 @@
         "abbr_name": "無気力",
         "full_name": "無気力",
         "tooltip": null,
-        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間、攻撃間隔を[(type.percentage){(_abs(mult))%}(!type.percentage){(_dispTimeD(mult))}][(mult>0){増加}(mult<0){減少}(mult==0){でそのままに}]させる[(stackable){(_left)重複可(_right)}]",
+        "format": "[(prob<100){(prob)%の確率で}](_dispTimeF(time))の間、攻撃間隔を[(percentage){(_abs(mult))%}(!percentage){(_dispTimeD(mult))}][(mult>0){増加}(mult<0){減少}(mult==0){でそのままに}]させる[(stackable){(_left)重複可(_right)}]",
         "class": {
             "prob": {
                 "name": "確率",
@@ -152,7 +152,7 @@
                 "name": "重複可能か",
                 "tooltip": "有効の場合、効果が重複し、回数が重なる毎に効果が大きくなる"
             },
-            "type.percentage": {
+            "percentage": {
                 "name": "割合化",
                 "tooltip": "無効の場合は単純に変化させ、有効の場合は%割合で変化させる"
             }
@@ -289,16 +289,17 @@
         "tooltip": "基本的な蘇生には上から3つのパラメーターのみが含まれ、後のパラメーターは範囲指定された蘇生に使用される",
         "format": [
             "死亡後(_dispTime(time))経過後に最大体力の(health)%で[(count<0){無制限に}(count==1){一回だけ}(count==2){二回まで}(count>2){(count)回}]蘇生",
-            "[(type.imu_zkill){(_left)ゾンビキラー無効(_right)}]",
-            "[(type.revive_others){(_left)この蘇生は他の",
-            "[(type.revive_non_zombie){味方}]",
-            "[(!type.revive_non_zombie){ゾンビの味方}]",
-            "[(type.range_type>=2){が一度でも}(!type.range_type>=2){が}]",
+            "[(imu_zkill){(_left)ゾンビキラー無効(_right)}]",
+            "[(revive_others){(_left)この蘇生は他の",
+            "[(revive_non_zombie){味方}]",
+            "[(!revive_non_zombie){ゾンビの味方}]",
+            "[((_strEqual(range_type,`ALIVE))|(_strEqual(range_type,`FOREVER))){が一度でも}",
+            "(!(_strEqual(range_type,`ALIVE))&!(_strEqual(range_type,`FOREVER))){が}]",
             "(dis_0)~(dis_1)の範囲",
-            "[(type.range_type==0){に入り、このキャラが移動/待機/攻撃中の場合}]",
-            "[(type.range_type==1){に入り、このキャラがステージ上にいる限り}]",
-            "[(type.range_type==2){を通過し、このキャラがステージ上にいる限り}]",
-            "[(type.range_type==3){を通過すると}]蘇生する(_right)}]"
+            "[((_strEqual(range_type,`ACTIVE))){に入り、このキャラが移動/待機/攻撃中の場合}]",
+            "[((_strEqual(range_type,`PRESENT))){に入り、このキャラがステージ上にいる限り}]",
+            "[((_strEqual(range_type,`ALIVE))){を通過し、このキャラがステージ上にいる限り}]",
+            "[((_strEqual(range_type,`FOREVER))){を通過すると}]蘇生する(_right)}]"
         ],
         "class": {
             "count": {
@@ -321,7 +322,7 @@
                 "name": "範囲1",
                 "tooltip": "高度な設定：他キャラ蘇生の範囲指定位置1。 味方の蘇生が有効な場合にのみ適用可能"
             },
-            "type.range_type": {
+            "range_type": {
                 "name": "範囲蘇生の種類",
                 "tooltip": [
                     "味方の蘇生が有効な場合にのみ適用可能",
@@ -329,17 +330,18 @@
                     "1でステージにいる限り範囲内にて蘇生を行う",
                     "2でステージにいる限り一度でも範囲を通過した味方に対し蘇生を行う",
                     "3で一度でも範囲を通過した味方に対し蘇生を行う"
-                ]
+                ],
+                "options": ["Normal","Present","Alive","Permanent"]
             },
-            "type.imu_zkill": {
+            "imu_zkill": {
                 "name": "ゾンビキラー無効",
                 "tooltip": "ゾンビキラー能力が無効"
             },
-            "type.revive_non_zombie": {
+            "revive_non_zombie": {
                 "name": "非ゾンビ",
                 "tooltip": "非ゾンビのキャラも蘇生させる。 味方の蘇生が有効な場合にのみ適用可能"
             },
-            "type.revive_others": {
+            "revive_others": {
                 "name": "味方の蘇生",
                 "tooltip": "範囲蘇生機能のオプション"
             }
@@ -442,7 +444,7 @@
             "[(mult<100&mult>0){(_left)攻撃力ダウンの時間を(mult)%減らす(_right)}(mult<0){(_left)攻撃力ダウンの時間が(_abs(mult))%増える(_right)}]",
             "[(block!=0&block<100){＆}]}][(block!=0){攻撃力ダウン[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
             "[(block<100&block>0){(_left)味方に対する攻撃力ダウンの時間を(block)%減らす(_right)}(block<0){ (_left)味方に対する攻撃力ダウンの時間が(_abs(block))%増える(_right)}]}]",
-            "[(smartImu!=0){。攻撃力[(smartImu>0){デ}]バフにのみ抵抗する}]"
+            "[(focus.effect!=0){。攻撃力[(focus.effect>0){デ}]バフにのみ抵抗する}]"
         ],
         "class": {
             "mult": {
@@ -453,7 +455,7 @@
                 "name": "ストッパー",
                 "tooltip": "100で攻撃力ダウンを完全にブロックする。1から99に設定すると味方に対する攻撃力ダウンの時間を減らす"
             },
-            "smartImu": {
+            "focus": {
                 "name": "無視する",
                 "tooltip": "0 = バフとデバフに耐性あり, 1 = 攻撃力デバフにのみ耐性あり, -1 = 攻撃力バフにのみ耐性あり"
             }
@@ -468,7 +470,7 @@
             "[(mult<100&mult>0){(_left)無気力の時間を(mult)%減らす(_right)}(mult<0){(_left)無気力の時間が(_abs(mult))%増える(_right)}]",
             "[(block!=0&block<100){＆}]}][(block!=0){無気力[(block==100){ストッパー}(block<100&block>0){アブゾーバー}(block<0){インクリーザー}]",
             "[(block<100&block>0){(_left)味方に対する無気力の時間を(block)%減らす(_right)}(block<0){(_left)味方に対する無気力の時間が(_abs(block))%増える(_right)}]}]",
-            "[(smartImu!=0){。[(smartImu>0){無気力デバフ}(smartImu<0){気力バフ}]にのみ抵抗する}]"
+            "[(focus.effect!=0){。[(focus.effect>0){無気力デバフ}(focus.effect<0){気力バフ}]にのみ抵抗する}]"
         ],
         "class": {
             "mult": {
@@ -479,7 +481,7 @@
                 "name": "ストッパー",
                 "tooltip": "100で無気力を完全にブロックする。1から99に設定すると味方の無気力される距離を減らす"
             },
-            "smartImu": {
+            "focus": {
                 "name": "Ignore",
                 "tooltip": "0 = Resist buffs and debuffs, 1 = Only resistant to debuffs, -1 = Only resistant to buffs"
             }
@@ -622,21 +624,22 @@
         "full_name": "Summon",
         "tooltip": null,
         "format": [
-            "[(prob<100){(prob)% chance to summon}(prob==100){Summons}] (amount) (_summonMagnification(type.fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
+            "[(prob<100){(prob)% chance to summon}(prob==100){Summons}] (amount) (_summonMagnification(fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
             "each summoned (dis)[(max_dis!=dis){ ~ (max_dis)}] range away from ",
-            "[(type.on_kill|type.on_hit){each target}",
-            "(!type.on_hit&!type.on_kill){the summoner}] ",
-            "[(type.on_hit){hit}",
-            "(type.on_kill&!type.on_hit){killed}",
-            "(!type.on_kill&!type.on_hit){on this attack}], ",
-            "[(type.same_health){each entity will have the same hp as the summoner, }]",
-            "[(type.bond_hp){the summoner's hp will be bound with each summoned entity's hp, }]",
-            "[(type.pass_proc!=0){and }]are[(type.ignore_limit){n't}] restricted by the stage entity limit",
-            "[(type.pass_proc!=0){, and carry all procs from [(type.pass_proc!=2){the summoner}][(type.pass_proc==3){ and }]}][(type.pass_proc!=1){ each entity hit}]. ",
+            "[(on_kill|on_hit){each target}",
+            "(!on_hit&!on_kill){the summoner}] ",
+            "[(on_hit){hit}",
+            "(on_kill&!on_hit){killed}",
+            "(!on_kill&!on_hit){on this attack}], ",
+            "[(same_health){each entity will have the same hp as the summoner, }]",
+            "[(bond_hp){the summoner's hp will be bound with each summoned entity's hp, }]",
+            "[(pass_proc==0){and }]are[(ignore_limit){n't}] restricted by the stage entity limit",
+            "[(pass_proc!=0){, and carry all procs from [(pass_proc!=2){the summoner}][(pass_proc==3){ and }][(pass_proc!=1){ each entity hit}]}]. ",
             "Summoned entities will be in [(min_layer==max_layer){[(min_layer==-1){the same layer as this entity}(min_layer!=-1){layer (min_layer)}]}",
             "(min_layer!=max_layer){a random layer between (min_layer) and (max_layer)}]. ",
-            "[(type.anim_type!=0){Summon will display [(type.anim_type==1){warp}(type.anim_type==2|type.anim_type==3){burrow}(type.anim_type==4){entry}(type.anim_type==5){",
-            "attack}(type.anim_type==6){Everywhere Door}] animation[(type.anim_type==3){ and disable burrow for summoned entities}]}]."
+            "[(!(_strEqual(anim_type,`NONE))){Summon will display [((_strEqual(anim_type,`WARP))){warp}((_strEqual(anim_type,`BURROW))|(_strEqual(anim_type,`BURROW_DISABLE)))",
+            "{burrow}((_strEqual(anim_type,`ENTRY))){entry}((_strEqual(anim_type,`ATTACK))){attack}((_strEqual(anim_type,`EVERYWHERE_DOOR))){Everywhere Door}] ",
+            "animation[((_strEqual(anim_type,`BURROW_DISABLE`))){ and disable burrow for summoned entities}].}]"
         ],
         "class": {
             "prob": {
@@ -671,35 +674,36 @@
                 "name": "max layer",
                 "tooltip": "highest layer the summoned entity will be at. Set to -1 to use same layer as this entity"
             },
-            "type.anim_type": {
+            "anim_type": {
                 "name": "summon anim",
                 "tooltip": [
                     "summon animation, 0 for no animation, 1 for warp animation,",
                     " 2 for burrow animation, 3 for burrow animation and disable further burrow, 4 for entry animation,",
                     " 5 for attack animation, 6 for Everywhere Door animation.", 
                     " The summoned entity must have burrow animation in order to use 2 or 3."
-                ]
+                ],
+                "options": ["None","Warp","Burrow","Burrow (Disable)","Entry","Attack","Everywhere Door"]
             },
-            "type.ignore_limit": {
+            "ignore_limit": {
                 "name": "ignore limit",
                 "tooltip": "ignore the stage entity limit. Be careful with this, don't summon too much. It can break the game"
             },
-            "type.fix_buff": {
+            "fix_buff": {
                 "name": "fix buff",
                 "tooltip": [
                     "Use fixed buff instead of relative buff. ",
                     "Ex: 200% summoner and 300% buff would mean 600% buff if fix buff is disabled and 300% buff if fix buff is enabled"
                 ]
             },
-            "type.same_health": {
+            "same_health": {
                 "name": "same health",
                 "tooltip": "Set the summoned entity to have the same health as this entity."
             },
-            "type.bond_hp": {
+            "bond_hp": {
                 "name": "Bond health",
                 "tooltip": "When activated, the summoner will receive all damage and procs the summoned entity receives"
             },
-            "type.on_hit": {
+            "on_hit": {
                 "name": "on hit",
                 "tooltip": [
                     "Summon if and only if this attack hits targets.",
@@ -707,7 +711,7 @@
                     " Multiple summon possible for ranged attack."
                 ]
             },
-            "type.on_kill": {
+            "on_kill": {
                 "name": "on kill",
                 "tooltip": [
                     "Summon if and only if this attack kills targets.",
@@ -715,9 +719,10 @@
                     " Multiple summon possible for ranged attack."
                 ]
             },
-            "type.pass_proc": {
+            "pass_proc": {
                 "name": "Pass procs",
-                "tooltip": "Passes all inflicted status to summoned units. 0 = none, 1 = from summoner, 2 = from attacked entities, 3 = from both"
+                "tooltip": "Passes all inflicted status to summoned units. 0 = none, 1 = from summoner, 2 = from attacked entities, 3 = from both",
+                "options": ["From Summoner","From Attacked"]
             },
             "amount": {
                 "name": "Amount",
@@ -792,7 +797,7 @@
         "tooltip": null,
         "format": [
             "[(prob<100){(prob)% chance to }]Change[(prob==100){s}] [(id){the background to (_id(id))[(mus){ and }]}][(mus){the music to (_id(mus))}] for (_dispTime(time))",
-            "[(type.kill){ and kills all entities on the field}]"
+            "[(kill){ and kills all entities on the field}]"
         ],
         "class": {
             "prob": {
@@ -811,7 +816,7 @@
                 "name": "BGM ID",
                 "tooltip": null
             },
-            "type.kill": {
+            "kill": {
                 "name": "kill",
                 "tooltip": "Kill all entities in the stage"
             }
@@ -822,13 +827,13 @@
         "full_name": "Venom",
         "tooltip": null,
         "format": [
-            "[(prob<100){(prob)% chance to }][(type.damage_type==0){Burn}(type.damage_type==1){Poison}",
-            "(type.damage_type==2){Bleed}(type.damage_type==3){Corrode}][(prob==100){s}] target for ",
-            "(_dispTime(time)), dealing [(type.damage_type==0){(damage) damage}",
-            "(type.damage_type>0){a damage of (damage)% of target's ",
-            "[(type.damage_type==1){total}(type.damage_type==2){current}(type.damage_type==3){lost}]",
+            "[(prob<100){(prob)% chance to }][(damage_type==0){Burn}(damage_type==1){Poison}",
+            "(damage_type==2){Bleed}(damage_type==3){Corrode}][(prob==100){s}] target for ",
+            "(_dispTime(time)), dealing [(damage_type==0){(damage) damage}",
+            "(damage_type>0){a damage of (damage)% of target's ",
+            "[(damage_type==1){total}(damage_type==2){current}(damage_type==3){lost}]",
             " health}] every (_dispTime(itv)). ",
-            "This effect is [(type.unstackable){not }]stackable[(type.ignoreMetal){, [(!type.modifAffected){and }]bypasses metal ability}][(type.modifAffected){, and it's damage is affected by anything that modifies the original attack's damage}]."
+            "This effect is [(unstackable){not }]stackable[(ignoreMetal){, [(!modifAffected){and }]bypasses metal ability}][(modifAffected){, and it's damage is affected by anything that modifies the original attack's damage}]."
         ],
         "class": {
             "prob": {
@@ -847,19 +852,20 @@
                 "name": "interval",
                 "tooltip": null
             },
-            "type.damage_type": {
+            "damage_type": {
                 "name": "damage type",
-                "tooltip": "0 for fixed damage (burn), 1 for a % of total health (poison), 2 for a % of current health, 3 for a % of lost health (corrode)."
+                "tooltip": "0 for fixed damage (burn), 1 for a % of total health (poison), 2 for a % of current health, 3 for a % of lost health (corrode).",
+                "options": ["Burn (Fixed)","Poison (HP% Total)","Bleed (HP% Current)","Corrode (HP% Lost)"]
             },
-            "type.unstackable": {
+            "unstackable": {
                 "name": "unstackable",
                 "tooltip": null
             },
-            "type.ignoreMetal": {
+            "ignoreMetal": {
                 "name": "Bypass Metal",
                 "tooltip": "Activate this to deal regular damage to metal enemies."
             },
-            "type.modifAffected": {
+            "modifAffected": {
                 "name": "Consider Abilities",
                 "tooltip": "Toggle this to make poison damage affected by damage-modifying abilities such as strong against or critical."
             }
@@ -874,7 +880,7 @@
             "[(mult<100&mult>0){ (_left)Decreases duration by (mult)%(_right)}(mult<0){ (_left)Increases duration by (_abs(mult))%(_right)}]",
             "[(block!=0&block<100){ & }]}][(block!=0){Poison [(block==100){blocker}(block<100&block>0){absorber}(block<0){increaser}]",
             "[(block<100&block>0){ (_left)Decreases duration by (block)%(_right)}(block<0){ (_left)Increases duration by (_abs(block))%(_right)}]}]",
-            "[(smartImu!=0){. Only affects [(smartImu>0){harmful}(smartImu<0){healing}] venom}]"
+            "[(focus.effect!=0){. Only affects [(focus.effect>0){harmful}(focus.effect<0){healing}] venom}]"
         ],
         "class": {
             "mult": {
@@ -885,7 +891,7 @@
                 "name": "Blocker",
                 "tooltip": "Set from 1 to 99 to reduce damage over time. Set to 100 to completely block poison"
             },
-            "smartImu": {
+            "focus": {
                 "name": "Ignore",
                 "tooltip": "0 = Resist all venom, 1 = Only resistant to harmful venom, -1 = Only resistant to healing venom"
             }
@@ -976,7 +982,7 @@
         "abbr_name": "surge",
         "full_name": "Surge",
         "tooltip": null,
-        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a Lv (time/20) surge attack[(pid){ with (_toString(pid)) IDs}][(type.hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
+        "format": "[(prob<100){(prob)% chance to make}(prob==100){Makes}] a Lv (time/20) surge attack[(pid){ with (_toString(pid)) IDs}][(hitless){, even if this attack misses}] (_left)Lasts (_dispTime(time)), created within (dis_0) ~ (dis_1) range(_right)",
         "class": {
             "prob": {
                 "name": "chance",
@@ -994,7 +1000,7 @@
                 "name": "duration",
                 "tooltip": null
             },
-            "type.hitless": {
+            "hitless": {
                 "name": "Miss Trigger",
                 "tooltip": "Wave will spawn even if this attack misses"
             },
@@ -1100,7 +1106,7 @@
         "format": [
             "アーマーブレイク[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
             "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-            "[(smartImu!=0){アーマー[(smartImu>0){デ}]バフにのみ抵抗する}]"
+            "[(focus.effect!=0){アーマー[(focus.effect>0){デ}]バフにのみ抵抗する}]"
         ],
         "class": {
             "mult": {
@@ -1111,7 +1117,7 @@
                 "name": "ストッパー",
                 "tooltip": "100で攻撃力ダウンを完全にブロックします。100以下の正の数値では効果が減少します。"
             },
-            "smartImu": {
+            "focus": {
                 "name": "無視する",
                 "tooltip": "0 = バフとデバフに耐性あり, 1 = アーマーデバフにのみ耐性あり, -1 = アーマーのバフにのみ耐性あり"
             }
@@ -1124,7 +1130,7 @@
         "format": [
             "軽率[(mult==100){無効}(mult<100&mult>0){(mult)%耐性}(mult<0){(_abs(mult))%脆弱性}]",
             "[(block!=0&mult!=0){と}][(block==100){ストッパー}(block<100&block>0){(block)%アブソーバー}(block<0){(block)%強化}]",
-            "[(smartImu!=0){軽率[(smartImu>0){デ}]バフにのみ抵抗する}]"
+            "[(focus.effect!=0){軽率[(focus.effect>0){デ}]バフにのみ抵抗する}]"
         ],
         "class": {
             "mult": {
@@ -1135,7 +1141,7 @@
                 "name": "ストッパー",
                 "tooltip": "100で攻撃力ダウンを完全にブロックします。100以下の正の数値では効果が減少します。"
             },
-            "smartImu": {
+            "focus": {
                 "name": "無視する",
                 "tooltip": "0 = バフとデバフに耐性あり, 1 = スピードデバフのみ耐性, -1 = スピードバフにのみ耐性を持つ"
             }
@@ -1145,7 +1151,7 @@
         "abbr_name": "小波動",
         "full_name": "小波動",
         "tooltip": "通常の波動の2倍の速さで動く小型の波動を作成し、ダメージの倍率パラメータも調整できる。",
-        "format": "[(type.hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}]Lv(lv)の[(multi<=100){小}(multi>100){大}]波動を発生させ、 元の攻撃の(multi)%ダメージを与える",
+        "format": "[(hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}]Lv(lv)の[(multi<=100){小}(multi>100){大}]波動を発生させ、 元の攻撃の(multi)%ダメージを与える",
         "class": {
             "prob": {
                 "name": "確率",
@@ -1159,7 +1165,7 @@
                 "name": "倍率",
                 "tooltip": "倍率が20の場合、攻撃力の20%のダメージを与えます。負の値も可能です。"
             },
-            "type.hitless": {
+            "hitless": {
                 "name": "不発でも発動",
                 "tooltip": "攻撃が当たらなくても小波動を生成する"
             },
@@ -1177,7 +1183,7 @@
         "abbr_name": "超装甲",
         "full_name": "スーパー装甲",
         "tooltip": "このアビリティは、一定量以下のすべてのダメージを0にする。",
-        "format": "[(prob<100){(prob)%の確率で}][(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}]以下のダメージを(reduction)%で[(reduction>=0){軽減}(reduction<0){増加}]する[(type.traitIgnore){ (_left)属性に関わらず(_right)}][(type.procs){ (_left)攻撃の能力も無効にする(_right)}]",
+        "format": "[(prob<100){(prob)%の確率で}][(magnif){(_shield(dmg))}(!magnif){(dmg)}]以下のダメージを(reduction)%で[(reduction>=0){軽減}(reduction<0){増加}]する[(traitIgnore){ (_left)属性に関わらず(_right)}][(procs){ (_left)攻撃の能力も無効にする(_right)}]",
         "class": {
           "prob": {
             "name": "確率",
@@ -1191,15 +1197,15 @@
             "name": "ダメージ軽減%",
             "tooltip": "ダメージを軽減する割合"
           },
-          "type.traitIgnore": {
+          "traitIgnore": {
             "name": "属性無視",
             "tooltip": "これがチェックされると、この能力は敵の属性に関係なく発動できる。"
           },
-          "type.procs": {
+          "procs": {
             "name": "能力を無視する",
             "tooltip": "これをチェックすると、無効化された攻撃による能力も無効化されます。"
           },
-          "type.magnif": {
+          "magnif": {
             "name": "HP倍率を考える",
             "tooltip": "発動するとスーパー装甲のHPが実体のHP倍率の影響を受けるようになる。"
           }
@@ -1209,7 +1215,7 @@
         "abbr_name": "魔法盾",
         "full_name": "魔法盾",
         "tooltip": "このアビリティは、一定量以上のすべてのダメージを当該量に軽減する（「ダメージを無効にする」がチェックされている場合は無効にする）。",
-        "format": "[(prob<100){(prob)%の確率で}][(type.magnif){(_shield(dmg))}(!type.magnif){(dmg)}]以上のダメージを[(!type.nullify){に}(type.nullify){無効化}]する[(type.traitIgnore){ (_left)属性に関わらず(_right)}][(type.procs){ (_left)攻撃の能力も無効にする(_right)}]",
+        "format": "[(prob<100){(prob)%の確率で}][(magnif){(_shield(dmg))}(!magnif){(dmg)}]以上のダメージを[(!nullify){に}(nullify){無効化}]する[(traitIgnore){ (_left)属性に関わらず(_right)}][(procs){ (_left)攻撃の能力も無効にする(_right)}]",
         "class": {
             "prob": {
                 "name": "確率",
@@ -1219,19 +1225,19 @@
                 "name": "攻撃力",
                 "tooltip": "無効化されるダメージの最大値です。"
             },
-            "type.traitIgnore": {
+            "traitIgnore": {
                 "name": "属性無視",
                 "tooltip": "これがチェックされると、この能力は敵の属性に関係なく発動できる。"
             },
-            "type.nullify": {
+            "nullify": {
                 "name": "ダメージを無効にする",
                 "tooltip": "これがチェックされると、攻撃によるダメージは「攻撃力」に設定されるのではなく、無効化されます。"
             },
-            "type.procs": {
+            "procs": {
                 "name": "能力を無視する",
                 "tooltip": "これをチェックすると、無効化された攻撃による能力も無効化されます。"
             },
-            "type.magnif": {
+            "magnif": {
                 "name": "HP倍率を考える",
                 "tooltip": "発動すると魔法盾のHPが実体のHP倍率の影響を受けるようになる。"
             }
@@ -1242,7 +1248,7 @@
         "full_name": "バリア",
         "tooltip": "バリアのHP以下のダメージを全て遮断します。HP以上のダメージを与える攻撃を受けると壊れます。",
         "format": [
-            "バリア(_left)HP:[(type.magnif){(_shield(health))}(!type.magnif){(health)}]",
+            "バリア(_left)HP:[(magnif){(_shield(health))}(!magnif){(health)}]",
             "[(regentime>0){, 壊されても(_dispTime(regentime))後には再生されます}]",
             "[(timeout>0){, (_dispTime(timeout))後にバリアが切れる}](_right)"
         ],
@@ -1259,7 +1265,7 @@
                 "name": "タイムアウト",
                 "tooltip": "時間が経つとバリアがブレイクされます。 0に設定すると、この能力は無効になります。"
             },
-            "type.magnif": {
+            "magnif": {
                 "name": "HP倍率を考える",
                 "tooltip": "発動するとバリアのHPが実体のHP倍率の影響を受けるようになる。"
             }
@@ -1299,12 +1305,13 @@
         "tooltip": "攻撃されたとき、このキャラを攻撃した敵を攻撃する。",
         "format": [
             "[(prob<100){(prob)% chance to counterattack}(prob==100){Counterattacks}], ",
-            "dealing (damage)% [(!type.useOwnDamage){of the damage received from an attack [(maxDamage!=0){(_left)Up to (_abs(maxDamage))(_right)}]}",
-            "(type.useOwnDamage){of this unit's damage}] back. [(maxDamage<0){Counter damage will not exceed this unit's remaining HP. }]",
-            "[(type.counterWave!=0){This unit will also [(type.counterWave==1){counter}(type.counterWave==2){reflect}] wave/surge attacks. }][(type.procType!=0){This counterattack will ",
-            "[(type.procType==1|type.procType==3){have}(type.procType==2){replace}] ",
-            "the original attack's procs[(type.procType==2){ with this unit's procs}(type.procType==3){ and this entity's procs}]. }]",
-            "The counter will hit [(type.areaAttack){ all enemies}(!type.areaAttack){ only the attacker}][(type.areaAttack|!type.outRange){[(!type.areaAttack){ if they're}] standing ",
+            "dealing (damage)% [(!useOwnDamage){of the damage received from an attack [(maxDamage!=0){(_left)Up to (_abs(maxDamage))(_right)}]}",
+            "(useOwnDamage){of this unit's damage}] back. [(maxDamage<0){Counter damage will not exceed this unit's remaining HP. }]",
+            "[(!(_strEqual(counterWave,`NONE))){This unit will also [((_strEqual(counterWave,`COUNTER))){counter}",
+            "((_strEqual(counterWave,`REFLECT))){reflect}] wave/surge attacks. }][(procType!=0){This counterattack will ",
+            "[(procType==1|procType==3){have}(procType==2){replace}] ",
+            "the original attack's procs[(procType==2){ with this unit's procs}(procType==3){ and this entity's procs}]. }]",
+            "The counter will hit [(areaAttack){ all enemies}(!areaAttack){ only the attacker}][(areaAttack|!outRange){[(!areaAttack){ if they're}] standing ",
             "[(minRange!=0|maxRange!=0){(minRange) ~ (maxRange) units away from this entity}(minRange==0&maxRange==0){on this entity's range}]}]."
         ],
         "class": {
@@ -1324,19 +1331,21 @@
               "name": "遠方リーチ",
               "tooltip": "反撃は、この数字より下に立っているものに当たります。キャラクターの射程を使用する場合は、このフィールドと遠方空点を0のままにします。"
             },
-            "type.procType": {
+            "procType": {
               "name": "アビリティ",
-              "tooltip": "このパラメータは、どのアビリティが反映されるかを扱います。0 = すべてのアビリティを削除します。1 = すべてのアビリティを反映させます。2 = 攻撃側のすべてのアビリティを、このキャラクターのアビリティで置き換える。3 = このキャラクターと攻撃側のアビリティの両方を使用します。"
+              "tooltip": "このパラメータは、どのアビリティが反映されるかを扱います。0 = すべてのアビリティを削除します。1 = すべてのアビリティを反映させます。2 = 攻撃側のすべてのアビリティを、このキャラクターのアビリティで置き換える。3 = このキャラクターと攻撃側のアビリティの両方を使用します。",
+              "options": ["Reflect","Attacker's"]
             },
-            "type.counterWave": {
+            "counterWave": {
               "name": "反撃波動",
-              "tooltip": "波動や烈波が当たったときの反応をトグルします。0 = 何もしない。1 = 反撃する。2 = 反射する。"
+              "tooltip": "波動や烈波が当たったときの反応をトグルします。0 = 何もしない。1 = 反撃する。2 = 反射する。",
+                "options": ["No","Yes","Reflect"]
             },
-            "type.useOwnDamage": {
+            "useOwnDamage": {
               "name": "独自の攻撃力を使う",
               "tooltip": "このキャラクターの攻撃力を、受けたダメージの代わりにカウンターに使う."
             },
-            "type.outRange": {
+            "outRange": {
               "name": "無視する距離",
               "tooltip": "これを有効にすると、攻撃者との距離に関わらず、ユニットは反撃します。."
             },
@@ -1439,7 +1448,8 @@
             "type": {
                 "name": "種類",
                 "tooltip": "+1 = デフォルトにゃんこ砲の波動、+2 = スロウ砲無効、+4 = かみなり砲無効、+8 = 水鉄砲無効、+16 = エンジェル砲無効、+32 = ブレイク砲無効、+64 = 呪い砲無効"
-            }
+            },
+                "options": ["にゃんこ砲の波動","スロウ砲","かみなり砲","水鉄砲","エンジェル砲","ブレイク砲","呪い砲"]
         }
     },
     "BOUNTY": {
@@ -1472,7 +1482,7 @@
         "tooltip": null,
         "format": "超獣特効(_left)与ダメx2.5 被ダメx0.6[(prob>0){&[(prob<100){(prob)%の確率で}](_dispTime(time))の間攻撃を無効にする}](_right)",
         "class": {
-            "type.active": {
+            "active": {
                 "name": "対 超獣敵めっぽう強い",
                 "tooltip": null
             },
@@ -1534,7 +1544,7 @@
         "full_name": "弱体化オーラ",
         "tooltip": "指定された範囲にいる敵を弱体化する",
         "format": [
-            "このキャラから (min_dis) ~ (max_dis) の距離に居る[(type.trait){全ての}]敵は ",
+            "このキャラから (min_dis) ~ (max_dis) の距離に居る[(trait){全ての}]敵は ",
             "[(amult!=0){攻撃力が[(amult>0){増加して}(amult<0){減少して}] (amult)% になる }]",
             "[(dmult!=0){攻撃を受けた時、 (_abs(dmult))% [(dmult>0){多い}(dmult<0){少ない}]ダメージを受ける }]",
             "[(smult!=0){移動速度が[(smult>0){増加}(smult<0){減少}]し (smult)% になる }]",
@@ -1565,7 +1575,7 @@
                 "name": "最大範囲",
                 "tooltip": "この範囲の外ではオーラの効果がない"
             },
-            "type.trait": {
+            "trait": {
                 "name": "属性を無視する",
                 "tooltip": "これが有効の場合、属性に関係なく味方にオーラの効果が出るようになる"
             }
@@ -1576,7 +1586,7 @@
         "full_name": "強化オーラ",
         "tooltip": "指定された範囲にいる味方を強化する",
         "format": [
-            "このキャラから (min_dis) ~ (max_dis) の距離に居る[(type.trait){全ての}]味方は ",
+            "このキャラから (min_dis) ~ (max_dis) の距離に居る[(trait){全ての}]味方は ",
             "[(amult!=0){攻撃力が[(amult>0){増加し(dmult)%になる}(amult<0){減少し(dmult)%になる}]}]",
             "[(dmult!=0){攻撃を受けた時、 (dmult)% [(dmult>0){多い}(dmult<0){少ない}]ダメージを受ける }]",
             "[(smult!=0){移動速度が[(smult>0){増加}(smult<0){減少}]し (smult)% になる }]",
@@ -1607,7 +1617,7 @@
                 "name": "最大範囲",
                 "tooltip": "この範囲の外ではオーラの効果がない"
             },
-            "type.trait": {
+            "trait": {
                 "name": "属性を無視する",
                 "tooltip": "これが有効の場合、属性に関係なく味方にオーラの効果が出るようになる"
             },
@@ -1623,11 +1633,11 @@
         "tooltip": "指定された範囲からの攻撃を軽減する",
         "format": [
             "[(prob<100){(prob)% chance to }][(reduction!=0&block!=100){[(reduction>0){Reduce}(reduction<0){Increase}][(prob==100){s}]",
-            "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
-            "(_abs(reduction))%[(type.procs){ and ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] ",
+            "[(!traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
+            "(_abs(reduction))%[(procs){ and ignore the attack's procs}].[(block!=0){Additionally, [(block>0){lower}(block<0){increase}] ",
             "damage taken from other units hit by the attack by (_abs(block))%}]}(reduction==0&block!=0){[(block>0){block}(block<0){amplify}]",
-            "[(!type.traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
-            "(_abs(block))%[(type.procs){ and block the attack's procs}].}][(type.waves){Wave/Surge attacks will be affected by this too.}]"
+            "[(!traitCon){ all}] damage taken from hits originating (minrange) ~ (maxrange) units away from this entity by ",
+            "(_abs(block))%[(procs){ and block the attack's procs}].}][(waves){Wave/Surge attacks will be affected by this too.}]"
         ],
         "class": {
             "prob": {
@@ -1650,15 +1660,15 @@
                 "name": "ストッパー",
                 "tooltip": "割合と同様の効果だが全てのユニットに適応される"
             },
-            "type.traitCon": {
+            "traitCon": {
                 "name": "Focus Traits",
                 "tooltip": "Activate this to make this proc only work if the this unit targets a trait from the attacker"
             },
-            "type.procs": {
+            "procs": {
                 "name": "Evade Procs",
                 "tooltip": "Attack's procs won't apply if shield triggers and this is activated"
             },
-            "type.waves": {
+            "waves": {
                 "name": "Target waves",
                 "tooltip": null
             }
@@ -1669,13 +1679,13 @@
         "full_name": "戦闘頭脳",
         "tooltip": "キャラが敵の攻撃を避けるようになりより賢く戦闘するようになる",
         "format": [
-            "戦闘知能が高い [(type.calcstrongest){ (_left)キャラは最も効果的な攻撃方法を模索する(_right)}]",
+            "戦闘知能が高い [(calcstrongest){ (_left)キャラは最も効果的な攻撃方法を模索する(_right)}]",
             "[(retreatDist>0|danger){ (_left)[(danger){When in danger[(retreatDist>0){ or }]}][(retreatDist>0)",
             "{enemies are (retreatDist) units away from this entity}],this unit will retreat at (retreatSpeed) speed(_right)}]",
-            "[(type.calcblindspot){ (_left)このキャラは攻撃の検知やその他の効果計算において、盲点範囲に居る敵を考慮しない。(_right)}]"
+            "[(calcblindspot){ (_left)このキャラは攻撃の検知やその他の効果計算において、盲点範囲に居る敵を考慮しない。(_right)}]"
         ],
         "class": {
-            "type.calcstrongest": {
+            "calcstrongest": {
                 "name": "最も適する攻撃を模索する",
                 "tooltip": "これが有効の場合かつこのキャラが複数の攻撃パターンを持っている場合、ランダムではなく最適で最もダメージを与えられる攻撃を行うようになる"
             },
@@ -1683,7 +1693,7 @@
                 "name": "Evade Danger",
                 "tooltip": "Move back if this unit is near an unit that is about to attack"
             },
-            "type.calcblindspot": {
+            "calcblindspot": {
                 "name": "盲点範囲索敵",
                 "tooltip": "これが有効の場合かつ立ち位置と盲点範囲内に敵がいる場合このキャラが攻撃することはない。 退却が有効な場合、盲点範囲に入った敵が居るとキャラが後退する"
             },
@@ -1775,7 +1785,7 @@
         "abbr_name": "小烈波",
         "full_name": "小烈波",
         "tooltip": "通常烈波と同じ動作をする小さな烈波を発生させ、ダメージの倍率パラメータも調整できる。",
-        "format": "[(type.hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}] Lv (time/20) 小烈波攻撃を生成する。 (_left)持続時間は (_dispTime(time))、  (dis_0) ~ (dis_1) の範囲で発生し、元の攻撃の (mult)% ダメージを与える(_right)",
+        "format": "[(hitless){攻撃が当たらなくても}][(prob<100){(prob)%の確率で}] Lv (time/20) 小烈波攻撃を生成する。 (_left)持続時間は (_dispTime(time))、  (dis_0) ~ (dis_1) の範囲で発生し、元の攻撃の (mult)% ダメージを与える(_right)",
         "class": {
             "prob": {
                 "name": "確率",
@@ -1797,7 +1807,7 @@
                 "name": "倍率",
                 "tooltip": null
             },
-            "type.hitless": {
+            "hitless": {
                 "name": "不発でも発動",
                 "tooltip": "攻撃が当たらなくても小烈波を生成する"
             },
@@ -1851,7 +1861,7 @@
         "abbr_name": "TypeShield",
         "full_name": "攻撃種別シールド",
         "tooltip": "単体攻撃または範囲攻撃によるダメージを軽減します",
-        "format": "[(prob<100){(prob)%の確率で}]受けた[(type.range){範囲}(!type.range){単体}]攻撃を(_abs(mult))%に[(mult>0){減少}(mult<0){増加}]する",
+        "format": "[(prob<100){(prob)%の確率で}]受けた[(range){範囲}(!range){単体}]攻撃を(_abs(mult))%に[(mult>0){減少}(mult<0){増加}]する",
         "class": {
             "prob": {
                 "name": "確率",
@@ -1861,7 +1871,7 @@
                 "name": "割合",
                 "tooltip": null
             },
-            "type.range": {
+            "range": {
                 "name": "範囲",
                 "tooltip": "これを有効にすると、シールドが単体攻撃ではなく範囲攻撃に影響を与えるようになる"
             }
@@ -1876,7 +1886,7 @@
             "[(amount>1&cd0!=cd1){, and a subsequent cooldown of (_dispTime(cd1))}]",
             "[(summonerCd!=0){, and [(summonerCd<0){decreases}(summonerCd>0){increases}] summoner's cooldown by (_dispTime(_abs(summonerCd)))}]",
             "[(moneyCost!=0){. Summoning a spirit costs (moneyCost)¢}]",
-            "[(!type.inv){ (_left)This spirit can be killed(_right)}]"
+            "[(!inv){ (_left)This spirit can be killed(_right)}]"
         ],
         "class": {
             "id": {
@@ -1921,7 +1931,7 @@
                 "name": "フォーム",
                 "tooltip": "召喚したいユニットの形態を設定します。"
             },
-            "type.inv": {
+            "inv": {
                 "name": "Invincible",
                 "tooltip": "Makes unit spirits unkillable, much like the soul ones"
             }

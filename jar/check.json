@@ -1,9 +1,15 @@
 {
     "history": [
         {
-            "ver":"0.6.2.12",
+            "ver":"0.6.2.13",
             "CORE_VER":"0.7.11.0",
             "forkver":12,
+            "info":"Fix TBA increasing making units not attack, unfunctional temporary asset removal, improve AI/Blessing proc and editor menus, allow more than 2 sound effects for attacks, fix everywhere door not working on bosses, Madoka TF soul, allow non-dojo stages to spawn enemies at specific HP by setting max base HP above 100%, Surge Immune + Countersurge made doable, Add support for custom fonts, Fix 60 fps mode not updating in anim viewers when set via toolbar"
+        },
+        {
+            "ver":"0.6.2.12",
+            "CORE_VER":"0.7.11.0",
+            "forkver":11,
             "info":"Fix orb-related crashes, restructure everywhere door, fix erroneous calculation on progressive strengthen, more summon animation types, Fix bugs on the revival UI, Implement pack parenting, fix a single error generating many log files"
         },
         {
