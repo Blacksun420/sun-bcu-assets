@@ -1,6 +1,12 @@
 {
     "apk_update":[
         {
+            "ver":"0.20.15",
+            "CORE_VER":"0.7.11.0",
+            "FORK_VER":12,
+            "desc":"Fix bugs, (maybe) slightly quicker loading, improve filters"
+        },
+        {
             "ver":"0.20.14",
             "CORE_VER":"0.7.11.0",
             "FORK_VER":12,
