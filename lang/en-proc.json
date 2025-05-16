@@ -626,7 +626,8 @@
         "full_name": "Summon",
         "tooltip": null,
         "format": [
-            "[(prob<100){(prob)% chance to summon}(prob==100){Summons}] (amount) (_summonMagnification(fix_buff,mult,id)) (_entity(id,form)) after (_dispTime(time)), ",
+            "[(prob<100){(prob)% chance to summon}(prob==100){Summons}] (amount) (_summonMagnification(fix_buff,mult,id)) (_entity(id,form))",
+            "[(interval>0){, with a (_dispTime(interval)) between each summoned entity,}] after (_dispTime(time)), ",
             "each summoned (dis)[(max_dis!=dis){ ~ (max_dis)}] range away from ",
             "[(on_kill|on_hit){each target}",
             "(!on_hit&!on_kill){the summoner}] ",
@@ -733,6 +734,10 @@
             "form": {
                 "name": "Form",
                 "tooltip": "Set which form of the unit you want to summon. Only applicable on Cat Units."
+            },
+            "interval": {
+                "name": "Interval",
+                "tooltip": "Interval of time between the first and subsequent summons, similar to respawn"
             }
         }
     },
@@ -743,8 +748,8 @@
         "format": [
             "[(prob<100){(prob)% chance to have}(prob==100){Has}] moving hitbox[(pid){ with (_toString(pid)) IDs}], ",
             "originated at a distance of (dis) from this entity ",
-            "with (width) widths, ",
-            " (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))"
+            "with (width) widths, (speed) speed, and (_dispTime(itv)) interval for (_dispTime(time))",
+            "[(hit_base){(_left)Can hit the enemy base(_right)}]"
         ],
         "class": {
             "prob": {
@@ -774,6 +779,10 @@
             "pid": {
                 "name": "ID",
                 "tooltip": "Sets the IDs of moving attack, allowing for type-based resistance discrimination"
+            },
+            "hit_base": {
+                "name": "Hit Base",
+                "tooltip": "Hits the enemy base if it's in attack range"
             }
         }
     },

@@ -1,7 +1,13 @@
 {
     "history": [
         {
-            "ver":"0.6.2.13",
+            "ver":"0.6.2.15",
+            "CORE_VER":"0.7.12.0",
+            "forkver":13,
+            "info":"<a href=\"https://battlecats.miraheze.org/wiki/Version_14.4_Update\">14.4 data</a>, make blast attacks more BC-Accurate, popout music player, allow skipping certain packs from loading on startup, fix bugs & QoL changes"
+        },
+        {
+            "ver":"0.6.2.14",
             "CORE_VER":"0.7.11.0",
             "forkver":12,
             "info":"No longer crashes when failing to generate editor + more precise error logging, fix Adv Proc Filter being unusable in lineup page, Mini-death surge talent, maybe quicker pack/data loading"
