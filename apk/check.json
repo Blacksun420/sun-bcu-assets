@@ -1,6 +1,12 @@
 {
     "apk_update":[
         {
+            "ver":"0.20.17",
+            "CORE_VER":"0.7.12.1",
+            "FORK_VER":13,
+            "desc":"Fix bugs, 14.5 data"
+        },
+        {
             "ver":"0.20.16",
             "CORE_VER":"0.7.12.0",
             "FORK_VER":12,

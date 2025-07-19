@@ -1,6 +1,12 @@
 {
     "history": [
         {
+            "ver":"0.6.2.16",
+            "CORE_VER":"0.7.12.1",
+            "forkver":13,
+            "info":"<a href=\"https://battlecats.miraheze.org/wiki/Version_14.5_Update\">14.5 data</a>, fix bugs, apply treasure/level/colosseum effects to unit bases"
+        },
+        {
             "ver":"0.6.2.15",
             "CORE_VER":"0.7.12.0",
             "forkver":13,
