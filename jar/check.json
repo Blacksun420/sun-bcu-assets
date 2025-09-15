@@ -1,6 +1,12 @@
 {
     "history": [
         {
+            "ver":"0.6.2.17",
+            "CORE_VER":"0.7.12.2",
+            "forkver":13,
+            "info":"<a href=\"https://battlecats.miraheze.org/wiki/Version_14.6_Update\">14.6 data</a>, QoL"
+        },
+        {
             "ver":"0.6.2.16",
             "CORE_VER":"0.7.12.1",
             "forkver":13,
