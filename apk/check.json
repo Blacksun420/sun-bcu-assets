@@ -1,6 +1,12 @@
 {
     "apk_update":[
         {
+            "ver":"0.20.18",
+            "CORE_VER":"0.7.13.0",
+            "FORK_VER":13,
+            "desc":"14.7 data"
+        },
+        {
             "ver":"0.20.17",
             "CORE_VER":"0.7.12.1",
             "FORK_VER":13,

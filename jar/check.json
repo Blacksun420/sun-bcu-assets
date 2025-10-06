@@ -1,6 +1,12 @@
 {
     "history": [
         {
+            "ver":"0.6.2.18",
+            "CORE_VER":"0.7.13.0",
+            "forkver":13,
+            "info":"<a href=\"https://battlecats.miraheze.org/wiki/Version_14.7_Update\">14.7 data</a>, Range Visualizer"
+        },
+        {
             "ver":"0.6.2.17",
             "CORE_VER":"0.7.12.2",
             "forkver":13,
